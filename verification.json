@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-13",
+  "build": "1.0.0",
+  "engine": {
+    "checks_passed": 529,
+    "levels_solved": 12,
+    "coverage": [
+      "all canonical solutions",
+      "independent solver results",
+      "fixed partial arrangements for hints",
+      "connected pieces",
+      "rotation geometry",
+      "off-grid and overflow rejection",
+      "overlap rejection",
+      "legal but unsolvable arrangements"
+    ]
+  },
+  "browser": {
+    "browsers": [
+      "Chromium in-app browser",
+      "Google Chrome"
+    ],
+    "viewports_verified": [
+      "1280x720",
+      "390x844",
+      "375x667",
+      "320x568"
+    ],
+    "completed_through_real_controls": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "verified": [
+      "native pointer drag and snap at desktop and phone viewport sizes",
+      "invalid overlap returns piece to tray",
+      "keyboard placement",
+      "rotation",
+      "level completion and advancing",
+      "undo",
+      "hint outline",
+      "partial progress after reload",
+      "small phone layout fits without scrolling"
+    ],
+    "interrupted": "Advanced browser playthrough was interrupted by in-app browser attachment failure. Levels 8\u201312 have solver verification; no complete browser run is claimed."
+  },
+  "not_verified": [
+    "physical phone touch feel",
+    "audible sound quality",
+    "physical vibration feedback",
+    "full browser run of levels 8\u201312"
+  ],
+  "publication": {
+    "status": "configuring",
+    "provider": "GitHub Pages",
+    "repository": "https://github.com/leolunelove/squared",
+    "domain": "squared.leolune.fun"
+  },
+  "runtime": {
+    "external_requests": false,
+    "dependencies": false,
+    "standalone_file": "docs/index.html"
+  }
+}
