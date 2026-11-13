@@ -55,10 +55,27 @@
     "full browser run of levels 8\u201312"
   ],
   "publication": {
-    "status": "configuring",
+    "status": "live",
     "provider": "GitHub Pages",
     "repository": "https://github.com/leolunelove/squared",
-    "domain": "squared.leolune.fun"
+    "domain": "squared.leolune.fun",
+    "source_commit": "07652345666139277f846221b43ddb57eb244a8f",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/43410481549",
+    "build": "success",
+    "deploy": "success",
+    "dns": "CNAME squared \u2192 leolunelove.github.io; verified by local resolver and Google Public DNS",
+    "https": "certificate validated; Enforce HTTPS enabled",
+    "url": "https://squared.leolune.fun/",
+    "https_status": 200,
+    "http_status": 301,
+    "http_redirect": "https://squared.leolune.fun/",
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_sha256": "1f3320ac7f43d79c5c054f6903fbd3757e3858f863ea5a12c9fdd7e2a5a64d5a",
+    "live_browser_smoke": [
+      "game loaded on custom HTTPS origin",
+      "help opens and closes"
+    ]
   },
   "runtime": {
     "external_requests": false,
