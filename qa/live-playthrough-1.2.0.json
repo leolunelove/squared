@@ -1,7 +1,10 @@
 {
   "version": "1.2.0",
   "url": "https://squared.leolune.fun/?release=1.2.0&playtest=1",
-  "viewport": "375x667",
+  "viewport": {
+    "h": 667,
+    "w": 375
+  },
   "separateSessionSave": true,
   "levels": [
     {
