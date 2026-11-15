@@ -1,0 +1,140 @@
+[
+  {
+    "n": 3,
+    "layout": [
+      "AAB",
+      "ACB",
+      "CCB"
+    ],
+    "rotate": false,
+    "title": "A little beginning"
+  },
+  {
+    "n": 3,
+    "layout": [
+      "ABB",
+      "ACB",
+      "ACC"
+    ],
+    "rotate": false,
+    "title": "Room to play"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAB",
+      "ACBB",
+      "CCCB",
+      "DDDD"
+    ],
+    "rotate": false,
+    "title": "A new shape"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAB",
+      "CCBB",
+      "CDBD",
+      "CDDD"
+    ],
+    "rotate": false,
+    "title": "Find your rhythm"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAA",
+      "BBBC",
+      "DDBC",
+      "DDCC"
+    ],
+    "rotate": true,
+    "title": "A different angle"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "ABBB",
+      "AABC",
+      "DDCC",
+      "DDDC"
+    ],
+    "rotate": true,
+    "title": "Turn it around"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ACBDD",
+      "ACCCD",
+      "AAECD",
+      "EEEED"
+    ],
+    "rotate": true,
+    "title": "A little deeper"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ABCCD",
+      "AACCD",
+      "EECDD",
+      "EEEED"
+    ],
+    "rotate": true,
+    "title": "In good company"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AAABB",
+      "ACABB",
+      "CCDBE",
+      "CDDEE",
+      "CDDEE"
+    ],
+    "rotate": true,
+    "title": "Piece by piece"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AABCC",
+      "AABBC",
+      "DDBEC",
+      "DDEEC",
+      "DDEEE"
+    ],
+    "rotate": true,
+    "title": "A fresh perspective"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "ABBBCC",
+      "AAABCC",
+      "ADDBBC",
+      "ADEEFC",
+      "DDEEFF",
+      "DEEFFF"
+    ],
+    "rotate": true,
+    "title": "The bigger picture"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "ABBBCC",
+      "ADBBCE",
+      "ADDCCE",
+      "AFDEEE",
+      "FFDGGG",
+      "FFFGGG"
+    ],
+    "rotate": true,
+    "title": "Everything in place"
+  }
+]

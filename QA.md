@@ -1,25 +1,11 @@
-# Mobile polish verification — 1.1.0
+# Campaign expansion verification — 1.2.0
 
-## Before the update
+All 36 puzzles were completed locally through native pointer drags and the Rotate control at 375×667. The original twelve level definitions are unchanged. Save compatibility checks confirm that finishing level 12 unlocks level 13 without resetting earlier completions.
 
-All 12 levels were completed at `https://squared.leolune.fun/` in a 390×844 Chrome viewport. Pieces were placed through native pointer drags, with the Rotate control used from level 5. The collection showed 12 of 12 complete. Evidence is retained in the task's `work/qa/live-baseline-12.json`.
+The engine independently solves all 36 boards. Tests cover partial placements, connected shapes, bounds, overlap rejection, progression, and the actual hint-worker script on rotated alternative arrangements. New puzzles are ordered using size, piece count, shape clues and three shuffled exact-cover searches; search effort is a design aid, not a measured human difficulty score. See [grading details](qa/level-grading.json).
 
-## Release checks
+The final nine-piece puzzle fits 320×568 portrait and 844×390 landscape without page scrolling. The collection scrolls the current puzzle into view. An alternate rotated placement requests a background hint successfully; Restart clears stale hint work.
 
-- 529 existing geometry and solver checks pass.
-- 870 new checks cover grab-point continuity, touch clearance, magnetic edge allowance, board bounds, overlap rejection, and rotation safety.
-- All 12 revised puzzles were completed locally through pointer drags and Rotate.
-- Remaining tray positions and scales are unchanged when another piece is placed.
-- An invalid drop returns to the exact previous home.
-- A slight overshoot at a legal board edge is accepted; distant and overlapping drops remain invalid.
-- A blocked rotation keeps the original piece on the board.
-- Double-tap rotation and Undo restore the expected orientation.
-- A partial board and rotations survive reload.
-- Compact portrait layouts and the final landscape puzzle fit without scrolling after layout settles.
-- The accidental scrollbar that interrupted a pickup has been reproduced, fixed, and retested.
+Live release verification is pending. Release playthroughs use a separate session save (`?playtest=1`) to avoid completing new levels in the player’s campaign.
 
-## Live release
-
-Version 1.1.0 was deployed successfully in [run 43662186656](https://github.com/leolunelove/squared/actions/runs/43662186656). All 12 levels were then completed again on the live site in a 375×667 viewport using pointer drags and the Rotate control. The final collection showed 12 of 12 complete. See [the raw playthrough record](qa/live-playthrough-1.1.0.json) and `verification.json`. The served HTML matches the release build byte for byte.
-
-These are browser checks at phone viewport sizes, using mouse/pointer input. Touch lift is covered by geometry checks. Physical-phone touch feel, sound quality, and vibration have not been signed off on a physical device.
+These are browser checks at phone viewport sizes using pointer input. Physical phone touch feel, sound quality and vibration remain device-testing boundaries. The previous release evidence is retained in [the 1.1 verification record](qa/verification-1.1.0.json).

@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-15",
+  "build": "1.1.0",
+  "engine": {
+    "checks_passed": 529,
+    "levels_solved": 12,
+    "coverage": [
+      "all canonical solutions",
+      "independent solver results",
+      "fixed partial arrangements for hints",
+      "connected pieces",
+      "rotation geometry",
+      "off-grid and overflow rejection",
+      "overlap rejection",
+      "legal but unsolvable arrangements"
+    ],
+    "mobile_geometry_checks_passed": 870,
+    "total_checks_passed": 1399
+  },
+  "browser": {
+    "browsers": [
+      "Chromium in-app browser",
+      "Google Chrome"
+    ],
+    "viewports_verified": [
+      "390x844",
+      "375x667",
+      "320x568",
+      "844x390"
+    ],
+    "completed_through_real_controls": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "verified": [
+      "native pointer drag and snap at desktop and phone viewport sizes",
+      "invalid overlap returns piece to tray",
+      "keyboard placement",
+      "rotation",
+      "level completion and advancing",
+      "undo",
+      "hint outline",
+      "partial progress after reload",
+      "small phone layout fits without scrolling",
+      "all twelve baseline levels completed on live site by pointer drags and Rotate control",
+      "all twelve revised levels completed locally",
+      "remaining tray homes and sizes stay unchanged after placement",
+      "blocked rotation retains the piece on the board",
+      "double-tap rotates and Undo restores the orientation",
+      "edge magnet catches a slightly out-of-bounds drop",
+      "landscape final puzzle completed without page scrolling"
+    ],
+    "interrupted": null,
+    "live_baseline_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "local_polish_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "live_polish_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "live_release_viewport": "375x667",
+    "live_evidence": "qa/live-playthrough-1.1.0.json"
+  },
+  "not_verified": [
+    "physical phone touch feel",
+    "audible sound quality",
+    "physical vibration feedback"
+  ],
+  "publication": {
+    "status": "live",
+    "provider": "GitHub Pages",
+    "repository": "https://github.com/leolunelove/squared",
+    "domain": "squared.leolune.fun",
+    "source_commit": "07c51bfd6617c8b0c24991b77838d3c86c37b973",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/43662186656",
+    "build": "success",
+    "deploy": "success",
+    "dns": "CNAME squared \u2192 leolunelove.github.io; verified by local resolver and Google Public DNS",
+    "https": "certificate validated; Enforce HTTPS enabled",
+    "url": "https://squared.leolune.fun/",
+    "https_status": 200,
+    "http_status": 301,
+    "http_redirect": "https://squared.leolune.fun/",
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_sha256": "f9bfdc9d6f3571b31b0927d31916e005108122a6584bac10e8e3b0fa44a22e93",
+    "live_browser_smoke": [
+      "all 12 levels completed at 375x667 through pointer drags and Rotate",
+      "completion collection shows 12 of 12 complete",
+      "progression and previous save format retained"
+    ],
+    "live_bytes": 53547
+  },
+  "runtime": {
+    "external_requests": false,
+    "dependencies": false,
+    "standalone_file": "docs/index.html"
+  }
+}

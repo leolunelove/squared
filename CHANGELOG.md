@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 15 November 2026
+
+- Added 24 puzzles for a 36-level campaign, with larger squares introduced in stages and the toughest nine-piece 8×8 puzzles at the end.
+- Grouped the collection into six chapters and kept the current square visible when opening it.
+- Extended the tray to support nine pieces in compact portrait and landscape layouts.
+- Moved complex hint searches to a background worker with cancellation, so the board stays responsive.
+- Preserved the first twelve puzzles and existing player progress.
+- Added independent solvability, progression, save-compatibility and worker checks.
+
+
 ## 1.1.0 — 15 November 2026
 
 - Pieces keep a fixed home and scale in the tray throughout a level. Smaller shapes use the space more generously.

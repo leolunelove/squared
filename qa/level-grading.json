@@ -1,0 +1,891 @@
+{
+  "method": "Three independently shuffled exact-cover searches per candidate, ranked within each size by median search nodes, boundary concavity, rectangular clues and placement ambiguity. This is a design aid, not human difficulty calibration.",
+  "seed": 15112026,
+  "levels": [
+    {
+      "level": 13,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 3,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 21,
+      "placement_options": 373,
+      "median_search_nodes": 17,
+      "trials": [
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 1.6
+        },
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 1.4
+        }
+      ],
+      "score": 33.99
+    },
+    {
+      "level": 14,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 25,
+      "placement_options": 441,
+      "median_search_nodes": 22,
+      "trials": [
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 74,
+          "solved": true,
+          "ms": 3.8
+        }
+      ],
+      "score": 45.8
+    },
+    {
+      "level": 15,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 28,
+      "placement_options": 476,
+      "median_search_nodes": 26,
+      "trials": [
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 91,
+          "solved": true,
+          "ms": 4.6
+        },
+        {
+          "nodes": 26,
+          "solved": true,
+          "ms": 1.9
+        }
+      ],
+      "score": 52.25
+    },
+    {
+      "level": 16,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 23,
+      "placement_options": 397,
+      "median_search_nodes": 65,
+      "trials": [
+        {
+          "nodes": 65,
+          "solved": true,
+          "ms": 2.6
+        },
+        {
+          "nodes": 30,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 85,
+          "solved": true,
+          "ms": 3.7
+        }
+      ],
+      "score": 60.83
+    },
+    {
+      "level": 17,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        5,
+        6,
+        7
+      ],
+      "orientations": 24,
+      "placement_options": 404,
+      "median_search_nodes": 196,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 464,
+          "solved": true,
+          "ms": 22.0
+        },
+        {
+          "nodes": 196,
+          "solved": true,
+          "ms": 8.7
+        }
+      ],
+      "score": 76.64
+    },
+    {
+      "level": 18,
+      "tier": "Tricky",
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 26,
+      "placement_options": 460,
+      "median_search_nodes": 626,
+      "trials": [
+        {
+          "nodes": 626,
+          "solved": true,
+          "ms": 31.2
+        },
+        {
+          "nodes": 204,
+          "solved": true,
+          "ms": 11.5
+        },
+        {
+          "nodes": 721,
+          "solved": true,
+          "ms": 50.5
+        }
+      ],
+      "score": 97.56
+    },
+    {
+      "level": 19,
+      "tier": "Intricate",
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 28,
+      "placement_options": 496,
+      "median_search_nodes": 27,
+      "trials": [
+        {
+          "nodes": 63,
+          "solved": true,
+          "ms": 2.9
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.5
+        }
+      ],
+      "score": 46.06
+    },
+    {
+      "level": 20,
+      "tier": "Intricate",
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 23,
+      "placement_options": 401,
+      "median_search_nodes": 51,
+      "trials": [
+        {
+          "nodes": 68,
+          "solved": true,
+          "ms": 2.7
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 51,
+          "solved": true,
+          "ms": 1.9
+        }
+      ],
+      "score": 54.61
+    },
+    {
+      "level": 21,
+      "tier": "Intricate",
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 25,
+      "placement_options": 469,
+      "median_search_nodes": 82,
+      "trials": [
+        {
+          "nodes": 82,
+          "solved": true,
+          "ms": 4.3
+        },
+        {
+          "nodes": 73,
+          "solved": true,
+          "ms": 2.4
+        },
+        {
+          "nodes": 275,
+          "solved": true,
+          "ms": 10.3
+        }
+      ],
+      "score": 63.03
+    },
+    {
+      "level": 22,
+      "tier": "Intricate",
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 27,
+      "placement_options": 489,
+      "median_search_nodes": 131,
+      "trials": [
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 131,
+          "solved": true,
+          "ms": 5.2
+        },
+        {
+          "nodes": 164,
+          "solved": true,
+          "ms": 5.4
+        }
+      ],
+      "score": 68.4
+    },
+    {
+      "level": 23,
+      "tier": "Intricate",
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 29,
+      "placement_options": 513,
+      "median_search_nodes": 250,
+      "trials": [
+        {
+          "nodes": 596,
+          "solved": true,
+          "ms": 27.0
+        },
+        {
+          "nodes": 116,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 250,
+          "solved": true,
+          "ms": 8.7
+        }
+      ],
+      "score": 77.77
+    },
+    {
+      "level": 24,
+      "tier": "Intricate",
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 28,
+      "placement_options": 508,
+      "median_search_nodes": 346,
+      "trials": [
+        {
+          "nodes": 46,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 346,
+          "solved": true,
+          "ms": 14.3
+        },
+        {
+          "nodes": 476,
+          "solved": true,
+          "ms": 21.3
+        }
+      ],
+      "score": 87.82
+    },
+    {
+      "level": 25,
+      "tier": "Expert",
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 32,
+      "placement_options": 736,
+      "median_search_nodes": 22,
+      "trials": [
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 1.8
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 2.9
+        },
+        {
+          "nodes": 505,
+          "solved": true,
+          "ms": 57.9
+        }
+      ],
+      "score": 50.98
+    },
+    {
+      "level": 26,
+      "tier": "Expert",
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8
+      ],
+      "orientations": 30,
+      "placement_options": 642,
+      "median_search_nodes": 91,
+      "trials": [
+        {
+          "nodes": 134,
+          "solved": true,
+          "ms": 14.6
+        },
+        {
+          "nodes": 46,
+          "solved": true,
+          "ms": 6.3
+        },
+        {
+          "nodes": 91,
+          "solved": true,
+          "ms": 8.7
+        }
+      ],
+      "score": 70.6
+    },
+    {
+      "level": 27,
+      "tier": "Expert",
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        7,
+        8
+      ],
+      "orientations": 28,
+      "placement_options": 628,
+      "median_search_nodes": 155,
+      "trials": [
+        {
+          "nodes": 155,
+          "solved": true,
+          "ms": 13.4
+        },
+        {
+          "nodes": 116,
+          "solved": true,
+          "ms": 11.3
+        },
+        {
+          "nodes": 265,
+          "solved": true,
+          "ms": 29.0
+        }
+      ],
+      "score": 75.37
+    },
+    {
+      "level": 28,
+      "tier": "Expert",
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 32,
+      "placement_options": 700,
+      "median_search_nodes": 280,
+      "trials": [
+        {
+          "nodes": 28,
+          "solved": true,
+          "ms": 3.3
+        },
+        {
+          "nodes": 280,
+          "solved": true,
+          "ms": 33.0
+        },
+        {
+          "nodes": 288,
+          "solved": true,
+          "ms": 33.4
+        }
+      ],
+      "score": 85.54
+    },
+    {
+      "level": 29,
+      "tier": "Expert",
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        7,
+        7,
+        7
+      ],
+      "orientations": 30,
+      "placement_options": 688,
+      "median_search_nodes": 595,
+      "trials": [
+        {
+          "nodes": 595,
+          "solved": true,
+          "ms": 59.0
+        },
+        {
+          "nodes": 376,
+          "solved": true,
+          "ms": 35.7
+        },
+        {
+          "nodes": 627,
+          "solved": true,
+          "ms": 71.7
+        }
+      ],
+      "score": 93.74
+    },
+    {
+      "level": 30,
+      "tier": "Expert",
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        6,
+        7,
+        7,
+        7,
+        7
+      ],
+      "orientations": 32,
+      "placement_options": 768,
+      "median_search_nodes": 1630,
+      "trials": [
+        {
+          "nodes": 1977,
+          "solved": true,
+          "ms": 193.5
+        },
+        {
+          "nodes": 1205,
+          "solved": true,
+          "ms": 113.5
+        },
+        {
+          "nodes": 1630,
+          "solved": true,
+          "ms": 166.3
+        }
+      ],
+      "score": 111.19
+    },
+    {
+      "level": 31,
+      "tier": "Master",
+      "concavity": 16,
+      "rectangles": 0,
+      "areas": [
+        7,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        9
+      ],
+      "orientations": 32,
+      "placement_options": 912,
+      "median_search_nodes": 33,
+      "trials": [
+        {
+          "nodes": 52,
+          "solved": true,
+          "ms": 8.2
+        },
+        {
+          "nodes": 33,
+          "solved": true,
+          "ms": 6.1
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 2.4
+        }
+      ],
+      "score": 65.72
+    },
+    {
+      "level": 32,
+      "tier": "Master",
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        7,
+        7,
+        7,
+        8,
+        8,
+        9,
+        9,
+        9
+      ],
+      "orientations": 30,
+      "placement_options": 858,
+      "median_search_nodes": 101,
+      "trials": [
+        {
+          "nodes": 101,
+          "solved": true,
+          "ms": 12.9
+        },
+        {
+          "nodes": 64,
+          "solved": true,
+          "ms": 8.9
+        },
+        {
+          "nodes": 153,
+          "solved": true,
+          "ms": 20.8
+        }
+      ],
+      "score": 67.56
+    },
+    {
+      "level": 33,
+      "tier": "Master",
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        7,
+        7,
+        7,
+        7,
+        9,
+        9,
+        9,
+        9
+      ],
+      "orientations": 32,
+      "placement_options": 892,
+      "median_search_nodes": 99,
+      "trials": [
+        {
+          "nodes": 100,
+          "solved": true,
+          "ms": 16.4
+        },
+        {
+          "nodes": 99,
+          "solved": true,
+          "ms": 17.8
+        },
+        {
+          "nodes": 52,
+          "solved": true,
+          "ms": 6.8
+        }
+      ],
+      "score": 71.41
+    },
+    {
+      "level": 34,
+      "tier": "Master",
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        8,
+        8,
+        8
+      ],
+      "orientations": 36,
+      "placement_options": 1072,
+      "median_search_nodes": 1433,
+      "trials": [
+        {
+          "nodes": 1433,
+          "solved": true,
+          "ms": 257.6
+        },
+        {
+          "nodes": 1524,
+          "solved": true,
+          "ms": 258.9
+        },
+        {
+          "nodes": 343,
+          "solved": true,
+          "ms": 46.1
+        }
+      ],
+      "score": 107.66
+    },
+    {
+      "level": 35,
+      "tier": "Master",
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        6,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        8,
+        8
+      ],
+      "orientations": 34,
+      "placement_options": 1060,
+      "median_search_nodes": 2317,
+      "trials": [
+        {
+          "nodes": 3231,
+          "solved": true,
+          "ms": 516.1
+        },
+        {
+          "nodes": 2317,
+          "solved": true,
+          "ms": 364.6
+        },
+        {
+          "nodes": 1499,
+          "solved": true,
+          "ms": 247.2
+        }
+      ],
+      "score": 111.79
+    },
+    {
+      "level": 36,
+      "tier": "Master",
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 36,
+      "placement_options": 1116,
+      "median_search_nodes": 2667,
+      "trials": [
+        {
+          "nodes": 2667,
+          "solved": true,
+          "ms": 875.2
+        },
+        {
+          "nodes": 1954,
+          "solved": true,
+          "ms": 306.6
+        },
+        {
+          "nodes": 2917,
+          "solved": true,
+          "ms": 497.4
+        }
+      ],
+      "score": 115.22
+    }
+  ]
+}

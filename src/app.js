@@ -11,14 +11,16 @@ const icons={
   next:'<path d="M3 12h18m-7-7 7 7-7 7"/>'
 };
 const icon=name=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>`;
-const colors=[['#7caaa0','#5c9187','#507e73','sage'],['#e5ba79','#d5a35d','#b98b4a','honey'],['#e7a18a','#d7866e','#bb705c','peach'],['#9ca9cc','#7e8fb6','#6d7fa3','periwinkle'],['#bac18b','#9eaa72','#87945b','olive'],['#c5a9bd','#ae8fa7','#997a93','mauve'],['#82aeb9','#6595a2','#56818b','blue']];
-const levels=LEVEL_DATA.map(readLevel);levels.forEach(l=>l.options=optionsFor(l));
-const key='squared-save-v1';let saved={};
-try{saved=JSON.parse(localStorage.getItem(key)||'{}')??{};}catch{}
-let completed=new Set((Array.isArray(saved.completed)?saved.completed:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<levels.length));
-let unlocked=0;while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;
-let levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved.current)?saved.current:0));
-let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,lastTap=null;
+const colors=[['#7caaa0','#5c9187','#507e73','sage'],['#e5ba79','#d5a35d','#b98b4a','honey'],['#e7a18a','#d7866e','#bb705c','peach'],['#9ca9cc','#7e8fb6','#6d7fa3','periwinkle'],['#bac18b','#9eaa72','#87945b','olive'],['#c5a9bd','#ae8fa7','#997a93','mauve'],['#82aeb9','#6595a2','#56818b','blue'],['#d79cb0','#bb788e','#9d6074','rose'],['#b3b6aa','#929b8b','#7b8874','stone']];
+const levels=LEVEL_DATA.map(readLevel);
+const tierFor=index=>levels[index].tier??(index<6?'First steps':'Finding flow');
+const playerSaveKey='squared-save-v1';
+// Session-only release playtests start from a copy and never write player progress.
+const playtest=new URLSearchParams(location.search).get('playtest')==='1';
+const key=playtest?'squared-playtest-v1':playerSaveKey,gameStorage=()=>playtest?sessionStorage:localStorage;let saved={};
+try{saved=JSON.parse(gameStorage().getItem(key)||(playtest?localStorage.getItem(playerSaveKey):null)||'{}')??{};}catch{}
+let {completed,unlocked,levelIndex}=restoreProgress(saved,levels.length);
+let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,lastTap=null,hintSerial=0,hintTask=null;
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const reducedMotion=()=>motionPreference.matches;
 const nodes=[],stage=$('#stage'),board=$('#board'),preview=$('#preview'),hintGhost=$('#hint-ghost');
@@ -26,7 +28,7 @@ $('#sound').innerHTML=icon(sound?'sound':'muted');$('#help').innerHTML=icon('hel
 $('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';$('#rotate').innerHTML=icon('rotate')+'Rotate';
 $$('.close-dialog.icon-button').forEach(b=>b.innerHTML=icon('close'));
 function persist(){
-  try{localStorage.setItem(key,JSON.stringify({current:levelIndex,completed:[...completed],placements,rotations,sound,version:1}));}
+  try{gameStorage().setItem(key,JSON.stringify({current:levelIndex,completed:[...completed],placements,rotations,sound,version:1}));}
   catch{storageOkay=false;}
 }
 function say(text){$('#status').textContent=text;}
@@ -67,7 +69,7 @@ function layout(){
   const trayX=wide?width*.46+12:0,trayWidth=wide?width-trayX-8:width;
   const trayTop=wide?44:by+boardSize+48,trayHeight=Math.max(50,height-trayTop-8);
   const ids=trayIds;
-  const cols=ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
+  const cols=ids.length>8?5:ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
   const slotW=trayWidth/cols,slotH=trayHeight/actualRows;
   geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
@@ -90,7 +92,8 @@ function layout(){
   if(hintTarget)showGhost(hintGhost,hintTarget.id,hintTarget.p);
   updateControls();
 }
-function clearHint(){hintTarget=null;hintGhost.classList.remove('visible');nodes.forEach(n=>n.classList.remove('hinted'));}
+function setHintBusy(busy){$('#hint').disabled=busy;$('#hint').setAttribute('aria-busy',String(busy));}
+function clearHint(){hintSerial++;hintTask?.cancel();setHintBusy(false);hintTarget=null;hintGhost.classList.remove('visible');nodes.forEach(n=>n.classList.remove('hinted'));}
 function choose(id){
   selected=id;keyboardTarget=null;nodes.forEach((n,i)=>{n.classList.toggle('selected',i===id);n.setAttribute('aria-pressed',String(i===id));});
   $('#rotate').hidden=id===null||!level.rotate||solved;
@@ -114,7 +117,7 @@ function load(index,restored=null){
     const r=restored.rotations.map(r=>Number.isInteger(r)&&r>=0&&r<4&&(!r||level.rotate)?r:0);
     if(p.every((v,i)=>!v||canPlace(level,p,i,v))){placements=p;rotations=r.map((v,i)=>p[i]?.r??v);}
   }
-  $('#level-num').textContent=String(index+1).padStart(2,'0');$('#dimension').textContent=`${level.n} × ${level.n}`;
+  $('#level-num').textContent=String(index+1).padStart(2,'0');$('#level-total').textContent=`/ ${levels.length}`;$('#dimension').textContent=`${level.n} × ${level.n}`;$('#level-eyebrow').textContent=index<12?'A LITTLE PIECE OF CALM':`${tierFor(index).toUpperCase()} SQUARE`;
   $('#pieces').innerHTML='';nodes.length=0;
   level.pieces.forEach(({id})=>{const el=document.createElement('button');el.type='button';el.className='piece';el.dataset.piece=id;el.setAttribute('aria-pressed','false');el.addEventListener('pointerdown',e=>pointerDown(e,id));el.addEventListener('click',e=>{if(e.detail===0&&!solved){wakeAudio();choose(id);}});$('#pieces').append(el);nodes.push(el);});
   say(index===0?'One last piece. Make it a square.':index===4?'A new angle. Select a piece to rotate it.':`${level.title}. Take your time.`);
@@ -220,14 +223,32 @@ $('#undo').addEventListener('click',()=>{
 $('#restart').addEventListener('click',()=>{
   cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();solved=false;board.classList.remove('complete');placements=level.pieces.map(()=>null);rotations=level.pieces.map((_,i)=>level.rotate?(levelIndex+i*3)%4:0);if(levelIndex===0){placements[0]={...level.pieces[0].solution};placements[1]={...level.pieces[1].solution};}choose(null);layout();persist();say('A fresh little start.');
 });
-$('#hint').addEventListener('click',()=>{
-  if(solved){openSuccess();return;}cancelDrag();wakeAudio();clearHint();
-  const result=solve(level,placements);let target;
+function requestHintSearch(){
+  return new Promise(resolve=>{
+    let worker=null,url=null,timer=null;
+    const task={cancel:()=>finish({cancelled:true})};hintTask=task;
+    function finish(result){
+      if(hintTask!==task)return;
+      hintTask=null;clearTimeout(timer);worker?.terminate();if(url)URL.revokeObjectURL(url);resolve(result);
+    }
+    try{
+      url=URL.createObjectURL(new Blob([hintWorkerSource()],{type:'text/javascript'}));worker=new Worker(url);
+      worker.onmessage=e=>finish(e.data);worker.onerror=()=>finish({unavailable:true});
+      timer=setTimeout(()=>finish({exhausted:true}),2500);
+      worker.postMessage({level:{n:level.n,rotate:level.rotate,pieces:level.pieces},placements:placements.map(p=>p?{...p}:null),limit:250000});
+    }catch{finish({unavailable:true});}
+  });
+}
+function matchesOriginal(id,p){const target=level.pieces[id].solution;return !p||(p.x===target.x&&p.y===target.y&&JSON.stringify(pieceCells(id))===JSON.stringify(level.pieces[id].cells));}
+$('#hint').addEventListener('click',async()=>{
+  if(solved){openSuccess();return;}cancelDrag();wakeAudio();clearHint();const ticket=hintSerial;
+  let result;
+  if(placements.every((p,id)=>matchesOriginal(id,p)))result={solution:level.pieces.map(p=>({...p.solution}))};
+  else{setHintBusy(true);say('Finding a little opening…');result=await requestHintSearch();if(ticket!==hintSerial||result.cancelled)return;setHintBusy(false);}
+  let target;
   if(result.solution){const id=placements.findIndex(p=>!p);target={id,p:result.solution[id]};}
   else{
-    let move=null;
-    for(let i=placements.length-1;i>=0;i--)if(placements[i]){const test=placements.map(p=>p?{...p}:null);test[i]=null;if(solve(level,test,70000).solution){move=i;break;}}
-    if(move===null)move=placements.findIndex((p,i)=>p&&(p.x!==level.pieces[i].solution.x||p.y!==level.pieces[i].solution.y||JSON.stringify(turn(level.pieces[i].cells,p.r))!==JSON.stringify(level.pieces[i].cells)));
+    const move=placements.findIndex((p,i)=>p&&!matchesOriginal(i,p));
     if(move!==null&&move>=0){nodes[move].classList.add('hinted');choose(move);say(`Make a little room. Try moving the ${colors[move][3]} piece back to the tray.`);}
     else say('Try taking a piece back out, then ask for another hint.');return;
   }
@@ -244,15 +265,15 @@ function sparkle(){
   for(let i=0;i<22;i++){const el=document.createElement('i');el.className='spark';const angle=i/22*Math.PI*2,x=geometry.bx+geometry.boardSize/2+Math.cos(angle)*geometry.boardSize*.48,y=geometry.by+geometry.boardSize/2+Math.sin(angle)*geometry.boardSize*.48;el.style.cssText=`background:${colors[i%colors.length][0]};--x:${x}px;--y:${y}px;--dx:${Math.cos(angle)*(25+Math.random()*35)}px;--dy:${Math.sin(angle)*40-15}px;--spin:${Math.random()*240}deg;animation-delay:${Math.random()*.1}s`;holder.append(el);}setTimeout(()=>holder.innerHTML='',1300);
 }
 function openSuccess(){
-  if(!solved)return;const last=levelIndex===levels.length-1;$('#success-kicker').textContent=last?'TWELVE LITTLE MOMENTS OF CALM':'EVERY PIECE BELONGS';$('#success-title').textContent=last?'A lovely little collection.':'All squared away.';$('#success-text').textContent=last?'Every square complete. Come back any time.':'A little mess. A perfect fit.';$('#next').innerHTML=last?'Your collection <span aria-hidden="true">↗</span>':'Next square <span aria-hidden="true">→</span>';$('#success').classList.add('show');$('#success').setAttribute('aria-hidden','false');$('#success').setAttribute('role','dialog');$('#success').setAttribute('aria-modal','true');$('.app').inert=true;$('#next').focus({preventScroll:true});
+  if(!solved)return;const last=levelIndex===levels.length-1;$('#success-kicker').textContent=last?'EVERY SQUARE, COMPLETE':'EVERY PIECE BELONGS';$('#success-title').textContent=last?'A lovely little collection.':'All squared away.';$('#success-text').textContent=last?`All ${levels.length} squares complete. Come back any time.`:'A little mess. A perfect fit.';$('#next').innerHTML=last?'Your collection <span aria-hidden="true">↗</span>':'Next square <span aria-hidden="true">→</span>';$('#success').classList.add('show');$('#success').setAttribute('aria-hidden','false');$('#success').setAttribute('role','dialog');$('#success').setAttribute('aria-modal','true');$('.app').inert=true;$('#next').focus({preventScroll:true});
 }
 function closeSuccess(){$('#success').classList.remove('show');$('#success').setAttribute('aria-hidden','true');$('#success').removeAttribute('aria-modal');$('.app').inert=false;}
 $('#next').addEventListener('click',()=>{wakeAudio();if(levelIndex===levels.length-1){closeSuccess();openLevels();}else{load(levelIndex+1);nodes.find((_,i)=>!placements[i])?.focus({preventScroll:true});}});
 $('#replay').addEventListener('click',()=>{clearTimeout(finishTimer);closeSuccess();say('All squared away. Tap Next when you’re ready.');$('#hint').focus({preventScroll:true});});
 function openLevels(){
-  cancelDrag();clearTimeout(finishTimer);$('#collection-progress').textContent=`${completed.size} of 12 squares complete. A little more room to play.`;
-  $('#level-grid').innerHTML=levels.map((l,i)=>`<button class="level-tile ${i===levelIndex?'current':''}" data-level="${i}" ${i>unlocked?'disabled':''} aria-label="Level ${i+1}, ${l.n} by ${l.n}${completed.has(i)?', complete':i>unlocked?', locked':''}" ${i===levelIndex?'aria-current="true"':''}>${String(i+1).padStart(2,'0')} ${completed.has(i)?'<span class="check" aria-hidden="true">✓</span>':''}<small>${i>unlocked?'LOCKED':`${l.n} × ${l.n}`}</small></button>`).join('');
-  $('#levels-dialog .dialog-footer').textContent=storageOkay?'Your progress is saved on this device.':'Progress could not be saved in this browser.';$('#levels-dialog').showModal();
+  cancelDrag();clearTimeout(finishTimer);$('#collection-progress').textContent=`${completed.size} of ${levels.length} squares complete. A little more room to play.`;
+  $('#level-grid').innerHTML=levels.map((l,i)=>`${i===0||tierFor(i)!==tierFor(i-1)?`<h3 class="level-section-title">${tierFor(i)}<small>${i+1}–${Math.min(i+6,levels.length)}</small></h3>`:''}<button class="level-tile ${i===levelIndex?'current':''}" data-level="${i}" ${i>unlocked?'disabled':''} aria-label="Level ${i+1}, ${l.n} by ${l.n}${completed.has(i)?', complete':i>unlocked?', locked':''}" ${i===levelIndex?'aria-current="true"':''}>${String(i+1).padStart(2,'0')} ${completed.has(i)?'<span class="check" aria-hidden="true">✓</span>':''}<small>${i>unlocked?'LOCKED':`${l.n} × ${l.n}`}</small></button>`).join('');
+  $('#levels-dialog .dialog-footer').textContent=storageOkay?'Your progress is saved on this device.':'Progress could not be saved in this browser.';$('#levels-dialog').showModal();requestAnimationFrame(()=>$('#level-grid [aria-current="true"]')?.scrollIntoView({block:'center'}));
 }
 $('#level-button').addEventListener('click',openLevels);$('.brand').addEventListener('click',e=>{e.preventDefault();openLevels();});
 $('#level-grid').addEventListener('click',e=>{const b=e.target.closest('[data-level]');if(!b||b.disabled)return;$('#levels-dialog').close();load(Number(b.dataset.level));});

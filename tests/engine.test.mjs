@@ -4,7 +4,7 @@ import {readLevel,turn,normalize,canPlace,complete,solve,outline,optionsFor} fro
 const raw=JSON.parse(readFileSync(new URL('../src/levels.json',import.meta.url),'utf8'));
 let checks=0;const check=(value,message)=>{assert.ok(value,message);checks++;};
 const reports=[];
-check(raw.length===12,'Twelve levels');
+check(raw.length===36,'Thirty-six levels');
 for(const [index,data]of raw.entries()){
   const level=readLevel(data,index);level.options=optionsFor(level);
   const canonical=level.pieces.map(p=>p.solution);

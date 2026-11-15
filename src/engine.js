@@ -17,6 +17,12 @@ export function readLevel(data,index) {
   });
   return {...data,index,pieces};
 }
+export function restoreProgress(saved,count){
+  const completed=new Set((Array.isArray(saved?.completed)?saved.completed:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<count));
+  let unlocked=0;while(completed.has(unlocked)&&unlocked<count-1)unlocked++;
+  const levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved?.current)?saved.current:0));
+  return {completed,unlocked,levelIndex};
+}
 export function canPlace(level,placements,id,placement) {
   if(!placement||!Number.isInteger(placement.x)||!Number.isInteger(placement.y)||!Number.isInteger(placement.r))return false;
   const occupied=new Set();
@@ -69,6 +75,8 @@ export function optionsFor(level) {
 }
 export function solve(level,placements=[],limit=250000) {
   const options=level.options??optionsFor(level),full=(1n<<BigInt(level.n**2))-1n;
+  const byCell=Array.from({length:level.n**2},()=>[]);
+  for(const group of options)for(const p of group)for(const cell of p.indexes)byCell[cell].push(p);
   let occupied=0n,remaining=(1<<level.pieces.length)-1,nodes=0,exhausted=false;
   const answer=Array(level.pieces.length).fill(null),memo=new Set();
   for(let id=0;id<level.pieces.length;id++)if(placements[id]){
@@ -82,13 +90,16 @@ export function solve(level,placements=[],limit=250000) {
     let best=null;
     for(let cell=0;cell<level.n**2;cell++)if(!(board&(1n<<BigInt(cell)))){
       const choices=[];
-      for(let id=0;id<options.length;id++)if(left&(1<<id))for(const p of options[id])if(!(p.mask&board)&&p.indexes.includes(cell))choices.push(p);
+      for(const p of byCell[cell])if((left&(1<<p.id))&&!(p.mask&board))choices.push(p);
       if(!choices.length)return false;if(best===null||choices.length<best.length)best=choices;if(best.length===1)break;
     }
     for(const p of best??[]){answer[p.id]={x:p.x,y:p.y,r:p.r};if(visit(board|p.mask,left&~(1<<p.id)))return true;if(exhausted)return false;answer[p.id]=null;}
     memo.add(key);return false;
   }
   return {solution:visit(occupied,remaining)?answer:null,nodes,exhausted};
+}
+export function hintWorkerSource(){
+  return [normalize,turn,size,canPlace,optionsFor,solve].map(fn=>fn.toString()).join('\n')+'\nself.onmessage=({data})=>{try{self.postMessage(solve(data.level,data.placements,data.limit));}catch(error){self.postMessage({unavailable:true});}};';
 }
 // Trace cell edges once, then soften every outside and inside corner.
 export function outline(cells) {

@@ -1,0 +1,258 @@
+{
+  "viewport": "375x667",
+  "levels": [
+    {
+      "level": 1,
+      "n": 3,
+      "pieces": 3,
+      "pointerDrags": true,
+      "rotation": false
+    },
+    {
+      "level": 2,
+      "n": 3,
+      "pieces": 3,
+      "pointerDrags": true,
+      "rotation": false
+    },
+    {
+      "level": 3,
+      "n": 4,
+      "pieces": 4,
+      "pointerDrags": true,
+      "rotation": false
+    },
+    {
+      "level": 4,
+      "n": 4,
+      "pieces": 4,
+      "pointerDrags": true,
+      "rotation": false
+    },
+    {
+      "level": 5,
+      "n": 4,
+      "pieces": 4,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 6,
+      "n": 4,
+      "pieces": 4,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 7,
+      "n": 5,
+      "pieces": 5,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 8,
+      "n": 5,
+      "pieces": 5,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 9,
+      "n": 5,
+      "pieces": 5,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 10,
+      "n": 5,
+      "pieces": 5,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 11,
+      "n": 6,
+      "pieces": 6,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 12,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 13,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 14,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 15,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 16,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 17,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 18,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 19,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 20,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 21,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 22,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 23,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 24,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 25,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 26,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 27,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 28,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 29,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 30,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 31,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 32,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 33,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 34,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 35,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 36,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    }
+  ],
+  "collection": "ONE SQUARE AT A TIMEYour little collection.36 of 36 squares complete. A little more room to play.First steps1–601 ✓3 × 302 ✓3 × 303 ✓4 × 404 ✓4 × 405 ✓4 × 406 ✓4 × 4Finding flow7–1207 ✓5 × 508 ✓5 × 509 ✓5 × 510 ✓5 × 511 ✓6 × 612 ✓6 × 6Tricky13–1813 ✓6 × 614 ✓6 × 615 ✓6 × 616 ✓6 × 617 ✓6 × 618 ✓6 × 6Intricate19–2419 ✓6 × 620 ✓6 × 621 ✓6 × 622 ✓6 × 623 ✓6 × 624 ✓6 × 6Expert25–3025 ✓7 × 726 ✓7 × 727 ✓7 × 728 ✓7 × 729 ✓7 × 730 ✓7 × 7Master31–3631 ✓8 × 832 ✓8 × 833 ✓8 × 834 ✓8 × 835 ✓8 × 836 ✓8 × 8Your progress is saved on this device."
+}
