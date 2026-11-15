@@ -1,0 +1,177 @@
+{
+  "version": "1.2.0",
+  "url": "https://squared.leolune.fun/?release=1.2.0&playtest=1",
+  "viewport": "375x667",
+  "separateSessionSave": true,
+  "levels": [
+    {
+      "level": 13,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 14,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 15,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 16,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 17,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 18,
+      "n": 6,
+      "pieces": 7,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 19,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 20,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 21,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 22,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 23,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 24,
+      "n": 6,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 25,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 26,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 27,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 28,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 29,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 30,
+      "n": 7,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 31,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 32,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 33,
+      "n": 8,
+      "pieces": 8,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 34,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 35,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    },
+    {
+      "level": 36,
+      "n": 8,
+      "pieces": 9,
+      "pointerDrags": true,
+      "rotation": true
+    }
+  ],
+  "collection": "36 of 36 squares complete. A little more room to play."
+}
