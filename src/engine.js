@@ -26,6 +26,33 @@ export function canPlace(level,placements,id,placement) {
 export function complete(level,placements) {
   return placements.length===level.pieces.length&&level.pieces.reduce((a,p)=>a+p.cells.length,0)===level.n**2&&placements.every((p,id)=>p&&canPlace(level,placements,id,p));
 }
+// A tiny attraction at the edge of a legal cell, never through an occupied cell.
+export function magneticPlacement(level,placements,id,origin,r,radius=.58) {
+  const nearest={x:Math.round(origin.x),y:Math.round(origin.y),r};
+  if(canPlace(level,placements,id,nearest))return nearest;
+  let best=null,distance=radius;
+  for(let y=nearest.y-1;y<=nearest.y+1;y++)for(let x=nearest.x-1;x<=nearest.x+1;x++){
+    const d=Math.hypot(x-origin.x,y-origin.y),p={x,y,r};
+    if(d<=distance&&canPlace(level,placements,id,p)){best=p;distance=d;}
+  }
+  return best;
+}
+export function liftedPose(point,grab,cell,fromScale,lift,progress) {
+  const t=1-(1-Math.max(0,Math.min(1,progress)))**3;
+  const scale=fromScale+(1-fromScale)*t;
+  return {x:point.x-grab.x*cell*scale,y:point.y-grab.y*cell*scale-lift*t,scale};
+}
+// Preserve the visual centre where possible; a blocked turn leaves the piece alone.
+export function rotationPlacement(level,placements,id,r) {
+  const p=placements[id];if(!p)return null;
+  const old=size(turn(level.pieces[id].cells,p.r)),next=size(turn(level.pieces[id].cells,r));
+  const cx=Math.max(0,Math.min(level.n-next.w,p.x+(old.w-next.w)/2));
+  const cy=Math.max(0,Math.min(level.n-next.h,p.y+(old.h-next.h)/2));
+  const candidates=[];
+  for(const x of new Set([Math.floor(cx),Math.ceil(cx)]))for(const y of new Set([Math.floor(cy),Math.ceil(cy)]))candidates.push({x,y,r});
+  candidates.sort((a,b)=>Math.hypot(a.x-cx,a.y-cy)-Math.hypot(b.x-cx,b.y-cy));
+  return candidates.find(p=>canPlace(level,placements,id,p))??null;
+}
 export function optionsFor(level) {
   const out=level.pieces.map(()=>[]);
   level.pieces.forEach((piece,id)=>{

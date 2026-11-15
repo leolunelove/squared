@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-13",
-  "build": "1.0.0",
+  "date": "2026-11-15",
+  "build": "1.1.0",
   "engine": {
     "checks_passed": 529,
     "levels_solved": 12,
@@ -13,7 +13,9 @@
       "off-grid and overflow rejection",
       "overlap rejection",
       "legal but unsolvable arrangements"
-    ]
+    ],
+    "mobile_geometry_checks_passed": 870,
+    "total_checks_passed": 1399
   },
   "browser": {
     "browsers": [
@@ -21,10 +23,10 @@
       "Google Chrome"
     ],
     "viewports_verified": [
-      "1280x720",
       "390x844",
       "375x667",
-      "320x568"
+      "320x568",
+      "844x390"
     ],
     "completed_through_real_controls": [
       1,
@@ -33,7 +35,12 @@
       4,
       5,
       6,
-      7
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
     ],
     "verified": [
       "native pointer drag and snap at desktop and phone viewport sizes",
@@ -44,18 +51,53 @@
       "undo",
       "hint outline",
       "partial progress after reload",
-      "small phone layout fits without scrolling"
+      "small phone layout fits without scrolling",
+      "all twelve baseline levels completed on live site by pointer drags and Rotate control",
+      "all twelve revised levels completed locally",
+      "remaining tray homes and sizes stay unchanged after placement",
+      "blocked rotation retains the piece on the board",
+      "double-tap rotates and Undo restores the orientation",
+      "edge magnet catches a slightly out-of-bounds drop",
+      "landscape final puzzle completed without page scrolling"
     ],
-    "interrupted": "Advanced browser playthrough was interrupted by in-app browser attachment failure. Levels 8\u201312 have solver verification; no complete browser run is claimed."
+    "interrupted": null,
+    "live_baseline_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "local_polish_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "live_polish_completed": []
   },
   "not_verified": [
     "physical phone touch feel",
     "audible sound quality",
-    "physical vibration feedback",
-    "full browser run of levels 8\u201312"
+    "physical vibration feedback"
   ],
   "publication": {
-    "status": "live",
+    "status": "release_prepared",
     "provider": "GitHub Pages",
     "repository": "https://github.com/leolunelove/squared",
     "domain": "squared.leolune.fun",
@@ -70,7 +112,7 @@
     "http_status": 301,
     "http_redirect": "https://squared.leolune.fun/",
     "ssl_verify_result": 0,
-    "live_build_matches_local": true,
+    "live_build_matches_local": false,
     "live_sha256": "1f3320ac7f43d79c5c054f6903fbd3757e3858f863ea5a12c9fdd7e2a5a64d5a",
     "live_browser_smoke": [
       "game loaded on custom HTTPS origin",

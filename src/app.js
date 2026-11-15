@@ -18,7 +18,9 @@ try{saved=JSON.parse(localStorage.getItem(key)||'{}')??{};}catch{}
 let completed=new Set((Array.isArray(saved.completed)?saved.completed:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<levels.length));
 let unlocked=0;while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;
 let levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved.current)?saved.current:0));
-let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true;
+let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,lastTap=null;
+const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const reducedMotion=()=>motionPreference.matches;
 const nodes=[],stage=$('#stage'),board=$('#board'),preview=$('#preview'),hintGhost=$('#hint-ghost');
 $('#sound').innerHTML=icon(sound?'sound':'muted');$('#help').innerHTML=icon('help');
 $('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';$('#rotate').innerHTML=icon('rotate')+'Rotate';
@@ -46,34 +48,44 @@ function pieceCells(id){return turn(level.pieces[id].cells,rotations[id]);}
 function svgPiece(id,cells,ghost=false){
   const {w,h}=size(cells),d=outline(cells),c=colors[id%colors.length],uid=`p${id}-${rotations[id]}`;
   if(ghost)return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}"/></svg>`;
-  const hit=placements[id]?0:Math.max(.14,44/(geometry.cell*geometry.trayScale)-Math.min(w,h));
+  const hit=placements[id]?0:Math.max(.14,46/(geometry.cell*geometry.homes[id].scale)-Math.min(w,h));
   return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><defs><linearGradient id="${uid}" x1="0" y1="0" x2=".75" y2="1"><stop stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs><path d="${d}" fill="${c[2]}" transform="translate(0 .028)"/><path class="surface" d="${d}" fill="url(#${uid})" stroke="${c[2]}"/><path d="${d}" fill="none" stroke="#ffffff" stroke-opacity=".29" stroke-width=".025" transform="translate(.009 -.012)" pointer-events="none"/><path d="${d}" fill="transparent" stroke="transparent" stroke-width="${hit}" pointer-events="all" style="cursor:grab"/></svg>`;
 }
 function paint(id){
-  const cells=pieceCells(id),s=size(cells),el=nodes[id];el.innerHTML=svgPiece(id,cells);el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
+  const cells=pieceCells(id),s=size(cells),el=nodes[id];
+  const paintKey=`${rotations[id]}:${!!placements[id]}:${geometry.cell.toFixed(2)}:${geometry.homes[id].scale.toFixed(3)}`;
+  if(el.dataset.paintKey!==paintKey){el.innerHTML=svgPiece(id,cells);el.dataset.paintKey=paintKey;}
+  el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
   el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move${level.rotate?' or rotate':''}.`);
 }
 function position(id,x,y,scale=1){nodes[id].style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;}
 function layout(){
   if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
-  const boardSize=Math.floor(Math.min(width-42,320,height*(rows===2?.56:.66)));
-  const cell=boardSize/level.n,bx=(width-boardSize)/2,by=12,trayTop=by+boardSize+58,trayHeight=Math.max(50,height-trayTop-8);
-  const ids=level.pieces.map(p=>p.id).filter(id=>!placements[id]);
+  const wide=width>480&&height<320;
+  const boardSize=Math.floor(wide?Math.min(height-22,300,width*.43):Math.min(width-42,320,height*(rows===2?.55:.62)));
+  const cell=boardSize/level.n,bx=wide?(width*.45-boardSize)/2:(width-boardSize)/2,by=wide?8:12;
+  const trayX=wide?width*.46+12:0,trayWidth=wide?width-trayX-8:width;
+  const trayTop=wide?44:by+boardSize+48,trayHeight=Math.max(50,height-trayTop-8);
+  const ids=trayIds;
   const cols=ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
-  const slotW=width/cols,slotH=trayHeight/actualRows;
-  const maxdim=Math.max(1,...ids.map(id=>{const s=size(level.pieces[id].cells);return Math.max(s.w,s.h);}));
-  const trayScale=Math.min(.73,(slotW-22)/(maxdim*cell),(slotH-14)/(maxdim*cell));
-  geometry={width,height,boardSize,cell,bx,by,trayTop,trayScale,homes:[]};
+  const slotW=trayWidth/cols,slotH=trayHeight/actualRows;
+  geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
-  board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');
+  const gridKey=`${level.n}:${boardSize}`;
+  if(board.dataset.grid!==gridKey){board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');board.dataset.grid=gridKey;}
   board.setAttribute('aria-label',`${level.n} by ${level.n} square board`);
-  $('#tray-label').style.top=by+boardSize+30+'px';
-  ids.forEach((id,i)=>{const {w,h}=size(pieceCells(id));const row=Math.floor(i/cols),rowCount=Math.min(cols,ids.length-row*cols),rowOffset=(width-rowCount*slotW)/2;geometry.homes[id]={x:rowOffset+(i%cols)*slotW+(slotW-w*cell*trayScale)/2,y:trayTop+row*slotH+(slotH-h*cell*trayScale)/2};});
+  Object.assign($('#tray-label').style,{top:(wide?12:by+boardSize+18)+'px',left:(wide?trayX:8)+'px'});
+  ids.forEach((id,i)=>{
+    const {w,h}=size(pieceCells(id)),maxdim=Math.max(w,h);
+    const scale=Math.min(.82,(slotW-18)/(maxdim*cell),(slotH-12)/(maxdim*cell));
+    const row=Math.floor(i/cols),rowCount=Math.min(cols,ids.length-row*cols),rowOffset=(trayWidth-rowCount*slotW)/2;
+    geometry.homes[id]={x:trayX+rowOffset+(i%cols)*slotW+(slotW-w*cell*scale)/2,y:trayTop+row*slotH+(slotH-h*cell*scale)/2,scale};
+  });
   level.pieces.forEach(({id})=>{
     paint(id);nodes[id].classList.toggle('placed',!!placements[id]);
     if(drag?.id===id&&drag.active)return;
     if(placements[id])position(id,bx+placements[id].x*cell,by+placements[id].y*cell);
-    else {const p=geometry.homes[id];position(id,p.x,p.y,trayScale);}
+    else {const p=geometry.homes[id];position(id,p.x,p.y,p.scale);}
   });
   if(hintTarget)showGhost(hintGhost,hintTarget.id,hintTarget.p);
   updateControls();
@@ -92,7 +104,9 @@ function updateControls(){
   $('#restart').disabled=false;
 }
 function load(index,restored=null){
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];lastTap=null;board.classList.remove('complete');
+  // Every piece keeps its own home throughout the puzzle, including after a reload.
+  trayIds=index===0?[0,2,1]:level.pieces.map(p=>p.id);
   placements=level.pieces.map(()=>null);rotations=level.pieces.map((_,i)=>level.rotate?(index+i*3)%4:0);
   if(index===0){placements[0]={...level.pieces[0].solution};placements[1]={...level.pieces[1].solution};}
   if(restored&&Array.isArray(restored.placements)&&restored.placements.length===placements.length&&Array.isArray(restored.rotations)&&restored.rotations.length===rotations.length){
@@ -109,54 +123,95 @@ function load(index,restored=null){
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function pointerDown(e,id){
   if(e.button!==0||drag||solved)return;e.preventDefault();wakeAudio();clearHint();
+  nodes[id].getAnimations().forEach(a=>a.finish());nodes[id].querySelector('svg')?.getAnimations().forEach(a=>a.finish());
   const point=stagePoint(e),rect=nodes[id].getBoundingClientRect(),cells=pieceCells(id),{w,h}=size(cells);
   const wasSelected=selected===id;choose(id);
-  drag={id,pointerId:e.pointerId,start:point,active:false,before:snapshot(),wasSelected,grabX:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),grabY:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h))),lift:e.pointerType==='touch'?42:12,p:null,overTray:false};
+  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),wasSelected,touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
   try{stage.setPointerCapture(e.pointerId);}catch{}
 }
 function pointerMove(e){
   if(!drag||drag.pointerId!==e.pointerId)return;e.preventDefault();const p=stagePoint(e);
-  if(!drag.active&&Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<5)return;
-  if(!drag.active){drag.active=true;placements[drag.id]=null;nodes[drag.id].classList.add('dragging');nodes[drag.id].classList.remove('placed');tone('pick');haptic(5);}
-  const {cell,bx,by,boardSize,trayTop}=geometry,x=p.x-drag.grabX*cell,y=p.y-drag.grabY*cell-drag.lift;
-  position(drag.id,x,y);const gx=Math.round((x-bx)/cell),gy=Math.round((y-by)/cell),candidate={x:gx,y:gy,r:rotations[drag.id]};
+  if(!drag.active&&Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<(drag.touch?7:4))return;
+  drag.point=p;
+  if(!drag.active){drag.active=true;drag.started=performance.now();placements[drag.id]=null;nodes[drag.id].classList.add('dragging');nodes[drag.id].classList.remove('placed');tone('pick');haptic(5);}
+  if(!dragFrame)dragFrame=requestAnimationFrame(renderDrag);
+}
+function dragTarget(){
+  const {cell,bx,by,boardSize,trayTop}=geometry;
+  const {x,y}=liftedPose(drag.point,drag.grab,cell,drag.fromScale,drag.lift,1);
+  const origin={x:(x-bx)/cell,y:(y-by)/cell};
+  const candidate={x:Math.round(origin.x),y:Math.round(origin.y),r:rotations[drag.id]};
   const {w,h}=size(pieceCells(drag.id));const near=x+w*cell>bx&&x<bx+boardSize&&y+h*cell>by&&y<by+boardSize;
-  const valid=near&&canPlace(level,placements,drag.id,candidate);drag.p=valid?candidate:null;
-  drag.overTray=p.y>trayTop-12;
-  if(near)showGhost(preview,drag.id,candidate,!valid);else preview.classList.remove('visible');
+  drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;
+  drag.overTray=drag.point.y>trayTop-12;
+  if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
+    if(drag.touch&&snapKey&&snapKey!==drag.lastSnapKey&&performance.now()-drag.lastFeedback>90){haptic(3);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
+  }else preview.classList.remove('visible');
+}
+function renderDrag(time){
+  dragFrame=0;if(!drag?.active)return;
+  const progress=reducedMotion()?1:(time-drag.started)/135;
+  const pose=liftedPose(drag.point,drag.grab,geometry.cell,drag.fromScale,drag.lift,progress);
+  position(drag.id,pose.x,pose.y,pose.scale);dragTarget();
+  if(progress<1)dragFrame=requestAnimationFrame(renderDrag);
 }
 function showGhost(el,id,p,invalid=false){
-  const cells=turn(level.pieces[id].cells,p.r),{w,h}=size(cells);el.innerHTML=svgPiece(id,cells,true);Object.assign(el.style,{width:w*geometry.cell+'px',height:h*geometry.cell+'px',transform:`translate3d(${geometry.bx+p.x*geometry.cell}px,${geometry.by+p.y*geometry.cell}px,0)`});el.classList.add('visible');el.classList.toggle('invalid',invalid);
+  const cells=turn(level.pieces[id].cells,p.r),{w,h}=size(cells),shapeKey=`${id}:${p.r}`;
+  if(el.dataset.shape!==shapeKey){el.innerHTML=svgPiece(id,cells,true);el.dataset.shape=shapeKey;}
+  el.style.setProperty('--piece-tint',colors[id][1]);Object.assign(el.style,{width:w*geometry.cell+'px',height:h*geometry.cell+'px',transform:`translate3d(${geometry.bx+p.x*geometry.cell}px,${geometry.by+p.y*geometry.cell}px,0)`});el.classList.add('visible');el.classList.toggle('invalid',invalid);
 }
 function endDrag(e,cancel=false){
   if(!drag||(e&&e.pointerId!==drag.pointerId))return;
+  cancelAnimationFrame(dragFrame);dragFrame=0;
+  // Pointer-up can arrive before the next animation frame or the last pointer-move.
+  if(drag.active&&!cancel){if(e)drag.point=stagePoint(e);dragTarget();}
   const d=drag;drag=null;preview.classList.remove('visible');nodes[d.id]?.classList.remove('dragging');
-  try{stage.releasePointerCapture(d.pointerId);}catch{}
+  // Pointer-up releases capture automatically. Explicit release is only needed
+  // when cancelling; otherwise a late lost-capture event can race the next pickup.
+  if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
   if(cancel){restore(d.before);layout();return;}
-  if(!d.active){choose(d.id);return;}
+  if(!d.active){choose(d.id);const now=performance.now();if(level.rotate&&d.wasSelected&&lastTap?.id===d.id&&now-lastTap.time<320){lastTap=null;rotateSelected();}else lastTap={id:d.id,time:now};return;}
+  lastTap=null;
   if(d.p){history.push(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
   else if(d.overTray&&d.before.placements[d.id]){history.push(d.before);placements[d.id]=null;say('A little room to try again.');}
   else{restore(d.before);tone('miss');say('Almost. Try a little more space.');}
-  layout();persist();checkComplete();
+  layout();if(d.p)settlePiece(d.id);persist();checkComplete();
 }
 function cancelDrag(){if(drag)endDrag(null,true);}
+function settlePiece(id){
+  if(reducedMotion())return;
+  nodes[id].querySelector('svg')?.animate([{transform:'scale(1.025) translateY(-1px)'},{transform:'scale(.992) translateY(1px)',offset:.65},{transform:'none'}],{duration:220,easing:'cubic-bezier(.2,.8,.2,1)'});
+}
 function placeSelected(p){
   if(selected===null||solved)return;const id=selected;
-  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
+  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();settlePiece(id);persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
   else{tone('miss');say('That space is taken, or the piece is outside the square.');}
 }
 stage.addEventListener('pointermove',pointerMove);
-stage.addEventListener('pointerup',e=>endDrag(e));stage.addEventListener('pointercancel',e=>endDrag(e,true));stage.addEventListener('lostpointercapture',()=>{if(drag)endDrag(null,true);});
+stage.addEventListener('pointerup',e=>endDrag(e));stage.addEventListener('pointercancel',e=>endDrag(e,true));stage.addEventListener('lostpointercapture',e=>{if(drag&&e.pointerId===drag.pointerId&&!stage.hasPointerCapture(e.pointerId))endDrag(e,true);});
 board.addEventListener('pointerdown',e=>{
   if(selected===null||solved||drag)return;e.preventDefault();wakeAudio();const p=stagePoint(e);
   // Tap placement uses the top-left cell; drag placement uses the exact grab point.
   placeSelected({x:Math.floor((p.x-geometry.bx)/geometry.cell),y:Math.floor((p.y-geometry.by)/geometry.cell),r:rotations[selected]});
 });
 function rotateSelected(){
-  if(selected===null||!level.rotate||solved)return;cancelDrag();const id=selected;wakeAudio();remember();clearHint();
-  const r=(rotations[id]+1)%4;rotations[id]=r;
-  if(placements[id]){const p={...placements[id],r};placements[id]=canPlace(level,placements,id,p)?p:null;}
-  keyboardTarget=null;tone('rotate');haptic(5);layout();nodes[id].classList.remove('rotating');void nodes[id].offsetWidth;nodes[id].classList.add('rotating');persist();say('A different angle. Find its place.');checkComplete();
+  if(selected===null||!level.rotate||solved)return;cancelDrag();const id=selected,r=(rotations[id]+1)%4;
+  const nextPlacement=placements[id]?rotationPlacement(level,placements,id,r):null;
+  if(placements[id]&&!nextPlacement){tone('miss');haptic(5);say('A little tight. Lift this piece into the tray to turn it.');return;}
+  const el=nodes[id],oldRect=el.getBoundingClientRect(),stageRect=stage.getBoundingClientRect();
+  const oldSvg=el.querySelector('svg'),matrix=/matrix\(([^)]+)\)/.exec(getComputedStyle(oldSvg).transform);
+  const previousAngle=matrix?Math.atan2(Number(matrix[1].split(',')[1]),Number(matrix[1].split(',')[0]))*180/Math.PI:0;
+  wakeAudio();remember();clearHint();rotations[id]=r;if(placements[id])placements[id]=nextPlacement;
+  keyboardTarget=null;tone('rotate');haptic(5);el.classList.add('turning');layout();
+  if(!reducedMotion()){
+    const {w,h}=size(pieceCells(id)),scale=placements[id]?1:geometry.homes[id].scale;
+    const x=oldRect.left-stageRect.left+oldRect.width/2-w*geometry.cell*scale/2;
+    const y=oldRect.top-stageRect.top+oldRect.height/2-h*geometry.cell*scale/2;
+    const animation=el.animate([{transform:`translate3d(${x}px,${y}px,0) scale(${scale})`},{transform:el.style.transform}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
+    el._turnMotion=animation;animation.finished.then(()=>{if(el._turnMotion===animation)el.classList.remove('turning');}).catch(()=>{});
+    el.querySelector('svg').animate([{transform:`rotate(${previousAngle-90}deg)`},{transform:'rotate(0deg)'}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
+  }else el.classList.remove('turning');
+  persist();say('A different angle. Find its place.');checkComplete();
 }
 $('#rotate').addEventListener('click',rotateSelected);
 $('#undo').addEventListener('click',()=>{
@@ -218,6 +273,6 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelDrag();audio?.suspend().catch(()=>{});}});
 window.addEventListener('pagehide',()=>{cancelDrag();persist();});
-let resizeFrame;new ResizeObserver(()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{cancelDrag();layout();});}).observe(stage);
+let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();layout();requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
 $('#sound').setAttribute('aria-label',sound?'Turn sound off':'Turn sound on');$('#sound').setAttribute('aria-pressed',String(sound));
 load(levelIndex,saved.current===levelIndex?saved:null);

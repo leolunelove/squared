@@ -14,7 +14,7 @@ python3 -m http.server 4173 --directory dist
 
 Visit `http://localhost:4173`. For a phone on the same network, bind the server to the computer's LAN interface and visit its LAN address. A localhost address on a phone refers to the phone itself.
 
-Drag pieces onto the square. Tap a piece to select it; on later levels, use Rotate to turn it. Tap placement and keyboard controls are also available. Hints respect compatible pieces already on the board and suggest removing a piece when an arrangement cannot be finished. Undo and restart are unlimited. Local storage saves progress and sound preference; private browsing may limit persistence.
+Drag pieces onto the square. Tap a piece to select it; on later levels, use Rotate or double-tap the piece to turn it. Tap placement and keyboard controls are also available. Hints respect compatible pieces already on the board and suggest removing a piece when an arrangement cannot be finished. Undo and restart are unlimited. Local storage saves progress and sound preference; private browsing may limit persistence.
 
 Sound uses quiet synthesized notes. Haptics use the browser vibration API where available; iOS browsers generally do not expose this API. Reduced-motion preferences are respected.
 
@@ -30,6 +30,7 @@ With Node installed, run the solver and geometry checks:
 
 ```sh
 node tests/engine.test.mjs
+node tests/mobile.test.mjs
 ```
 
 The grid engine accepts every valid tiling, rather than checking against a single prescribed solution. There are no accounts, analytics, network requests, or runtime packages.

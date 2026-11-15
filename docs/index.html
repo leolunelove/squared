@@ -4,6 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f3ec"><meta name="description" content="A little piece of calm. Fit every piece into a perfect square in this tactile, untimed puzzle game.">
   <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="squared-version" content="1.1.0">
   <title>Squared — a little piece of calm</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f5f3ec'/%3E%3Cpath d='M12 12h24v16H24v24H12z' fill='%235e9690'/%3E%3Cpath d='M40 12h12v40H28V32h12z' fill='%23dc886c'/%3E%3C/svg%3E">
   <style>:root{color-scheme:light;--paper:#f5f3ec;--ink:#343e3b;--muted:#89908a;--teal:#4e827b;--line:#e4e5db;--ease:cubic-bezier(.2,.85,.25,1)}
@@ -15,6 +16,16 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.spark{display:none}}
 .status-area:has(.rotate-button:not([hidden])){flex-direction:row;gap:8px}.status-area:has(.rotate-button:not([hidden])) p{flex:1;max-width:220px}.rotate-button{min-height:44px;flex-shrink:0}.icon-button{width:44px;height:44px}
 @media(max-height:620px){.app{min-height:550px}.topbar{height:52px}.stage{min-height:300px}.footnote{height:26px}.intro{padding-bottom:3px}.tools{height:51px}}
+/* Touch polish: stable homes, a clear landing preview, and short tactile motion. */
+html,body{overflow-x:clip}
+.piece.resizing{transition:none}
+html{-webkit-text-size-adjust:100%}.piece{transition:transform .24s cubic-bezier(.16,1,.3,1),filter .18s}.piece.turning{transition:none}.piece.dragging{transition:filter .12s}.piece svg{transform-origin:50% 50%}.piece.placed{filter:drop-shadow(0 2px 0 #59624b18) drop-shadow(0 1px 2px #53624a09)}
+.ghost{transition:opacity .09s,transform .075s ease-out}.ghost path{fill:color-mix(in srgb,var(--piece-tint,#5c9083) 22%,transparent);stroke:var(--piece-tint,#688e75);stroke-dasharray:none;stroke-width:.03}.ghost.invalid path{fill:#cc816012;stroke:#c7867070;stroke-dasharray:.08 .07}.hint-ghost path{fill:#77a49112;stroke:#749781;stroke-dasharray:.08 .08}
+.success{pointer-events:none}.success.show{pointer-events:auto}.tool{min-height:46px}.rotate-button{min-width:92px;min-height:46px;box-shadow:0 2px 0 #cdd8c1;transition:transform .12s,background .12s}.rotate-button:active{transform:translateY(2px);box-shadow:none;background:#dce5d4}.footnote{pointer-events:none}
+@media(max-height:740px){.topbar{height:56px}.intro>.level-button>.eyebrow{display:none}.intro{padding-bottom:5px}.tools{height:52px}.footnote{height:22px}.status-area{height:48px}.stage{min-height:300px}}
+@media(max-height:620px){.topbar{height:48px}.intro{padding-top:0;padding-bottom:1px}.status-area{height:47px}.tools{height:50px}.footnote{height:20px}.app{min-height:530px}}
+@media(prefers-reduced-motion:reduce){.piece,.ghost,.success,.rotate-button{transition:none!important}}
+@media(orientation:landscape) and (max-height:500px){.app{width:min(100%,920px);height:100svh;min-height:320px;padding-left:24px;padding-right:24px}.topbar{height:44px}.intro{padding-top:0;padding-bottom:0}.intro .eyebrow{display:none}.level-label{font-size:18px;line-height:1.3}.dimension{margin-bottom:4px}.stage{min-height:140px}.status-area{height:46px}.tools{height:48px}.footnote{display:none}}
 </style>
 </head>
 <body>
@@ -43,7 +54,7 @@
 </main>
 <section id="success" class="success" aria-label="Puzzle complete" aria-hidden="true"><div class="success-card"><span class="success-icon" aria-hidden="true"></span><span id="success-kicker" class="eyebrow">EVERY PIECE BELONGS</span><h1 id="success-title">All squared away.</h1><p id="success-text">A little mess. A perfect fit.</p><button id="next" class="primary-button">Next square <span aria-hidden="true">→</span></button><button id="replay" class="text-button">Stay a moment</button></div></section>
 <dialog id="levels-dialog"><div class="dialog-heading"><div><span class="eyebrow">ONE SQUARE AT A TIME</span><h2>Your little collection.</h2></div><button class="close-dialog icon-button" aria-label="Close levels"></button></div><p class="dialog-copy" id="collection-progress">12 small moments of calm.</p><div id="level-grid" class="level-grid"></div><p class="dialog-footer">Your progress is saved on this device.</p></dialog>
-<dialog id="help-dialog"><div class="dialog-heading"><div><span class="eyebrow">A PERFECT LITTLE FIT</span><h2>Make room for every piece.</h2></div><button class="close-dialog icon-button" aria-label="Close instructions"></button></div><div class="how-illustration" aria-hidden="true"><span></span><span></span><span></span></div><p class="dialog-copy">Drag all the pieces into the square. Fill every space, without overlaps or pieces sticking out.</p><p class="dialog-copy">You can move pieces as often as you like. From level 5, select a piece and tap <strong>Rotate</strong> to turn it.</p><p class="keyboard-note">You can also tap a piece, then tap the board to place it. With a keyboard: select a piece, use arrow keys to position, R to rotate, Enter to place, and Escape to cancel.</p><button class="primary-button close-dialog">Let's make a square <span aria-hidden="true">→</span></button></dialog>
+<dialog id="help-dialog"><div class="dialog-heading"><div><span class="eyebrow">A PERFECT LITTLE FIT</span><h2>Make room for every piece.</h2></div><button class="close-dialog icon-button" aria-label="Close instructions"></button></div><div class="how-illustration" aria-hidden="true"><span></span><span></span><span></span></div><p class="dialog-copy">Drag all the pieces into the square. Fill every space, without overlaps or pieces sticking out.</p><p class="dialog-copy">You can move pieces as often as you like. From level 5, select a piece and tap <strong>Rotate</strong>, or double-tap the piece to turn it. If a piece needs more room, lift it back into the tray.</p><p class="keyboard-note">You can also tap a piece, then tap the board to place it. With a keyboard: select a piece, use arrow keys to position, R to rotate, Enter to place, and Escape to cancel.</p><button class="primary-button close-dialog">Let's make a square <span aria-hidden="true">→</span></button></dialog>
 <script>const LEVEL_DATA=[{"n":3,"layout":["AAB","ACB","CCB"],"rotate":false,"title":"A little beginning"},{"n":3,"layout":["ABB","ACB","ACC"],"rotate":false,"title":"Room to play"},{"n":4,"layout":["AAAB","ACBB","CCCB","DDDD"],"rotate":false,"title":"A new shape"},{"n":4,"layout":["AAAB","CCBB","CDBD","CDDD"],"rotate":false,"title":"Find your rhythm"},{"n":4,"layout":["AAAA","BBBC","DDBC","DDCC"],"rotate":true,"title":"A different angle"},{"n":4,"layout":["ABBB","AABC","DDCC","DDDC"],"rotate":true,"title":"Turn it around"},{"n":5,"layout":["ABBBB","ACBDD","ACCCD","AAECD","EEEED"],"rotate":true,"title":"A little deeper"},{"n":5,"layout":["ABBBB","ABCCD","AACCD","EECDD","EEEED"],"rotate":true,"title":"In good company"},{"n":5,"layout":["AAABB","ACABB","CCDBE","CDDEE","CDDEE"],"rotate":true,"title":"Piece by piece"},{"n":5,"layout":["AABCC","AABBC","DDBEC","DDEEC","DDEEE"],"rotate":true,"title":"A fresh perspective"},{"n":6,"layout":["ABBBCC","AAABCC","ADDBBC","ADEEFC","DDEEFF","DEEFFF"],"rotate":true,"title":"The bigger picture"},{"n":6,"layout":["ABBBCC","ADBBCE","ADDCCE","AFDEEE","FFDGGG","FFFGGG"],"rotate":true,"title":"Everything in place"}];
 function normalize(cells) {
   const x=Math.min(...cells.map(p=>p[0])), y=Math.min(...cells.map(p=>p[1]));
@@ -72,6 +83,33 @@ function canPlace(level,placements,id,placement) {
 }
 function complete(level,placements) {
   return placements.length===level.pieces.length&&level.pieces.reduce((a,p)=>a+p.cells.length,0)===level.n**2&&placements.every((p,id)=>p&&canPlace(level,placements,id,p));
+}
+// A tiny attraction at the edge of a legal cell, never through an occupied cell.
+function magneticPlacement(level,placements,id,origin,r,radius=.58) {
+  const nearest={x:Math.round(origin.x),y:Math.round(origin.y),r};
+  if(canPlace(level,placements,id,nearest))return nearest;
+  let best=null,distance=radius;
+  for(let y=nearest.y-1;y<=nearest.y+1;y++)for(let x=nearest.x-1;x<=nearest.x+1;x++){
+    const d=Math.hypot(x-origin.x,y-origin.y),p={x,y,r};
+    if(d<=distance&&canPlace(level,placements,id,p)){best=p;distance=d;}
+  }
+  return best;
+}
+function liftedPose(point,grab,cell,fromScale,lift,progress) {
+  const t=1-(1-Math.max(0,Math.min(1,progress)))**3;
+  const scale=fromScale+(1-fromScale)*t;
+  return {x:point.x-grab.x*cell*scale,y:point.y-grab.y*cell*scale-lift*t,scale};
+}
+// Preserve the visual centre where possible; a blocked turn leaves the piece alone.
+function rotationPlacement(level,placements,id,r) {
+  const p=placements[id];if(!p)return null;
+  const old=size(turn(level.pieces[id].cells,p.r)),next=size(turn(level.pieces[id].cells,r));
+  const cx=Math.max(0,Math.min(level.n-next.w,p.x+(old.w-next.w)/2));
+  const cy=Math.max(0,Math.min(level.n-next.h,p.y+(old.h-next.h)/2));
+  const candidates=[];
+  for(const x of new Set([Math.floor(cx),Math.ceil(cx)]))for(const y of new Set([Math.floor(cy),Math.ceil(cy)]))candidates.push({x,y,r});
+  candidates.sort((a,b)=>Math.hypot(a.x-cx,a.y-cy)-Math.hypot(b.x-cx,b.y-cy));
+  return candidates.find(p=>canPlace(level,placements,id,p))??null;
 }
 function optionsFor(level) {
   const out=level.pieces.map(()=>[]);
@@ -151,7 +189,9 @@ try{saved=JSON.parse(localStorage.getItem(key)||'{}')??{};}catch{}
 let completed=new Set((Array.isArray(saved.completed)?saved.completed:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<levels.length));
 let unlocked=0;while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;
 let levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved.current)?saved.current:0));
-let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true;
+let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,lastTap=null;
+const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const reducedMotion=()=>motionPreference.matches;
 const nodes=[],stage=$('#stage'),board=$('#board'),preview=$('#preview'),hintGhost=$('#hint-ghost');
 $('#sound').innerHTML=icon(sound?'sound':'muted');$('#help').innerHTML=icon('help');
 $('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';$('#rotate').innerHTML=icon('rotate')+'Rotate';
@@ -179,34 +219,44 @@ function pieceCells(id){return turn(level.pieces[id].cells,rotations[id]);}
 function svgPiece(id,cells,ghost=false){
   const {w,h}=size(cells),d=outline(cells),c=colors[id%colors.length],uid=`p${id}-${rotations[id]}`;
   if(ghost)return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}"/></svg>`;
-  const hit=placements[id]?0:Math.max(.14,44/(geometry.cell*geometry.trayScale)-Math.min(w,h));
+  const hit=placements[id]?0:Math.max(.14,46/(geometry.cell*geometry.homes[id].scale)-Math.min(w,h));
   return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><defs><linearGradient id="${uid}" x1="0" y1="0" x2=".75" y2="1"><stop stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs><path d="${d}" fill="${c[2]}" transform="translate(0 .028)"/><path class="surface" d="${d}" fill="url(#${uid})" stroke="${c[2]}"/><path d="${d}" fill="none" stroke="#ffffff" stroke-opacity=".29" stroke-width=".025" transform="translate(.009 -.012)" pointer-events="none"/><path d="${d}" fill="transparent" stroke="transparent" stroke-width="${hit}" pointer-events="all" style="cursor:grab"/></svg>`;
 }
 function paint(id){
-  const cells=pieceCells(id),s=size(cells),el=nodes[id];el.innerHTML=svgPiece(id,cells);el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
+  const cells=pieceCells(id),s=size(cells),el=nodes[id];
+  const paintKey=`${rotations[id]}:${!!placements[id]}:${geometry.cell.toFixed(2)}:${geometry.homes[id].scale.toFixed(3)}`;
+  if(el.dataset.paintKey!==paintKey){el.innerHTML=svgPiece(id,cells);el.dataset.paintKey=paintKey;}
+  el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
   el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move${level.rotate?' or rotate':''}.`);
 }
 function position(id,x,y,scale=1){nodes[id].style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;}
 function layout(){
   if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
-  const boardSize=Math.floor(Math.min(width-42,320,height*(rows===2?.56:.66)));
-  const cell=boardSize/level.n,bx=(width-boardSize)/2,by=12,trayTop=by+boardSize+58,trayHeight=Math.max(50,height-trayTop-8);
-  const ids=level.pieces.map(p=>p.id).filter(id=>!placements[id]);
+  const wide=width>480&&height<320;
+  const boardSize=Math.floor(wide?Math.min(height-22,300,width*.43):Math.min(width-42,320,height*(rows===2?.55:.62)));
+  const cell=boardSize/level.n,bx=wide?(width*.45-boardSize)/2:(width-boardSize)/2,by=wide?8:12;
+  const trayX=wide?width*.46+12:0,trayWidth=wide?width-trayX-8:width;
+  const trayTop=wide?44:by+boardSize+48,trayHeight=Math.max(50,height-trayTop-8);
+  const ids=trayIds;
   const cols=ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
-  const slotW=width/cols,slotH=trayHeight/actualRows;
-  const maxdim=Math.max(1,...ids.map(id=>{const s=size(level.pieces[id].cells);return Math.max(s.w,s.h);}));
-  const trayScale=Math.min(.73,(slotW-22)/(maxdim*cell),(slotH-14)/(maxdim*cell));
-  geometry={width,height,boardSize,cell,bx,by,trayTop,trayScale,homes:[]};
+  const slotW=trayWidth/cols,slotH=trayHeight/actualRows;
+  geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
-  board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');
+  const gridKey=`${level.n}:${boardSize}`;
+  if(board.dataset.grid!==gridKey){board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');board.dataset.grid=gridKey;}
   board.setAttribute('aria-label',`${level.n} by ${level.n} square board`);
-  $('#tray-label').style.top=by+boardSize+30+'px';
-  ids.forEach((id,i)=>{const {w,h}=size(pieceCells(id));const row=Math.floor(i/cols),rowCount=Math.min(cols,ids.length-row*cols),rowOffset=(width-rowCount*slotW)/2;geometry.homes[id]={x:rowOffset+(i%cols)*slotW+(slotW-w*cell*trayScale)/2,y:trayTop+row*slotH+(slotH-h*cell*trayScale)/2};});
+  Object.assign($('#tray-label').style,{top:(wide?12:by+boardSize+18)+'px',left:(wide?trayX:8)+'px'});
+  ids.forEach((id,i)=>{
+    const {w,h}=size(pieceCells(id)),maxdim=Math.max(w,h);
+    const scale=Math.min(.82,(slotW-18)/(maxdim*cell),(slotH-12)/(maxdim*cell));
+    const row=Math.floor(i/cols),rowCount=Math.min(cols,ids.length-row*cols),rowOffset=(trayWidth-rowCount*slotW)/2;
+    geometry.homes[id]={x:trayX+rowOffset+(i%cols)*slotW+(slotW-w*cell*scale)/2,y:trayTop+row*slotH+(slotH-h*cell*scale)/2,scale};
+  });
   level.pieces.forEach(({id})=>{
     paint(id);nodes[id].classList.toggle('placed',!!placements[id]);
     if(drag?.id===id&&drag.active)return;
     if(placements[id])position(id,bx+placements[id].x*cell,by+placements[id].y*cell);
-    else {const p=geometry.homes[id];position(id,p.x,p.y,trayScale);}
+    else {const p=geometry.homes[id];position(id,p.x,p.y,p.scale);}
   });
   if(hintTarget)showGhost(hintGhost,hintTarget.id,hintTarget.p);
   updateControls();
@@ -225,7 +275,9 @@ function updateControls(){
   $('#restart').disabled=false;
 }
 function load(index,restored=null){
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];lastTap=null;board.classList.remove('complete');
+  // Every piece keeps its own home throughout the puzzle, including after a reload.
+  trayIds=index===0?[0,2,1]:level.pieces.map(p=>p.id);
   placements=level.pieces.map(()=>null);rotations=level.pieces.map((_,i)=>level.rotate?(index+i*3)%4:0);
   if(index===0){placements[0]={...level.pieces[0].solution};placements[1]={...level.pieces[1].solution};}
   if(restored&&Array.isArray(restored.placements)&&restored.placements.length===placements.length&&Array.isArray(restored.rotations)&&restored.rotations.length===rotations.length){
@@ -242,54 +294,95 @@ function load(index,restored=null){
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function pointerDown(e,id){
   if(e.button!==0||drag||solved)return;e.preventDefault();wakeAudio();clearHint();
+  nodes[id].getAnimations().forEach(a=>a.finish());nodes[id].querySelector('svg')?.getAnimations().forEach(a=>a.finish());
   const point=stagePoint(e),rect=nodes[id].getBoundingClientRect(),cells=pieceCells(id),{w,h}=size(cells);
   const wasSelected=selected===id;choose(id);
-  drag={id,pointerId:e.pointerId,start:point,active:false,before:snapshot(),wasSelected,grabX:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),grabY:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h))),lift:e.pointerType==='touch'?42:12,p:null,overTray:false};
+  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),wasSelected,touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
   try{stage.setPointerCapture(e.pointerId);}catch{}
 }
 function pointerMove(e){
   if(!drag||drag.pointerId!==e.pointerId)return;e.preventDefault();const p=stagePoint(e);
-  if(!drag.active&&Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<5)return;
-  if(!drag.active){drag.active=true;placements[drag.id]=null;nodes[drag.id].classList.add('dragging');nodes[drag.id].classList.remove('placed');tone('pick');haptic(5);}
-  const {cell,bx,by,boardSize,trayTop}=geometry,x=p.x-drag.grabX*cell,y=p.y-drag.grabY*cell-drag.lift;
-  position(drag.id,x,y);const gx=Math.round((x-bx)/cell),gy=Math.round((y-by)/cell),candidate={x:gx,y:gy,r:rotations[drag.id]};
+  if(!drag.active&&Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<(drag.touch?7:4))return;
+  drag.point=p;
+  if(!drag.active){drag.active=true;drag.started=performance.now();placements[drag.id]=null;nodes[drag.id].classList.add('dragging');nodes[drag.id].classList.remove('placed');tone('pick');haptic(5);}
+  if(!dragFrame)dragFrame=requestAnimationFrame(renderDrag);
+}
+function dragTarget(){
+  const {cell,bx,by,boardSize,trayTop}=geometry;
+  const {x,y}=liftedPose(drag.point,drag.grab,cell,drag.fromScale,drag.lift,1);
+  const origin={x:(x-bx)/cell,y:(y-by)/cell};
+  const candidate={x:Math.round(origin.x),y:Math.round(origin.y),r:rotations[drag.id]};
   const {w,h}=size(pieceCells(drag.id));const near=x+w*cell>bx&&x<bx+boardSize&&y+h*cell>by&&y<by+boardSize;
-  const valid=near&&canPlace(level,placements,drag.id,candidate);drag.p=valid?candidate:null;
-  drag.overTray=p.y>trayTop-12;
-  if(near)showGhost(preview,drag.id,candidate,!valid);else preview.classList.remove('visible');
+  drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;
+  drag.overTray=drag.point.y>trayTop-12;
+  if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
+    if(drag.touch&&snapKey&&snapKey!==drag.lastSnapKey&&performance.now()-drag.lastFeedback>90){haptic(3);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
+  }else preview.classList.remove('visible');
+}
+function renderDrag(time){
+  dragFrame=0;if(!drag?.active)return;
+  const progress=reducedMotion()?1:(time-drag.started)/135;
+  const pose=liftedPose(drag.point,drag.grab,geometry.cell,drag.fromScale,drag.lift,progress);
+  position(drag.id,pose.x,pose.y,pose.scale);dragTarget();
+  if(progress<1)dragFrame=requestAnimationFrame(renderDrag);
 }
 function showGhost(el,id,p,invalid=false){
-  const cells=turn(level.pieces[id].cells,p.r),{w,h}=size(cells);el.innerHTML=svgPiece(id,cells,true);Object.assign(el.style,{width:w*geometry.cell+'px',height:h*geometry.cell+'px',transform:`translate3d(${geometry.bx+p.x*geometry.cell}px,${geometry.by+p.y*geometry.cell}px,0)`});el.classList.add('visible');el.classList.toggle('invalid',invalid);
+  const cells=turn(level.pieces[id].cells,p.r),{w,h}=size(cells),shapeKey=`${id}:${p.r}`;
+  if(el.dataset.shape!==shapeKey){el.innerHTML=svgPiece(id,cells,true);el.dataset.shape=shapeKey;}
+  el.style.setProperty('--piece-tint',colors[id][1]);Object.assign(el.style,{width:w*geometry.cell+'px',height:h*geometry.cell+'px',transform:`translate3d(${geometry.bx+p.x*geometry.cell}px,${geometry.by+p.y*geometry.cell}px,0)`});el.classList.add('visible');el.classList.toggle('invalid',invalid);
 }
 function endDrag(e,cancel=false){
   if(!drag||(e&&e.pointerId!==drag.pointerId))return;
+  cancelAnimationFrame(dragFrame);dragFrame=0;
+  // Pointer-up can arrive before the next animation frame or the last pointer-move.
+  if(drag.active&&!cancel){if(e)drag.point=stagePoint(e);dragTarget();}
   const d=drag;drag=null;preview.classList.remove('visible');nodes[d.id]?.classList.remove('dragging');
-  try{stage.releasePointerCapture(d.pointerId);}catch{}
+  // Pointer-up releases capture automatically. Explicit release is only needed
+  // when cancelling; otherwise a late lost-capture event can race the next pickup.
+  if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
   if(cancel){restore(d.before);layout();return;}
-  if(!d.active){choose(d.id);return;}
+  if(!d.active){choose(d.id);const now=performance.now();if(level.rotate&&d.wasSelected&&lastTap?.id===d.id&&now-lastTap.time<320){lastTap=null;rotateSelected();}else lastTap={id:d.id,time:now};return;}
+  lastTap=null;
   if(d.p){history.push(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
   else if(d.overTray&&d.before.placements[d.id]){history.push(d.before);placements[d.id]=null;say('A little room to try again.');}
   else{restore(d.before);tone('miss');say('Almost. Try a little more space.');}
-  layout();persist();checkComplete();
+  layout();if(d.p)settlePiece(d.id);persist();checkComplete();
 }
 function cancelDrag(){if(drag)endDrag(null,true);}
+function settlePiece(id){
+  if(reducedMotion())return;
+  nodes[id].querySelector('svg')?.animate([{transform:'scale(1.025) translateY(-1px)'},{transform:'scale(.992) translateY(1px)',offset:.65},{transform:'none'}],{duration:220,easing:'cubic-bezier(.2,.8,.2,1)'});
+}
 function placeSelected(p){
   if(selected===null||solved)return;const id=selected;
-  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
+  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();settlePiece(id);persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
   else{tone('miss');say('That space is taken, or the piece is outside the square.');}
 }
 stage.addEventListener('pointermove',pointerMove);
-stage.addEventListener('pointerup',e=>endDrag(e));stage.addEventListener('pointercancel',e=>endDrag(e,true));stage.addEventListener('lostpointercapture',()=>{if(drag)endDrag(null,true);});
+stage.addEventListener('pointerup',e=>endDrag(e));stage.addEventListener('pointercancel',e=>endDrag(e,true));stage.addEventListener('lostpointercapture',e=>{if(drag&&e.pointerId===drag.pointerId&&!stage.hasPointerCapture(e.pointerId))endDrag(e,true);});
 board.addEventListener('pointerdown',e=>{
   if(selected===null||solved||drag)return;e.preventDefault();wakeAudio();const p=stagePoint(e);
   // Tap placement uses the top-left cell; drag placement uses the exact grab point.
   placeSelected({x:Math.floor((p.x-geometry.bx)/geometry.cell),y:Math.floor((p.y-geometry.by)/geometry.cell),r:rotations[selected]});
 });
 function rotateSelected(){
-  if(selected===null||!level.rotate||solved)return;cancelDrag();const id=selected;wakeAudio();remember();clearHint();
-  const r=(rotations[id]+1)%4;rotations[id]=r;
-  if(placements[id]){const p={...placements[id],r};placements[id]=canPlace(level,placements,id,p)?p:null;}
-  keyboardTarget=null;tone('rotate');haptic(5);layout();nodes[id].classList.remove('rotating');void nodes[id].offsetWidth;nodes[id].classList.add('rotating');persist();say('A different angle. Find its place.');checkComplete();
+  if(selected===null||!level.rotate||solved)return;cancelDrag();const id=selected,r=(rotations[id]+1)%4;
+  const nextPlacement=placements[id]?rotationPlacement(level,placements,id,r):null;
+  if(placements[id]&&!nextPlacement){tone('miss');haptic(5);say('A little tight. Lift this piece into the tray to turn it.');return;}
+  const el=nodes[id],oldRect=el.getBoundingClientRect(),stageRect=stage.getBoundingClientRect();
+  const oldSvg=el.querySelector('svg'),matrix=/matrix\(([^)]+)\)/.exec(getComputedStyle(oldSvg).transform);
+  const previousAngle=matrix?Math.atan2(Number(matrix[1].split(',')[1]),Number(matrix[1].split(',')[0]))*180/Math.PI:0;
+  wakeAudio();remember();clearHint();rotations[id]=r;if(placements[id])placements[id]=nextPlacement;
+  keyboardTarget=null;tone('rotate');haptic(5);el.classList.add('turning');layout();
+  if(!reducedMotion()){
+    const {w,h}=size(pieceCells(id)),scale=placements[id]?1:geometry.homes[id].scale;
+    const x=oldRect.left-stageRect.left+oldRect.width/2-w*geometry.cell*scale/2;
+    const y=oldRect.top-stageRect.top+oldRect.height/2-h*geometry.cell*scale/2;
+    const animation=el.animate([{transform:`translate3d(${x}px,${y}px,0) scale(${scale})`},{transform:el.style.transform}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
+    el._turnMotion=animation;animation.finished.then(()=>{if(el._turnMotion===animation)el.classList.remove('turning');}).catch(()=>{});
+    el.querySelector('svg').animate([{transform:`rotate(${previousAngle-90}deg)`},{transform:'rotate(0deg)'}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
+  }else el.classList.remove('turning');
+  persist();say('A different angle. Find its place.');checkComplete();
 }
 $('#rotate').addEventListener('click',rotateSelected);
 $('#undo').addEventListener('click',()=>{
@@ -351,7 +444,7 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelDrag();audio?.suspend().catch(()=>{});}});
 window.addEventListener('pagehide',()=>{cancelDrag();persist();});
-let resizeFrame;new ResizeObserver(()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{cancelDrag();layout();});}).observe(stage);
+let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();layout();requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
 $('#sound').setAttribute('aria-label',sound?'Turn sound off':'Turn sound on');$('#sound').setAttribute('aria-pressed',String(sound));
 load(levelIndex,saved.current===levelIndex?saved:null);
 </script>

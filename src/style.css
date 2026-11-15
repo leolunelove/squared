@@ -7,3 +7,13 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.spark{display:none}}
 .status-area:has(.rotate-button:not([hidden])){flex-direction:row;gap:8px}.status-area:has(.rotate-button:not([hidden])) p{flex:1;max-width:220px}.rotate-button{min-height:44px;flex-shrink:0}.icon-button{width:44px;height:44px}
 @media(max-height:620px){.app{min-height:550px}.topbar{height:52px}.stage{min-height:300px}.footnote{height:26px}.intro{padding-bottom:3px}.tools{height:51px}}
+/* Touch polish: stable homes, a clear landing preview, and short tactile motion. */
+html,body{overflow-x:clip}
+.piece.resizing{transition:none}
+html{-webkit-text-size-adjust:100%}.piece{transition:transform .24s cubic-bezier(.16,1,.3,1),filter .18s}.piece.turning{transition:none}.piece.dragging{transition:filter .12s}.piece svg{transform-origin:50% 50%}.piece.placed{filter:drop-shadow(0 2px 0 #59624b18) drop-shadow(0 1px 2px #53624a09)}
+.ghost{transition:opacity .09s,transform .075s ease-out}.ghost path{fill:color-mix(in srgb,var(--piece-tint,#5c9083) 22%,transparent);stroke:var(--piece-tint,#688e75);stroke-dasharray:none;stroke-width:.03}.ghost.invalid path{fill:#cc816012;stroke:#c7867070;stroke-dasharray:.08 .07}.hint-ghost path{fill:#77a49112;stroke:#749781;stroke-dasharray:.08 .08}
+.success{pointer-events:none}.success.show{pointer-events:auto}.tool{min-height:46px}.rotate-button{min-width:92px;min-height:46px;box-shadow:0 2px 0 #cdd8c1;transition:transform .12s,background .12s}.rotate-button:active{transform:translateY(2px);box-shadow:none;background:#dce5d4}.footnote{pointer-events:none}
+@media(max-height:740px){.topbar{height:56px}.intro>.level-button>.eyebrow{display:none}.intro{padding-bottom:5px}.tools{height:52px}.footnote{height:22px}.status-area{height:48px}.stage{min-height:300px}}
+@media(max-height:620px){.topbar{height:48px}.intro{padding-top:0;padding-bottom:1px}.status-area{height:47px}.tools{height:50px}.footnote{height:20px}.app{min-height:530px}}
+@media(prefers-reduced-motion:reduce){.piece,.ghost,.success,.rotate-button{transition:none!important}}
+@media(orientation:landscape) and (max-height:500px){.app{width:min(100%,920px);height:100svh;min-height:320px;padding-left:24px;padding-right:24px}.topbar{height:44px}.intro{padding-top:0;padding-bottom:0}.intro .eyebrow{display:none}.level-label{font-size:18px;line-height:1.3}.dimension{margin-bottom:4px}.stage{min-height:140px}.status-area{height:46px}.tools{height:48px}.footnote{display:none}}
