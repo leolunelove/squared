@@ -1,0 +1,80 @@
+{
+  "url": "https://squared.leolune.fun/",
+  "version": "1.1.0",
+  "viewport": "375x667",
+  "levels": [
+    {
+      "level": 1,
+      "dragged": true,
+      "rotation": false,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 2,
+      "dragged": true,
+      "rotation": false,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 3,
+      "dragged": true,
+      "rotation": false,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 4,
+      "dragged": true,
+      "rotation": false,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 5,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 6,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 7,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 8,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 9,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 10,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 11,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    },
+    {
+      "level": 12,
+      "dragged": true,
+      "rotation": true,
+      "status": "Every piece, exactly where it belongs."
+    }
+  ],
+  "collection": "ONE SQUARE AT A TIMEYour little collection.12 of 12 squares complete. A little more room to play.01 ✓3 × 302 ✓3 × 303 ✓4 × 404 ✓4 × 405 ✓4 × 406 ✓4 × 407 ✓5 × 508 ✓5 × 509 ✓5 × 510 ✓5 × 511 ✓6 × 612 ✓6 × 6Your progress is saved on this device."
+}

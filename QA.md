@@ -20,6 +20,6 @@ All 12 levels were completed at `https://squared.leolune.fun/` in a 390×844 Chr
 
 ## Live release
 
-The final live playthrough is recorded in `verification.json` after deployment.
+Version 1.1.0 was deployed successfully in [run 43662186656](https://github.com/leolunelove/squared/actions/runs/43662186656). All 12 levels were then completed again on the live site in a 375×667 viewport using pointer drags and the Rotate control. The final collection showed 12 of 12 complete. See [the raw playthrough record](qa/live-playthrough-1.1.0.json) and `verification.json`. The served HTML matches the release build byte for byte.
 
 These are browser checks at phone viewport sizes, using mouse/pointer input. Touch lift is covered by geometry checks. Physical-phone touch feel, sound quality, and vibration have not been signed off on a physical device.

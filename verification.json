@@ -89,7 +89,22 @@
       11,
       12
     ],
-    "live_polish_completed": []
+    "live_polish_completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "live_release_viewport": "375x667",
+    "live_evidence": "qa/live-playthrough-1.1.0.json"
   },
   "not_verified": [
     "physical phone touch feel",
@@ -97,12 +112,12 @@
     "physical vibration feedback"
   ],
   "publication": {
-    "status": "release_prepared",
+    "status": "live",
     "provider": "GitHub Pages",
     "repository": "https://github.com/leolunelove/squared",
     "domain": "squared.leolune.fun",
-    "source_commit": "07652345666139277f846221b43ddb57eb244a8f",
-    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/43410481549",
+    "source_commit": "07c51bfd6617c8b0c24991b77838d3c86c37b973",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/43662186656",
     "build": "success",
     "deploy": "success",
     "dns": "CNAME squared \u2192 leolunelove.github.io; verified by local resolver and Google Public DNS",
@@ -112,12 +127,14 @@
     "http_status": 301,
     "http_redirect": "https://squared.leolune.fun/",
     "ssl_verify_result": 0,
-    "live_build_matches_local": false,
-    "live_sha256": "1f3320ac7f43d79c5c054f6903fbd3757e3858f863ea5a12c9fdd7e2a5a64d5a",
+    "live_build_matches_local": true,
+    "live_sha256": "f9bfdc9d6f3571b31b0927d31916e005108122a6584bac10e8e3b0fa44a22e93",
     "live_browser_smoke": [
-      "game loaded on custom HTTPS origin",
-      "help opens and closes"
-    ]
+      "all 12 levels completed at 375x667 through pointer drags and Rotate",
+      "completion collection shows 12 of 12 complete",
+      "progression and previous save format retained"
+    ],
+    "live_bytes": 53547
   },
   "runtime": {
     "external_requests": false,
