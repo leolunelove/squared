@@ -1,6 +1,6 @@
 # Squared
 
-A calm square-building puzzle designed for touch. Use every piece to fill the board, with no gaps or overlaps. Thirty-six levels grow from 3×3 to 8×8, with rotation introduced at level 5.
+A calm square-building puzzle designed for touch. Use every piece to fill the board, with no gaps or overlaps. Thirty-six levels grow from 3×3 to 8×8, with every piece already facing its fitting direction.
 
 ## Play
 
@@ -14,13 +14,13 @@ python3 -m http.server 4173 --directory dist
 
 Visit `http://localhost:4173`. For a phone on the same network, bind the server to the computer's LAN interface and visit its LAN address. A localhost address on a phone refers to the phone itself.
 
-Drag pieces onto the square. Tap a piece to select it; on later levels, use Rotate or double-tap the piece to turn it. Tap placement and keyboard controls are also available. Hints respect compatible pieces already on the board. More complex partial boards are searched in a background worker; if the search cannot finish promptly, the hint suggests returning a piece to the tray. Undo and restart are unlimited. Local storage saves progress and sound preference; private browsing may limit persistence.
+Drag pieces onto the square. Pieces keep a fixed orientation; drag them into place. Tap placement and keyboard controls are also available. Hints respect compatible pieces already on the board. More complex partial boards are searched in a background worker; if the search cannot finish promptly, the hint suggests returning a piece to the tray. Undo and restart are unlimited. Local storage saves progress and sound preference; private browsing may limit persistence.
 
 Sound uses quiet synthesized notes. Haptics use the browser vibration API where available; iOS browsers generally do not expose this API. Reduced-motion preferences are respected.
 
 ## Campaign
 
-The original twelve puzzles and save format are preserved. Six chapters introduce larger squares gradually: First steps (1–6), Finding flow (7–12), Tricky (13–18), Intricate (19–24), Expert (25–30), and Master (31–36). The final chapter uses 8×8 boards, reaching nine pieces in the final three puzzles. Solver search effort, shape complexity and placement ambiguity inform the ordering; these are design aids rather than measured human difficulty ratings.
+All 36 layouts and earned completions are preserved. Legacy saves are migrated to fixed orientations: compatible placements stay, turned pieces return to the tray, and an incompatible partial board refreshes without changing completed levels. Six chapters introduce larger squares gradually: First steps (1–6), Finding flow (7–12), Tricky (13–18), Intricate (19–24), Expert (25–30), and Master (31–36). The final chapter uses 8×8 boards, reaching nine pieces in the final three puzzles. Solver search effort, shape complexity and placement ambiguity inform the ordering; these are design aids rather than measured human difficulty ratings.
 
 Release playthroughs use `?playtest=1`, which seeds a separate session save from the player’s progress and never writes to the campaign save.
 
@@ -38,6 +38,7 @@ With Node installed, run the solver and geometry checks:
 node tests/engine.test.mjs
 node tests/mobile.test.mjs
 node tests/progression.test.mjs
+node tests/fixed-orientation.test.mjs
 ```
 
 The grid engine accepts every valid tiling, rather than checking against a single prescribed solution. There are no accounts, analytics, network requests, or runtime packages.

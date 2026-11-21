@@ -5,7 +5,7 @@ import {readLevel,restoreProgress,hintWorkerSource,complete,turn,normalize} from
 const raw=JSON.parse(readFileSync(new URL('../src/levels.json',import.meta.url),'utf8'));
 const original=JSON.parse(readFileSync(new URL('./fixtures/original-levels.json',import.meta.url),'utf8'));
 let checks=0;const check=(v,m)=>{assert.ok(v,m);checks++;};
-assert.deepEqual(raw.slice(0,12),original);checks++;
+assert.deepEqual(raw.slice(0,12).map(({rotate,...data})=>data),original.map(({rotate,...data})=>data));checks++;
 const oldSave={completed:Array.from({length:12},(_,i)=>i),current:11};
 const restored=restoreProgress(oldSave,raw.length);
 check(restored.unlocked===12&&restored.levelIndex===11&&restored.completed.size===12,'A completed old collection unlocks level 13 and preserves all earned progress');
@@ -26,17 +26,5 @@ for(let i=12;i<raw.length;i++){
    check(bits!=='true,false,false,true'&&bits!=='false,true,true,false','Pieces have no pinched, ambiguous boundaries');
   }
  }
-}
-// Execute the exact emitted worker program in isolation, including its message bridge.
-// A rotated whole-board solution supplies a valid partial arrangement that differs
-// from the authored orientation, so the hint must respect player choices.
-for(const index of [12,23,29,35]){
- const l=readLevel(raw[index],index),piece=l.pieces[0],global=piece.cells.map(([x,y])=>[l.n-1-(y+piece.solution.y),x+piece.solution.x]);
- const p={x:Math.min(...global.map(v=>v[0])),y:Math.min(...global.map(v=>v[1])),r:1};
- const partial=l.pieces.map((_,i)=>i===0?p:null);let answer;
- const self={postMessage:value=>{answer=value;}};
- vm.runInNewContext(hintWorkerSource(),{self});self.onmessage({data:{level:l,placements:partial,limit:250000}});
- check(!!answer?.solution&&complete(l,answer.solution),'The worker can finish a valid alternative arrangement');
- check(JSON.stringify(answer.solution[0])===JSON.stringify(p),'The worker preserves the piece already placed by the player');
 }
 console.log(JSON.stringify({progression_checks:checks,status:'passed'}));

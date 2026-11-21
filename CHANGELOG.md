@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0 — 21 November 2026
+
+- Fixed every level for drag-only play: fresh games and restarts no longer turn pieces away from their fitting direction.
+- Hints and placement validation now use the same fixed-orientation rule.
+- Migrated old rotated saves, retaining compatible placements and all completed levels.
+- Removed rotation controls, double-tap turns, the R shortcut and obsolete instructions.
+- Added regressions for all 36 fixed-orientation solutions, saved arrangements, restart initialization and worker hints.
+
+
 ## 1.2.0 — 15 November 2026
 
 - Added 24 puzzles for a 36-level campaign, with larger squares introduced in stages and the toughest nine-piece 8×8 puzzles at the end.

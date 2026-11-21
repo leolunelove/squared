@@ -6,7 +6,6 @@ const icons={
   undo:'<path d="m8 4-5 5 5 5M3 9h11a6 6 0 0 1 0 12h-3"/>',
   hint:'<path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/>',
   restart:'<path d="M3 4v6h6M3.5 10a8.5 8.5 0 1 1 .6 7"/>',
-  rotate:'<path d="M4 4v6h6M4 10a8 8 0 1 1 1 8"/>',
   close:'<path d="m6 6 12 12M18 6 6 18"/>',
   next:'<path d="M3 12h18m-7-7 7 7-7 7"/>'
 };
@@ -20,15 +19,15 @@ const playtest=new URLSearchParams(location.search).get('playtest')==='1';
 const key=playtest?'squared-playtest-v1':playerSaveKey,gameStorage=()=>playtest?sessionStorage:localStorage;let saved={};
 try{saved=JSON.parse(gameStorage().getItem(key)||(playtest?localStorage.getItem(playerSaveKey):null)||'{}')??{};}catch{}
 let {completed,unlocked,levelIndex}=restoreProgress(saved,levels.length);
-let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,lastTap=null,hintSerial=0,hintTask=null;
+let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,hintSerial=0,hintTask=null;
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const reducedMotion=()=>motionPreference.matches;
 const nodes=[],stage=$('#stage'),board=$('#board'),preview=$('#preview'),hintGhost=$('#hint-ghost');
 $('#sound').innerHTML=icon(sound?'sound':'muted');$('#help').innerHTML=icon('help');
-$('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';$('#rotate').innerHTML=icon('rotate')+'Rotate';
+$('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';
 $$('.close-dialog.icon-button').forEach(b=>b.innerHTML=icon('close'));
 function persist(){
-  try{gameStorage().setItem(key,JSON.stringify({current:levelIndex,completed:[...completed],placements,rotations,sound,version:1}));}
+  try{gameStorage().setItem(key,JSON.stringify({current:levelIndex,completed:[...completed],placements,rotations,sound,version:2}));}
   catch{storageOkay=false;}
 }
 function say(text){$('#status').textContent=text;}
@@ -40,7 +39,7 @@ function wakeAudio(){
 function tone(kind='place'){
   if(!sound||!audio||audio.state!=='running')return;
   const now=audio.currentTime;
-  const notes=kind==='finish'?[392,493.88,587.33,783.99]:kind==='pick'?[320]:kind==='rotate'?[420,560]:kind==='miss'?[155]:[440,220];
+  const notes=kind==='finish'?[392,493.88,587.33,783.99]:kind==='pick'?[320]:kind==='miss'?[155]:[440,220];
   notes.forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=now+i*(kind==='finish'?.09:.022);o.type='sine';o.frequency.setValueAtTime(f,t);if(kind==='place')o.frequency.exponentialRampToValueAtTime(f*.7,t+.1);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(kind==='finish'?.055:.035,t+.009);g.gain.exponentialRampToValueAtTime(.0001,t+(kind==='finish'?.65:.16));o.connect(g).connect(audio.destination);o.start(t);o.stop(t+.8);});
 }
 function snapshot(){return {placements:placements.map(p=>p?{...p}:null),rotations:[...rotations]};}
@@ -58,7 +57,7 @@ function paint(id){
   const paintKey=`${rotations[id]}:${!!placements[id]}:${geometry.cell.toFixed(2)}:${geometry.homes[id].scale.toFixed(3)}`;
   if(el.dataset.paintKey!==paintKey){el.innerHTML=svgPiece(id,cells);el.dataset.paintKey=paintKey;}
   el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
-  el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move${level.rotate?' or rotate':''}.`);
+  el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move.`);
 }
 function position(id,x,y,scale=1){nodes[id].style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;}
 function layout(){
@@ -96,31 +95,25 @@ function setHintBusy(busy){$('#hint').disabled=busy;$('#hint').setAttribute('ari
 function clearHint(){hintSerial++;hintTask?.cancel();setHintBusy(false);hintTarget=null;hintGhost.classList.remove('visible');nodes.forEach(n=>n.classList.remove('hinted'));}
 function choose(id){
   selected=id;keyboardTarget=null;nodes.forEach((n,i)=>{n.classList.toggle('selected',i===id);n.setAttribute('aria-pressed',String(i===id));});
-  $('#rotate').hidden=id===null||!level.rotate||solved;
-  if(id!==null&&!solved)say(level.rotate?'Drag to fit. Tap Rotate to find a new angle.':'Drag into the square, or tap the board to place.');
+  if(id!==null&&!solved)say('Drag into the square, or tap the board to place.');
 }
 function updateControls(){
   const left=placements.filter(p=>!p).length;$('#piece-count').textContent=left?`${left} to go`:'A perfect fit';
-  $('#undo').disabled=!history.length;$('#rotate').hidden=selected===null||!level.rotate||solved;
+  $('#undo').disabled=!history.length;
   $('#hint').innerHTML=icon(solved?'next':'hint')+(solved?'Next':'Hint');
   $('#hint').setAttribute('aria-label',solved?'Continue after this square':'Show a helpful placement');
   $('#restart').disabled=false;
 }
 function load(index,restored=null){
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];lastTap=null;board.classList.remove('complete');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
   // Every piece keeps its own home throughout the puzzle, including after a reload.
   trayIds=index===0?[0,2,1]:level.pieces.map(p=>p.id);
-  placements=level.pieces.map(()=>null);rotations=level.pieces.map((_,i)=>level.rotate?(index+i*3)%4:0);
-  if(index===0){placements[0]={...level.pieces[0].solution};placements[1]={...level.pieces[1].solution};}
-  if(restored&&Array.isArray(restored.placements)&&restored.placements.length===placements.length&&Array.isArray(restored.rotations)&&restored.rotations.length===rotations.length){
-    const p=restored.placements.map(p=>p&&Number.isInteger(p.x)&&Number.isInteger(p.y)&&Number.isInteger(p.r)&&p.r>=0&&p.r<4&&(!p.r||level.rotate)?{x:p.x,y:p.y,r:p.r}:null);
-    const r=restored.rotations.map(r=>Number.isInteger(r)&&r>=0&&r<4&&(!r||level.rotate)?r:0);
-    if(p.every((v,i)=>!v||canPlace(level,p,i,v))){placements=p;rotations=r.map((v,i)=>p[i]?.r??v);}
-  }
+  const arrangement=restoreArrangement(level,restored);({placements,rotations}=arrangement);
   $('#level-num').textContent=String(index+1).padStart(2,'0');$('#level-total').textContent=`/ ${levels.length}`;$('#dimension').textContent=`${level.n} × ${level.n}`;$('#level-eyebrow').textContent=index<12?'A LITTLE PIECE OF CALM':`${tierFor(index).toUpperCase()} SQUARE`;
   $('#pieces').innerHTML='';nodes.length=0;
   level.pieces.forEach(({id})=>{const el=document.createElement('button');el.type='button';el.className='piece';el.dataset.piece=id;el.setAttribute('aria-pressed','false');el.addEventListener('pointerdown',e=>pointerDown(e,id));el.addEventListener('click',e=>{if(e.detail===0&&!solved){wakeAudio();choose(id);}});$('#pieces').append(el);nodes.push(el);});
-  say(index===0?'One last piece. Make it a square.':index===4?'A new angle. Select a piece to rotate it.':`${level.title}. Take your time.`);
+  say(index===0?'One last piece. Make it a square.':`${level.title}. Take your time.`);
+  if(arrangement.repaired)say('Pieces refreshed for drag-only play. Your completed squares are saved.');
   layout();persist();checkComplete(false);
 }
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
@@ -128,8 +121,8 @@ function pointerDown(e,id){
   if(e.button!==0||drag||solved)return;e.preventDefault();wakeAudio();clearHint();
   nodes[id].getAnimations().forEach(a=>a.finish());nodes[id].querySelector('svg')?.getAnimations().forEach(a=>a.finish());
   const point=stagePoint(e),rect=nodes[id].getBoundingClientRect(),cells=pieceCells(id),{w,h}=size(cells);
-  const wasSelected=selected===id;choose(id);
-  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),wasSelected,touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
+  choose(id);
+  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
   try{stage.setPointerCapture(e.pointerId);}catch{}
 }
 function pointerMove(e){
@@ -173,8 +166,7 @@ function endDrag(e,cancel=false){
   // when cancelling; otherwise a late lost-capture event can race the next pickup.
   if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
   if(cancel){restore(d.before);layout();return;}
-  if(!d.active){choose(d.id);const now=performance.now();if(level.rotate&&d.wasSelected&&lastTap?.id===d.id&&now-lastTap.time<320){lastTap=null;rotateSelected();}else lastTap={id:d.id,time:now};return;}
-  lastTap=null;
+  if(!d.active){choose(d.id);return;}
   if(d.p){history.push(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
   else if(d.overTray&&d.before.placements[d.id]){history.push(d.before);placements[d.id]=null;say('A little room to try again.');}
   else{restore(d.before);tone('miss');say('Almost. Try a little more space.');}
@@ -197,31 +189,11 @@ board.addEventListener('pointerdown',e=>{
   // Tap placement uses the top-left cell; drag placement uses the exact grab point.
   placeSelected({x:Math.floor((p.x-geometry.bx)/geometry.cell),y:Math.floor((p.y-geometry.by)/geometry.cell),r:rotations[selected]});
 });
-function rotateSelected(){
-  if(selected===null||!level.rotate||solved)return;cancelDrag();const id=selected,r=(rotations[id]+1)%4;
-  const nextPlacement=placements[id]?rotationPlacement(level,placements,id,r):null;
-  if(placements[id]&&!nextPlacement){tone('miss');haptic(5);say('A little tight. Lift this piece into the tray to turn it.');return;}
-  const el=nodes[id],oldRect=el.getBoundingClientRect(),stageRect=stage.getBoundingClientRect();
-  const oldSvg=el.querySelector('svg'),matrix=/matrix\(([^)]+)\)/.exec(getComputedStyle(oldSvg).transform);
-  const previousAngle=matrix?Math.atan2(Number(matrix[1].split(',')[1]),Number(matrix[1].split(',')[0]))*180/Math.PI:0;
-  wakeAudio();remember();clearHint();rotations[id]=r;if(placements[id])placements[id]=nextPlacement;
-  keyboardTarget=null;tone('rotate');haptic(5);el.classList.add('turning');layout();
-  if(!reducedMotion()){
-    const {w,h}=size(pieceCells(id)),scale=placements[id]?1:geometry.homes[id].scale;
-    const x=oldRect.left-stageRect.left+oldRect.width/2-w*geometry.cell*scale/2;
-    const y=oldRect.top-stageRect.top+oldRect.height/2-h*geometry.cell*scale/2;
-    const animation=el.animate([{transform:`translate3d(${x}px,${y}px,0) scale(${scale})`},{transform:el.style.transform}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
-    el._turnMotion=animation;animation.finished.then(()=>{if(el._turnMotion===animation)el.classList.remove('turning');}).catch(()=>{});
-    el.querySelector('svg').animate([{transform:`rotate(${previousAngle-90}deg)`},{transform:'rotate(0deg)'}],{duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
-  }else el.classList.remove('turning');
-  persist();say('A different angle. Find its place.');checkComplete();
-}
-$('#rotate').addEventListener('click',rotateSelected);
 $('#undo').addEventListener('click',()=>{
   if(!history.length)return;cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();solved=false;board.classList.remove('complete');restore(history.pop());choose(null);layout();persist();say('Back a little. Try another way.');
 });
 $('#restart').addEventListener('click',()=>{
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();solved=false;board.classList.remove('complete');placements=level.pieces.map(()=>null);rotations=level.pieces.map((_,i)=>level.rotate?(levelIndex+i*3)%4:0);if(levelIndex===0){placements[0]={...level.pieces[0].solution};placements[1]={...level.pieces[1].solution};}choose(null);layout();persist();say('A fresh little start.');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();solved=false;board.classList.remove('complete');({placements,rotations}=restoreArrangement(level));choose(null);layout();persist();say('A fresh little start.');
 });
 function requestHintSearch(){
   return new Promise(resolve=>{
@@ -253,8 +225,7 @@ $('#hint').addEventListener('click',async()=>{
     else say('Try taking a piece back out, then ask for another hint.');return;
   }
   hintTarget=target;showGhost(hintGhost,target.id,target.p);nodes[target.id].classList.add('hinted');choose(target.id);
-  const needsTurn=JSON.stringify(pieceCells(target.id))!==JSON.stringify(turn(level.pieces[target.id].cells,target.p.r));
-  say(needsTurn?`Rotate the ${colors[target.id][3]} piece to match the outline.`:`Try the ${colors[target.id][3]} piece in the dotted space.`);tone('pick');
+  say(`Try the ${colors[target.id][3]} piece in the dotted space.`);tone('pick');
 });
 function checkComplete(celebrate=true){
   if(!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');completed.add(levelIndex);while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
@@ -286,7 +257,6 @@ document.addEventListener('keydown',e=>{
   if($$('dialog[open]').length)return;
   if(e.key==='Escape'){cancelDrag();preview.classList.remove('visible');choose(null);say('Take your time. Every piece has a place.');return;}
   if(selected===null||solved)return;
-  if(e.key.toLowerCase()==='r'){e.preventDefault();rotateSelected();return;}
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){
     e.preventDefault();const p=keyboardTarget??(placements[selected]?{...placements[selected]}:{x:0,y:0,r:rotations[selected]});p.x+=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;p.y+=e.key==='ArrowDown'?1:e.key==='ArrowUp'?-1:0;const {w,h}=size(pieceCells(selected));p.x=Math.max(0,Math.min(level.n-w,p.x));p.y=Math.max(0,Math.min(level.n-h,p.y));keyboardTarget=p;showGhost(preview,selected,p,!canPlace(level,placements,selected,p));say(`${colors[selected][3]} piece. Column ${p.x+1}, row ${p.y+1}. Enter to place.`);
   }

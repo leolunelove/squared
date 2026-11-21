@@ -49,7 +49,7 @@
       "DDBC",
       "DDCC"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "A different angle"
   },
   {
@@ -60,7 +60,7 @@
       "DDCC",
       "DDDC"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "Turn it around"
   },
   {
@@ -72,7 +72,7 @@
       "AAECD",
       "EEEED"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "A little deeper"
   },
   {
@@ -84,7 +84,7 @@
       "EECDD",
       "EEEED"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "In good company"
   },
   {
@@ -96,7 +96,7 @@
       "CDDEE",
       "CDDEE"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "Piece by piece"
   },
   {
@@ -108,7 +108,7 @@
       "DDEEC",
       "DDEEE"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "A fresh perspective"
   },
   {
@@ -121,7 +121,7 @@
       "DDEEFF",
       "DEEFFF"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "The bigger picture"
   },
   {
@@ -134,7 +134,7 @@
       "FFDGGG",
       "FFFGGG"
     ],
-    "rotate": true,
+    "rotate": false,
     "title": "Everything in place"
   },
   {
@@ -147,7 +147,7 @@
       "DDFFFA",
       "DDFAAA"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "A new little knot"
   },
@@ -161,7 +161,7 @@
       "CCBAAA",
       "CBBBAA"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "Take another look"
   },
@@ -175,7 +175,7 @@
       "DBBBCG",
       "DDDCCC"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "Leave a little room"
   },
@@ -189,7 +189,7 @@
       "GGDCFD",
       "GGDDDD"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "Pieces in conversation"
   },
@@ -203,7 +203,7 @@
       "DFFDEE",
       "DDDDEE"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "The quiet twist"
   },
@@ -217,7 +217,7 @@
       "CFFABA",
       "CCAAAA"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Tricky",
     "title": "No straight answers"
   },
@@ -231,7 +231,7 @@
       "FFABEE",
       "FCCCCE"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "An extra possibility"
   },
@@ -245,7 +245,7 @@
       "BADCCF",
       "DDDDCC"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "Close, but not quite"
   },
@@ -259,7 +259,7 @@
       "CGGGHH",
       "CCCHHH"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "Mind the middle"
   },
@@ -273,7 +273,7 @@
       "BBHGAA",
       "BBHHHA"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "A smaller opening"
   },
@@ -287,7 +287,7 @@
       "CCCAEE",
       "CAAAAE"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "Around the corner"
   },
@@ -301,7 +301,7 @@
       "EADDHH",
       "AAADDH"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Intricate",
     "title": "One move ahead"
   },
@@ -316,7 +316,7 @@
       "AGHGFFF",
       "AAHHHHF"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "A wider world"
   },
@@ -331,7 +331,7 @@
       "CCCDHHH",
       "CDDDDDH"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "Follow the edges"
   },
@@ -346,7 +346,7 @@
       "EGGGDDH",
       "GGGDDDD"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "The space between"
   },
@@ -361,7 +361,7 @@
       "EEDABFF",
       "DDDDBBB"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "An unexpected fit"
   },
@@ -376,7 +376,7 @@
       "HDDHGGG",
       "HHHHGGG"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "Look a little longer"
   },
@@ -391,7 +391,7 @@
       "GFFAAAD",
       "FFFAADD"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Expert",
     "title": "A patient square"
   },
@@ -407,7 +407,7 @@
       "DDADBCBC",
       "DDDDBCCC"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "The long way around"
   },
@@ -423,7 +423,7 @@
       "BBBDDDDG",
       "BBBDGGGG"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "An intricate balance"
   },
@@ -439,7 +439,7 @@
       "HHHAACCF",
       "HHHHACCC"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "Every corner counts"
   },
@@ -455,7 +455,7 @@
       "AIAGGGBB",
       "AAAABBBB"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "A deeper arrangement"
   },
@@ -471,7 +471,7 @@
       "IBBAAAFF",
       "IBBAAFFF"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "The final tangle"
   },
@@ -487,7 +487,7 @@
       "FFFAADDD",
       "AAAAADDD"
     ],
-    "rotate": true,
+    "rotate": false,
     "tier": "Master",
     "title": "A square well earned"
   }

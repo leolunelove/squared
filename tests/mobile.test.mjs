@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {readLevel,canPlace,magneticPlacement,liftedPose,rotationPlacement,turn,size} from '../src/engine.js';
+import {readLevel,canPlace,magneticPlacement,liftedPose,turn,size} from '../src/engine.js';
 const raw=JSON.parse(readFileSync(new URL('../src/levels.json',import.meta.url),'utf8'));
 let checks=0;const check=(condition,message)=>{assert.ok(condition,message);checks++;};
 const close=(a,b)=>Math.abs(a-b)<1e-8;
@@ -24,16 +24,10 @@ for(const [index,data]of raw.entries()){
       check(snap.x===p.x&&snap.y===p.y,'Near-complete arrangements retain the intended cell');
     }
     check(magneticPlacement(l,others,piece.id,{x:-3,y:-3},0)===null,'No remote jumps onto the board');
-    const saved=JSON.stringify(placed),r=rotationPlacement(l,placed,piece.id,1);
-    check(JSON.stringify(placed)===saved,'Rotation planning never mutates the existing board');
-    check(!r||canPlace(l,placed,piece.id,r),'A turn never overlaps or escapes the board');
-    const alone=l.pieces.map(()=>null);alone[piece.id]={...p};const free=rotationPlacement(l,alone,piece.id,1);
-    check(!!free&&canPlace(l,alone,piece.id,free),'A free piece can rotate at a board edge');
+
   }
 }
 const l=readLevel(raw[1],1),blank=l.pieces.map(()=>null);
 check(magneticPlacement(l,blank,0,{x:-.55,y:0},0)?.x===0,'Edge attraction catches a slight overshoot');
 check(magneticPlacement(l,blank,0,{x:-.7,y:0},0)===null,'Magnetism stops beyond the small edge allowance');
-const crowded=l.pieces.map(p=>({...p.solution}));
-check(rotationPlacement(l,crowded,0,1)===null,'A blocked turn stays on the board instead of disappearing into the tray');
 console.log(JSON.stringify({mobile_geometry_checks:checks,status:'passed'}));

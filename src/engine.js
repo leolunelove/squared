@@ -23,8 +23,25 @@ export function restoreProgress(saved,count){
   const levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved?.current)?saved.current:0));
   return {completed,unlocked,levelIndex};
 }
+// Fixed orientations are part of the rules, including fresh, restarted and saved games.
+export function restoreArrangement(level,saved=null){
+  const fresh=()=>({placements:level.pieces.map((piece,id)=>level.index===0&&id<2?{...piece.solution}:null),rotations:level.pieces.map(()=>0),repaired:false});
+  const result=fresh();
+  if(!Array.isArray(saved?.placements)||saved.placements.length!==level.pieces.length)return result;
+  const placements=saved.placements.map((p,id)=>{
+    if(!p||!Number.isInteger(p.x)||!Number.isInteger(p.y)||!Number.isInteger(p.r)||p.r<0||p.r>3)return null;
+    // Symmetric old turns can stay in place; other turned pieces return to the tray.
+    if(JSON.stringify(turn(level.pieces[id].cells,p.r))!==JSON.stringify(level.pieces[id].cells))return null;
+    return {x:p.x,y:p.y,r:0};
+  });
+  const migrated=saved.version!==2;
+  if(placements.some((p,id)=>p&&!canPlace(level,placements,id,p)))return {...result,repaired:true};
+  // A partial tiling from the rotating rules may be a dead end under fixed rules.
+  if(migrated&&placements.some(Boolean)&&!solve(level,placements).solution)return {...result,repaired:true};
+  return {placements,rotations:level.pieces.map(()=>0),repaired:migrated&&(saved.rotations?.some(r=>r!==0)||saved.placements.some((p,id)=>p&&!placements[id]))};
+}
 export function canPlace(level,placements,id,placement) {
-  if(!placement||!Number.isInteger(placement.x)||!Number.isInteger(placement.y)||!Number.isInteger(placement.r))return false;
+  if(!placement||!Number.isInteger(placement.x)||!Number.isInteger(placement.y)||!Number.isInteger(placement.r)||placement.r<0||placement.r>3||(!level.rotate&&placement.r!==0))return false;
   const occupied=new Set();
   placements.forEach((p,i)=>{if(p&&i!==id&&level.pieces[i])turn(level.pieces[i].cells,p.r).forEach(([x,y])=>occupied.add(`${x+p.x},${y+p.y}`));});
   return turn(level.pieces[id].cells,placement.r).every(([x,y])=>x+placement.x>=0&&y+placement.y>=0&&x+placement.x<level.n&&y+placement.y<level.n&&!occupied.has(`${x+placement.x},${y+placement.y}`));
@@ -47,17 +64,6 @@ export function liftedPose(point,grab,cell,fromScale,lift,progress) {
   const t=1-(1-Math.max(0,Math.min(1,progress)))**3;
   const scale=fromScale+(1-fromScale)*t;
   return {x:point.x-grab.x*cell*scale,y:point.y-grab.y*cell*scale-lift*t,scale};
-}
-// Preserve the visual centre where possible; a blocked turn leaves the piece alone.
-export function rotationPlacement(level,placements,id,r) {
-  const p=placements[id];if(!p)return null;
-  const old=size(turn(level.pieces[id].cells,p.r)),next=size(turn(level.pieces[id].cells,r));
-  const cx=Math.max(0,Math.min(level.n-next.w,p.x+(old.w-next.w)/2));
-  const cy=Math.max(0,Math.min(level.n-next.h,p.y+(old.h-next.h)/2));
-  const candidates=[];
-  for(const x of new Set([Math.floor(cx),Math.ceil(cx)]))for(const y of new Set([Math.floor(cy),Math.ceil(cy)]))candidates.push({x,y,r});
-  candidates.sort((a,b)=>Math.hypot(a.x-cx,a.y-cy)-Math.hypot(b.x-cx,b.y-cy));
-  return candidates.find(p=>canPlace(level,placements,id,p))??null;
 }
 export function optionsFor(level) {
   const out=level.pieces.map(()=>[]);

@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-15",
+  "build": "1.2.0",
+  "engine": {
+    "checks_passed": 2209,
+    "mobile_geometry_checks_passed": 3138,
+    "progression_checks_passed": 11698,
+    "levels_solved": 36,
+    "coverage": [
+      "canonical and independent solutions",
+      "partial arrangements",
+      "original twelve immutable",
+      "old save compatibility",
+      "distinct connected shapes without pinched outlines",
+      "worker execution for rotated alternative partial boards"
+    ]
+  },
+  "browser": {
+    "browsers": [
+      "Google Chrome"
+    ],
+    "viewports_verified": [
+      "375x667",
+      "320x568",
+      "844x390"
+    ],
+    "local_completed_through_real_controls": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "local_evidence": "qa/local-playthrough-1.2.0.json",
+    "verified": [
+      "all36 completed with native pointer drags and Rotate",
+      "nine-piece board fits smallest phone and landscape without page overflow",
+      "collection scroll keeps final tile visible",
+      "background hint on alternate rotated tiling",
+      "restart cancels stale hint"
+    ],
+    "live_completed_through_real_controls": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "live_evidence": "qa/live-playthrough-1.2.0.json",
+    "live_collection": "36 of 36 complete in isolated test session",
+    "player_progress_after_playtest": "12 of 36 complete; level13 available; level14 locked"
+  },
+  "not_verified": [
+    "physical phone touch feel",
+    "audible sound quality",
+    "physical vibration feedback"
+  ],
+  "publication": {
+    "status": "live",
+    "provider": "GitHub Pages",
+    "repository": "https://github.com/leolunelove/squared",
+    "url": "https://squared.leolune.fun/",
+    "source_commit": "3199d50cb05641c7494f261b2630974919ab1ae1",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/43692834351",
+    "build": "success",
+    "deploy": "success",
+    "https_status": 200,
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_bytes": 60236,
+    "live_sha256": "06149702f795febdf6b198bf1f50a33f0fbe04f65fa68ef1ee1831cc76322c15"
+  },
+  "runtime": {
+    "external_requests": false,
+    "dependencies": false,
+    "standalone_file": "docs/index.html"
+  }
+}
