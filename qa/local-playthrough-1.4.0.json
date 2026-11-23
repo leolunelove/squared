@@ -1,0 +1,711 @@
+{
+  "version": "1.4.0",
+  "viewport": {
+    "w": 375,
+    "h": 667
+  },
+  "levels": [
+    {
+      "level": 1,
+      "id": "square-001",
+      "phase": 1,
+      "pieces": 3,
+      "pointerDrags": true
+    },
+    {
+      "level": 2,
+      "id": "square-002",
+      "phase": 1,
+      "pieces": 3,
+      "pointerDrags": true
+    },
+    {
+      "level": 3,
+      "id": "square-037",
+      "phase": 1,
+      "pieces": 3,
+      "pointerDrags": true
+    },
+    {
+      "level": 4,
+      "id": "square-038",
+      "phase": 1,
+      "pieces": 3,
+      "pointerDrags": true
+    },
+    {
+      "level": 5,
+      "id": "square-039",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 6,
+      "id": "square-003",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 7,
+      "id": "square-040",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 8,
+      "id": "square-005",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 9,
+      "id": "square-041",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 10,
+      "id": "square-004",
+      "phase": 1,
+      "pieces": 4,
+      "pointerDrags": true
+    },
+    {
+      "level": 11,
+      "id": "square-042",
+      "phase": 1,
+      "pieces": 4,
+      "keyboardControls": true
+    },
+    {
+      "level": 12,
+      "id": "square-043",
+      "phase": 1,
+      "pieces": 4,
+      "keyboardControls": true
+    },
+    {
+      "level": 13,
+      "id": "square-006",
+      "phase": 1,
+      "pieces": 4,
+      "keyboardControls": true
+    },
+    {
+      "level": 14,
+      "id": "square-044",
+      "phase": 1,
+      "pieces": 4,
+      "keyboardControls": true
+    },
+    {
+      "level": 15,
+      "id": "square-045",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 16,
+      "id": "square-046",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 17,
+      "id": "square-047",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 18,
+      "id": "square-048",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 19,
+      "id": "square-049",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 20,
+      "id": "square-050",
+      "phase": 1,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 21,
+      "id": "square-051",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 22,
+      "id": "square-010",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 23,
+      "id": "square-052",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 24,
+      "id": "square-053",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 25,
+      "id": "square-054",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 26,
+      "id": "square-009",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 27,
+      "id": "square-055",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 28,
+      "id": "square-008",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 29,
+      "id": "square-007",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 30,
+      "id": "square-056",
+      "phase": 2,
+      "pieces": 5,
+      "keyboardControls": true
+    },
+    {
+      "level": 31,
+      "id": "square-057",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 32,
+      "id": "square-012",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 33,
+      "id": "square-011",
+      "phase": 2,
+      "pieces": 6,
+      "keyboardControls": true
+    },
+    {
+      "level": 34,
+      "id": "square-058",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 35,
+      "id": "square-059",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 36,
+      "id": "square-060",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 37,
+      "id": "square-061",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 38,
+      "id": "square-062",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 39,
+      "id": "square-013",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 40,
+      "id": "square-063",
+      "phase": 2,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 41,
+      "id": "square-064",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 42,
+      "id": "square-016",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 43,
+      "id": "square-065",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 44,
+      "id": "square-015",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 45,
+      "id": "square-017",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 46,
+      "id": "square-014",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 47,
+      "id": "square-018",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 48,
+      "id": "square-066",
+      "phase": 3,
+      "pieces": 7,
+      "keyboardControls": true
+    },
+    {
+      "level": 49,
+      "id": "square-067",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 50,
+      "id": "square-021",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 51,
+      "id": "square-068",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 52,
+      "id": "square-024",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 53,
+      "id": "square-069",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 54,
+      "id": "square-070",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 55,
+      "id": "square-019",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 56,
+      "id": "square-023",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 57,
+      "id": "square-022",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 58,
+      "id": "square-071",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 59,
+      "id": "square-020",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 60,
+      "id": "square-072",
+      "phase": 3,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 61,
+      "id": "square-025",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 62,
+      "id": "square-073",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 63,
+      "id": "square-028",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 64,
+      "id": "square-074",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 65,
+      "id": "square-030",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 66,
+      "id": "square-075",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 67,
+      "id": "square-026",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 68,
+      "id": "square-076",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 69,
+      "id": "square-077",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 70,
+      "id": "square-027",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 71,
+      "id": "square-078",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 72,
+      "id": "square-079",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 73,
+      "id": "square-029",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 74,
+      "id": "square-080",
+      "phase": 4,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 75,
+      "id": "square-081",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 76,
+      "id": "square-082",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 77,
+      "id": "square-083",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 78,
+      "id": "square-084",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 79,
+      "id": "square-085",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 80,
+      "id": "square-086",
+      "phase": 4,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 81,
+      "id": "square-031",
+      "phase": 5,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 82,
+      "id": "square-033",
+      "phase": 5,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 83,
+      "id": "square-032",
+      "phase": 5,
+      "pieces": 8,
+      "keyboardControls": true
+    },
+    {
+      "level": 84,
+      "id": "square-034",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 85,
+      "id": "square-035",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 86,
+      "id": "square-036",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 87,
+      "id": "square-087",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 88,
+      "id": "square-088",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 89,
+      "id": "square-089",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 90,
+      "id": "square-090",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 91,
+      "id": "square-091",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 92,
+      "id": "square-092",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 93,
+      "id": "square-093",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 94,
+      "id": "square-094",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 95,
+      "id": "square-095",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 96,
+      "id": "square-096",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 97,
+      "id": "square-097",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 98,
+      "id": "square-098",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 99,
+      "id": "square-099",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    },
+    {
+      "level": 100,
+      "id": "square-100",
+      "phase": 5,
+      "pieces": 9,
+      "keyboardControls": true
+    }
+  ],
+  "collection": "100 of 100 squares complete. A little more room to play.",
+  "methods": "First10 pointer drags, remaining90 actual keyboard controls"
+}

@@ -23,9 +23,42 @@ export function restoreProgress(saved,count){
   const levelIndex=Math.min(unlocked,Math.max(0,Number.isInteger(saved?.current)?saved.current:0));
   return {completed,unlocked,levelIndex};
 }
+export const PHASES=['Learn','Connect','Compare','Plan','Master'].map((name,index)=>({id:index+1,name,start:index*20,end:index*20+19}));
+// Stable puzzle IDs separate earned progress from the campaign's display order.
+export function restoreCampaign(saved,levels){
+  const byId=new Map(levels.map((l,i)=>[l.id,i])),legacy=new Map(levels.filter(l=>Number.isInteger(l.legacyIndex)).map(l=>[l.legacyIndex,byId.get(l.id)]));
+  const completed=new Set(),boards={};let unlocked=0,levelIndex=0;
+  if(saved?.version===3){
+    for(const id of Array.isArray(saved.completedIds)?saved.completedIds:[])if(byId.has(id))completed.add(byId.get(id));
+    unlocked=byId.get(saved.unlockedId)??0;
+    for(const l of levels)if(saved.boards?.[l.id]&&typeof saved.boards[l.id]==='object')boards[l.id]=saved.boards[l.id];
+    levelIndex=byId.get(saved.currentId)??0;
+  }else{
+    const old=restoreProgress(saved,36);
+    for(const index of old.completed)if(legacy.has(index))completed.add(legacy.get(index));
+    unlocked=legacy.get(old.unlocked)??0;levelIndex=legacy.get(old.levelIndex)??0;
+    if(Number.isInteger(saved?.current)&&legacy.has(saved.current)&&Array.isArray(saved.placements))boards[levels[legacy.get(saved.current)].id]={version:saved.version,placements:saved.placements,rotations:saved.rotations,history:[]};
+  }
+  if(completed.size)unlocked=Math.max(unlocked,Math.min(levels.length-1,Math.max(...completed)+1));
+  unlocked=Math.max(0,Math.min(levels.length-1,unlocked));levelIndex=Math.min(unlocked,levelIndex);
+  return {completed,unlocked,levelIndex,boards,migrated:saved?.version!==3&&!!saved?.placements};
+}
+export function campaignSave(levels,{completed,unlocked,levelIndex,boards,sound}){
+  return {version:3,currentId:levels[levelIndex].id,unlockedId:levels[unlocked].id,completedIds:[...completed].map(i=>levels[i]?.id).filter(Boolean),boards,sound};
+}
+export function restoreHistory(level,board){
+  return (Array.isArray(board?.history)?board.history:[]).slice(-80).filter(state=>Array.isArray(state?.placements)&&state.placements.length===level.pieces.length&&state.placements.every((p,id)=>!p||canPlace(level,state.placements,id,p))).map(state=>({placements:state.placements.map(p=>p?{x:p.x,y:p.y,r:0}:null),rotations:level.pieces.map(()=>0)}));
+}
+export function placementIssue(level,placements,id,p){
+  if(!p)return 'outside';
+  const cells=turn(level.pieces[id].cells,p.r);
+  if(cells.some(([x,y])=>x+p.x<0||y+p.y<0||x+p.x>=level.n||y+p.y>=level.n))return 'outside';
+  return canPlace(level,placements,id,p)?null:'overlap';
+}
+export function placementMessage(issue){return issue==='outside'?'Keep the whole piece inside the square.':'That space is taken. Try another opening.';}
 // Fixed orientations are part of the rules, including fresh, restarted and saved games.
 export function restoreArrangement(level,saved=null){
-  const fresh=()=>({placements:level.pieces.map((piece,id)=>level.index===0&&id<2?{...piece.solution}:null),rotations:level.pieces.map(()=>0),repaired:false});
+  const fresh=()=>({placements:level.pieces.map((piece,id)=>(level.legacyIndex===0||level.id==='square-001')&&id<2?{...piece.solution}:null),rotations:level.pieces.map(()=>0),repaired:false});
   const result=fresh();
   if(!Array.isArray(saved?.placements)||saved.placements.length!==level.pieces.length)return result;
   const placements=saved.placements.map((p,id)=>{
@@ -34,7 +67,7 @@ export function restoreArrangement(level,saved=null){
     if(JSON.stringify(turn(level.pieces[id].cells,p.r))!==JSON.stringify(level.pieces[id].cells))return null;
     return {x:p.x,y:p.y,r:0};
   });
-  const migrated=saved.version!==2;
+  const migrated=!Number.isInteger(saved.version)||saved.version<2;
   if(placements.some((p,id)=>p&&!canPlace(level,placements,id,p)))return {...result,repaired:true};
   // A partial tiling from the rotating rules may be a dead end under fixed rules.
   if(migrated&&placements.some(Boolean)&&!solve(level,placements).solution)return {...result,repaired:true};

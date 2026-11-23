@@ -1,36 +1,31 @@
 {
-  "date": "2026-11-21",
-  "build": "1.3.0",
-  "rules": "fixed orientation; no player rotation",
+  "date": "2026-11-23",
+  "build": "1.4.0",
+  "campaign": {
+    "levels": 100,
+    "new_puzzles": 64,
+    "preserved_legacy_layouts": 36,
+    "phases": {
+      "Learn": "1\u201320",
+      "Connect": "21\u201340",
+      "Compare": "41\u201360",
+      "Plan": "61\u201380",
+      "Master": "81\u2013100"
+    },
+    "rotation": false,
+    "grading": "Five shuffled fixed-orientation searches, piece count, concavity and placement ambiguity; human difficulty not calibrated"
+  },
   "engine": {
-    "levels_solved_without_rotation": 36,
-    "checks_passed": 2209,
-    "mobile_geometry_checks_passed": 2405,
-    "progression_checks_passed": 11690,
-    "regression_evidence": "qa/fixed-orientation-solvability.json",
-    "save_migration_levels": 36,
-    "actual_hint_worker_levels": 36
+    "checks_passed": 6273,
+    "mobile_geometry_checks_passed": 6473,
+    "progression_checks_passed": 39696,
+    "levels_solved": 100,
+    "worker_hint_levels_verified": 100,
+    "legacy_save_round_trips": 74,
+    "independent_board_and_history_round_trip": true
   },
   "browser": {
-    "local_completed_through_pointer_drags": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-    ],
-    "local_viewport": {
-      "w": 375,
-      "h": 667
-    },
-    "verified": [
-      "hint uses displayed orientation",
-      "R and double-tap do not turn pieces",
-      "partial placement survives reload",
-      "restart keeps fitting orientations"
-    ],
-    "live_completed_through_pointer_drags": [
+    "local_completed_through_game_controls": [
       1,
       2,
       3,
@@ -66,33 +61,91 @@
       33,
       34,
       35,
-      36
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
     ],
-    "live_viewport": {
-      "w": 375,
-      "h": 667
-    },
-    "live_evidence": "qa/live-playthrough-1.3.0.json",
-    "live_rotation_used": false,
-    "normal_campaign_after_test": "1 of 36 complete; unchanged by isolated playthrough",
-    "legacy_save_browser_check": "Level5: unrotated placed piece retained and turned tray pieces refreshed"
+    "local_viewport": "375x667",
+    "local_playthrough": "qa/local-playthrough-1.4.0.json",
+    "input_methods": "First10 native pointer drags; remaining90 keyboard controls. Separate earlier IAB pointer run reached29 before testing connection reset.",
+    "verified": [
+      "Saved arrangement and Undo survive switching levels and reload",
+      "Outside-board feedback",
+      "Hint respects fixed orientation",
+      "Final nine-piece tray fits320x568 and844x390 without scrolling",
+      "Five phases each show20/20 after completion",
+      "Final square with incomplete earlier collection has accurate copy"
+    ],
+    "interruption": "Browser testing connection stalled twice; resumed using keyboard controls"
   },
   "publication": {
-    "status": "live",
-    "url": "https://squared.leolune.fun/",
-    "repository": "https://github.com/leolunelove/squared",
-    "source_commit": "87aa25348eb8629107e9e76eaf2aed1a96ba6f76",
-    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/44934936125",
-    "build": "success",
-    "deploy": "success",
-    "https_status": 200,
-    "ssl_verify_result": 0,
-    "live_build_matches_local": true,
-    "live_sha256": "5623ee85c8ca97ab565f271eadc58d17c5cee7ead5ed78c60ecfbf4d64e35693"
+    "status": "pending",
+    "url": "https://squared.leolune.fun/"
   },
   "not_verified": [
-    "physical phone touch feel",
-    "audible sound quality",
-    "physical vibration feedback"
+    "Physical-phone finger feel, sound and vibration",
+    "Human difficulty ratings and phase calibration"
   ]
 }

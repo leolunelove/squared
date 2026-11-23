@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.4.0 — 23 November 2026
+
+- Expanded the campaign to 100 levels in five phases: Learn, Connect, Compare, Plan and Master.
+- Added 64 new puzzles and regraded all levels using fixed orientations only.
+- Preserved original layouts and earned completions through permanent puzzle IDs.
+- Saved unfinished boards and Undo histories separately, including when switching levels or reloading.
+- Increased functional text size and contrast while keeping the existing visual style.
+- Added specific feedback for occupied spaces and pieces outside the square.
+- Added campaign, migration, independent-board and phase regression checks.
+
+
 ## 1.3.0 — 21 November 2026
 
 - Fixed every level for drag-only play: fresh games and restarts no longer turn pieces away from their fitting direction.

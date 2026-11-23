@@ -1,10 +1,1797 @@
 {
-  "method": "Three independently shuffled exact-cover searches per candidate, ranked within each size by median search nodes, boundary concavity, rectangular clues and placement ambiguity. This is a design aid, not human difficulty calibration.",
-  "seed": 15112026,
+  "rules": "Fixed orientations only",
+  "method": "Five independently shuffled exact-cover searches per candidate. Board size and piece count rise in stages; within each stage search effort, concavity, rectangular clues and placement ambiguity guide ordering. This is structural grading, not measured human difficulty. Original layouts retain stable IDs.",
+  "seed": 23112026,
   "levels": [
     {
+      "id": "square-001",
+      "level": 1,
+      "phase": 1,
+      "n": 3,
+      "pieces": 3,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        3,
+        3,
+        3
+      ],
+      "orientations": 3,
+      "placement_options": 11,
+      "median_search_nodes": 4,
+      "trials": [
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 15.685
+    },
+    {
+      "id": "square-002",
+      "level": 2,
+      "phase": 1,
+      "n": 3,
+      "pieces": 3,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        3,
+        3,
+        3
+      ],
+      "orientations": 3,
+      "placement_options": 11,
+      "median_search_nodes": 4,
+      "trials": [
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 15.685
+    },
+    {
+      "id": "square-037",
+      "level": 3,
+      "phase": 1,
+      "n": 3,
+      "pieces": 3,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        2,
+        3,
+        4
+      ],
+      "orientations": 3,
+      "placement_options": 13,
+      "median_search_nodes": 4,
+      "trials": [
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 9.705
+    },
+    {
+      "id": "square-038",
+      "level": 4,
+      "phase": 1,
+      "n": 3,
+      "pieces": 3,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        2,
+        3,
+        4
+      ],
+      "orientations": 3,
+      "placement_options": 12,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 4,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 19.579
+    },
+    {
+      "id": "square-039",
+      "level": 5,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 25,
+      "median_search_nodes": 5,
+      "trials": [
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 11.93
+    },
+    {
+      "id": "square-003",
+      "level": 6,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "orientations": 4,
+      "placement_options": 22,
+      "median_search_nodes": 5,
+      "trials": [
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 17.9
+    },
+    {
+      "id": "square-040",
+      "level": 7,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 23,
+      "median_search_nodes": 5,
+      "trials": [
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 17.91
+    },
+    {
+      "id": "square-005",
+      "level": 8,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "orientations": 4,
+      "placement_options": 25,
+      "median_search_nodes": 7,
+      "trials": [
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 18.25
+    },
+    {
+      "id": "square-041",
+      "level": 9,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 26,
+      "median_search_nodes": 7,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 18.26
+    },
+    {
+      "id": "square-004",
+      "level": 10,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 26,
+      "median_search_nodes": 5,
+      "trials": [
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 19.54
+    },
+    {
+      "id": "square-042",
+      "level": 11,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 28,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 19.739
+    },
+    {
+      "id": "square-043",
+      "level": 12,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        3,
+        3,
+        5,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 29,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 21.349
+    },
+    {
+      "id": "square-006",
       "level": 13,
-      "tier": "Tricky",
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        3,
+        4,
+        4,
+        5
+      ],
+      "orientations": 4,
+      "placement_options": 27,
+      "median_search_nodes": 8,
+      "trials": [
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 25.629
+    },
+    {
+      "id": "square-044",
+      "level": 14,
+      "phase": 1,
+      "n": 4,
+      "pieces": 4,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        3,
+        3,
+        4,
+        6
+      ],
+      "orientations": 4,
+      "placement_options": 26,
+      "median_search_nodes": 10,
+      "trials": [
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 5,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 26.535
+    },
+    {
+      "id": "square-045",
+      "level": 15,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 39,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 13.849
+    },
+    {
+      "id": "square-046",
+      "level": 16,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 44,
+      "median_search_nodes": 10,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 0.2
+        }
+      ],
+      "score": 19.115
+    },
+    {
+      "id": "square-047",
+      "level": 17,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 4,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 42,
+      "median_search_nodes": 17,
+      "trials": [
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 20,
+          "solved": true,
+          "ms": 5.3
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 21.779
+    },
+    {
+      "id": "square-048",
+      "level": 18,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 41,
+      "median_search_nodes": 11,
+      "trials": [
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.4
+        }
+      ],
+      "score": 23.09
+    },
+    {
+      "id": "square-049",
+      "level": 19,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 41,
+      "median_search_nodes": 14,
+      "trials": [
+        {
+          "nodes": 30,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 25.665
+    },
+    {
+      "id": "square-050",
+      "level": 20,
+      "phase": 1,
+      "n": 4,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "orientations": 5,
+      "placement_options": 41,
+      "median_search_nodes": 18,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.6
+        }
+      ],
+      "score": 28.393
+    },
+    {
+      "id": "square-051",
+      "level": 21,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        4,
+        4,
+        5,
+        6,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 52,
+      "median_search_nodes": 8,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.2
+        }
+      ],
+      "score": 16.879
+    },
+    {
+      "id": "square-010",
+      "level": 22,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        5,
+        6,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 57,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 17.029
+    },
+    {
+      "id": "square-052",
+      "level": 23,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        5,
+        6,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 50,
+      "median_search_nodes": 7,
+      "trials": [
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 21.5
+    },
+    {
+      "id": "square-053",
+      "level": 24,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        5,
+        6,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 56,
+      "median_search_nodes": 10,
+      "trials": [
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 23.835
+    },
+    {
+      "id": "square-054",
+      "level": 25,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        5,
+        6,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 52,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 24.579
+    },
+    {
+      "id": "square-009",
+      "level": 26,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 5,
+      "placement_options": 56,
+      "median_search_nodes": 6,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 24.619
+    },
+    {
+      "id": "square-055",
+      "level": 27,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 44,
+      "median_search_nodes": 9,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.0
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.0
+        }
+      ],
+      "score": 27.015
+    },
+    {
+      "id": "square-008",
+      "level": 28,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 48,
+      "median_search_nodes": 9,
+      "trials": [
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.1
+        }
+      ],
+      "score": 27.055
+    },
+    {
+      "id": "square-007",
+      "level": 29,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 5,
+      "placement_options": 41,
+      "median_search_nodes": 10,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 28.085
+    },
+    {
+      "id": "square-056",
+      "level": 30,
+      "phase": 2,
+      "n": 5,
+      "pieces": 5,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        6
+      ],
+      "orientations": 5,
+      "placement_options": 50,
+      "median_search_nodes": 14,
+      "trials": [
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 6,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.2
+        }
+      ],
+      "score": 31.755
+    },
+    {
+      "id": "square-057",
+      "level": 31,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        6
+      ],
+      "orientations": 7,
+      "placement_options": 127,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 45,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 30,
+          "solved": true,
+          "ms": 2.4
+        }
+      ],
+      "score": 22.729
+    },
+    {
+      "id": "square-012",
+      "level": 32,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        5,
+        6,
+        6
+      ],
+      "orientations": 7,
+      "placement_options": 121,
+      "median_search_nodes": 11,
+      "trials": [
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 1.7
+        }
+      ],
+      "score": 23.89
+    },
+    {
+      "id": "square-011",
+      "level": 33,
+      "phase": 2,
+      "n": 6,
+      "pieces": 6,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "orientations": 6,
+      "placement_options": 83,
+      "median_search_nodes": 7,
+      "trials": [
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.1
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 7,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 24.83
+    },
+    {
+      "id": "square-058",
+      "level": 34,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        5,
+        7,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 117,
+      "median_search_nodes": 12,
+      "trials": [
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 1.4
+        }
+      ],
+      "score": 29.374
+    },
+    {
+      "id": "square-059",
+      "level": 35,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        5,
+        7,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 119,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 31.649
+    },
+    {
+      "id": "square-060",
+      "level": 36,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        6
+      ],
+      "orientations": 7,
+      "placement_options": 119,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 2.1
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.9
+        }
+      ],
+      "score": 33.249
+    },
+    {
+      "id": "square-061",
+      "level": 37,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 116,
+      "median_search_nodes": 18,
+      "trials": [
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 8,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.7
+        }
+      ],
+      "score": 35.143
+    },
+    {
+      "id": "square-062",
+      "level": 38,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 113,
+      "median_search_nodes": 23,
+      "trials": [
+        {
+          "nodes": 28,
+          "solved": true,
+          "ms": 4.1
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 1.6
+        },
+        {
+          "nodes": 20,
+          "solved": true,
+          "ms": 2.0
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.7
+        }
+      ],
+      "score": 37.81
+    },
+    {
+      "id": "square-013",
+      "level": 39,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
       "concavity": 4,
       "rectangles": 3,
       "areas": [
@@ -16,583 +1803,1237 @@
         6,
         7
       ],
-      "orientations": 21,
-      "placement_options": 373,
-      "median_search_nodes": 17,
+      "orientations": 7,
+      "placement_options": 131,
+      "median_search_nodes": 53,
       "trials": [
         {
-          "nodes": 17,
-          "solved": true,
-          "ms": 1.3
-        },
-        {
-          "nodes": 14,
-          "solved": true,
-          "ms": 1.6
-        },
-        {
-          "nodes": 21,
-          "solved": true,
-          "ms": 1.4
-        }
-      ],
-      "score": 33.99
-    },
-    {
-      "level": 14,
-      "tier": "Tricky",
-      "concavity": 4,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        5,
-        6,
-        6,
-        7
-      ],
-      "orientations": 25,
-      "placement_options": 441,
-      "median_search_nodes": 22,
-      "trials": [
-        {
-          "nodes": 18,
-          "solved": true,
-          "ms": 1.3
-        },
-        {
-          "nodes": 22,
-          "solved": true,
-          "ms": 1.3
-        },
-        {
-          "nodes": 74,
-          "solved": true,
-          "ms": 3.8
-        }
-      ],
-      "score": 45.8
-    },
-    {
-      "level": 15,
-      "tier": "Tricky",
-      "concavity": 4,
-      "rectangles": 0,
-      "areas": [
-        4,
-        4,
-        4,
-        5,
-        6,
-        6,
-        7
-      ],
-      "orientations": 28,
-      "placement_options": 476,
-      "median_search_nodes": 26,
-      "trials": [
-        {
-          "nodes": 22,
-          "solved": true,
-          "ms": 1.2
-        },
-        {
-          "nodes": 91,
-          "solved": true,
-          "ms": 4.6
-        },
-        {
-          "nodes": 26,
-          "solved": true,
-          "ms": 1.9
-        }
-      ],
-      "score": 52.25
-    },
-    {
-      "level": 16,
-      "tier": "Tricky",
-      "concavity": 4,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        5,
-        6,
-        6,
-        7
-      ],
-      "orientations": 23,
-      "placement_options": 397,
-      "median_search_nodes": 65,
-      "trials": [
-        {
-          "nodes": 65,
-          "solved": true,
-          "ms": 2.6
-        },
-        {
-          "nodes": 30,
-          "solved": true,
-          "ms": 2.2
-        },
-        {
-          "nodes": 85,
-          "solved": true,
-          "ms": 3.7
-        }
-      ],
-      "score": 60.83
-    },
-    {
-      "level": 17,
-      "tier": "Tricky",
-      "concavity": 4,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        5,
-        5,
-        5,
-        6,
-        7
-      ],
-      "orientations": 24,
-      "placement_options": 404,
-      "median_search_nodes": 196,
-      "trials": [
-        {
-          "nodes": 14,
-          "solved": true,
-          "ms": 0.9
-        },
-        {
-          "nodes": 464,
-          "solved": true,
-          "ms": 22.0
-        },
-        {
-          "nodes": 196,
-          "solved": true,
-          "ms": 8.7
-        }
-      ],
-      "score": 76.64
-    },
-    {
-      "level": 18,
-      "tier": "Tricky",
-      "concavity": 4,
-      "rectangles": 0,
-      "areas": [
-        4,
-        4,
-        4,
-        5,
-        6,
-        6,
-        7
-      ],
-      "orientations": 26,
-      "placement_options": 460,
-      "median_search_nodes": 626,
-      "trials": [
-        {
-          "nodes": 626,
-          "solved": true,
-          "ms": 31.2
-        },
-        {
-          "nodes": 204,
-          "solved": true,
-          "ms": 11.5
-        },
-        {
-          "nodes": 721,
-          "solved": true,
-          "ms": 50.5
-        }
-      ],
-      "score": 97.56
-    },
-    {
-      "level": 19,
-      "tier": "Intricate",
-      "concavity": 0,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 28,
-      "placement_options": 496,
-      "median_search_nodes": 27,
-      "trials": [
-        {
-          "nodes": 63,
-          "solved": true,
-          "ms": 2.9
-        },
-        {
-          "nodes": 12,
-          "solved": true,
-          "ms": 1.0
-        },
-        {
-          "nodes": 27,
-          "solved": true,
-          "ms": 1.5
-        }
-      ],
-      "score": 46.06
-    },
-    {
-      "level": 20,
-      "tier": "Intricate",
-      "concavity": 0,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 23,
-      "placement_options": 401,
-      "median_search_nodes": 51,
-      "trials": [
-        {
-          "nodes": 68,
-          "solved": true,
-          "ms": 2.7
-        },
-        {
-          "nodes": 11,
-          "solved": true,
-          "ms": 0.8
-        },
-        {
-          "nodes": 51,
-          "solved": true,
-          "ms": 1.9
-        }
-      ],
-      "score": 54.61
-    },
-    {
-      "level": 21,
-      "tier": "Intricate",
-      "concavity": 2,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 25,
-      "placement_options": 469,
-      "median_search_nodes": 82,
-      "trials": [
-        {
-          "nodes": 82,
-          "solved": true,
-          "ms": 4.3
-        },
-        {
-          "nodes": 73,
-          "solved": true,
-          "ms": 2.4
-        },
-        {
-          "nodes": 275,
-          "solved": true,
-          "ms": 10.3
-        }
-      ],
-      "score": 63.03
-    },
-    {
-      "level": 22,
-      "tier": "Intricate",
-      "concavity": 0,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 27,
-      "placement_options": 489,
-      "median_search_nodes": 131,
-      "trials": [
-        {
-          "nodes": 21,
-          "solved": true,
-          "ms": 1.4
-        },
-        {
-          "nodes": 131,
-          "solved": true,
-          "ms": 5.2
-        },
-        {
-          "nodes": 164,
-          "solved": true,
-          "ms": 5.4
-        }
-      ],
-      "score": 68.4
-    },
-    {
-      "level": 23,
-      "tier": "Intricate",
-      "concavity": 0,
-      "rectangles": 1,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 29,
-      "placement_options": 513,
-      "median_search_nodes": 250,
-      "trials": [
-        {
-          "nodes": 596,
-          "solved": true,
-          "ms": 27.0
-        },
-        {
-          "nodes": 116,
-          "solved": true,
-          "ms": 4.5
-        },
-        {
-          "nodes": 250,
-          "solved": true,
-          "ms": 8.7
-        }
-      ],
-      "score": 77.77
-    },
-    {
-      "level": 24,
-      "tier": "Intricate",
-      "concavity": 2,
-      "rectangles": 0,
-      "areas": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        5,
-        5,
-        5
-      ],
-      "orientations": 28,
-      "placement_options": 508,
-      "median_search_nodes": 346,
-      "trials": [
-        {
-          "nodes": 46,
-          "solved": true,
-          "ms": 2.2
-        },
-        {
-          "nodes": 346,
-          "solved": true,
-          "ms": 14.3
-        },
-        {
-          "nodes": 476,
-          "solved": true,
-          "ms": 21.3
-        }
-      ],
-      "score": 87.82
-    },
-    {
-      "level": 25,
-      "tier": "Expert",
-      "concavity": 4,
-      "rectangles": 0,
-      "areas": [
-        5,
-        5,
-        5,
-        5,
-        6,
-        7,
-        8,
-        8
-      ],
-      "orientations": 32,
-      "placement_options": 736,
-      "median_search_nodes": 22,
-      "trials": [
-        {
-          "nodes": 15,
-          "solved": true,
-          "ms": 1.8
-        },
-        {
-          "nodes": 22,
-          "solved": true,
-          "ms": 2.9
-        },
-        {
-          "nodes": 505,
-          "solved": true,
-          "ms": 57.9
-        }
-      ],
-      "score": 50.98
-    },
-    {
-      "level": 26,
-      "tier": "Expert",
-      "concavity": 4,
-      "rectangles": 0,
-      "areas": [
-        5,
-        5,
-        5,
-        6,
-        6,
-        7,
-        7,
-        8
-      ],
-      "orientations": 30,
-      "placement_options": 642,
-      "median_search_nodes": 91,
-      "trials": [
-        {
-          "nodes": 134,
-          "solved": true,
-          "ms": 14.6
-        },
-        {
-          "nodes": 46,
-          "solved": true,
-          "ms": 6.3
-        },
-        {
-          "nodes": 91,
-          "solved": true,
-          "ms": 8.7
-        }
-      ],
-      "score": 70.6
-    },
-    {
-      "level": 27,
-      "tier": "Expert",
-      "concavity": 0,
-      "rectangles": 0,
-      "areas": [
-        5,
-        5,
-        6,
-        6,
-        6,
-        6,
-        7,
-        8
-      ],
-      "orientations": 28,
-      "placement_options": 628,
-      "median_search_nodes": 155,
-      "trials": [
-        {
-          "nodes": 155,
-          "solved": true,
-          "ms": 13.4
-        },
-        {
-          "nodes": 116,
-          "solved": true,
-          "ms": 11.3
-        },
-        {
-          "nodes": 265,
-          "solved": true,
-          "ms": 29.0
-        }
-      ],
-      "score": 75.37
-    },
-    {
-      "level": 28,
-      "tier": "Expert",
-      "concavity": 2,
-      "rectangles": 0,
-      "areas": [
-        5,
-        5,
-        5,
-        5,
-        6,
-        7,
-        8,
-        8
-      ],
-      "orientations": 32,
-      "placement_options": 700,
-      "median_search_nodes": 280,
-      "trials": [
-        {
-          "nodes": 28,
+          "nodes": 77,
           "solved": true,
           "ms": 3.3
         },
         {
-          "nodes": 280,
+          "nodes": 12,
           "solved": true,
-          "ms": 33.0
+          "ms": 0.4
         },
         {
-          "nodes": 288,
+          "nodes": 32,
           "solved": true,
-          "ms": 33.4
+          "ms": 1.3
+        },
+        {
+          "nodes": 56,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 53,
+          "solved": true,
+          "ms": 3.3
         }
       ],
-      "score": 85.54
+      "score": 41.549
     },
     {
-      "level": 29,
-      "tier": "Expert",
+      "id": "square-063",
+      "level": 40,
+      "phase": 2,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 125,
+      "median_search_nodes": 69,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 1.9
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 69,
+          "solved": true,
+          "ms": 3.2
+        },
+        {
+          "nodes": 96,
+          "solved": true,
+          "ms": 4.0
+        },
+        {
+          "nodes": 98,
+          "solved": true,
+          "ms": 5.0
+        }
+      ],
+      "score": 45.884
+    },
+    {
+      "id": "square-064",
+      "level": 41,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        5,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 108,
+      "median_search_nodes": 9,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 24.655
+    },
+    {
+      "id": "square-016",
+      "level": 42,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
       "concavity": 4,
       "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 128,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 3.0
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 3.5
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.4
+        }
+      ],
+      "score": 31.939
+    },
+    {
+      "id": "square-065",
+      "level": 43,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 121,
+      "median_search_nodes": 21,
+      "trials": [
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 20,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 33.885
+    },
+    {
+      "id": "square-015",
+      "level": 44,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 119,
+      "median_search_nodes": 15,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.4
+        }
+      ],
+      "score": 36.39
+    },
+    {
+      "id": "square-017",
+      "level": 45,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        5,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 120,
+      "median_search_nodes": 27,
+      "trials": [
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 31,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 30,
+          "solved": true,
+          "ms": 1.6
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 0.6
+        }
+      ],
+      "score": 39.859
+    },
+    {
+      "id": "square-014",
+      "level": 46,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 129,
+      "median_search_nodes": 34,
+      "trials": [
+        {
+          "nodes": 49,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 49,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 34,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.2
+        }
+      ],
+      "score": 42.524
+    },
+    {
+      "id": "square-018",
+      "level": 47,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 125,
+      "median_search_nodes": 34,
+      "trials": [
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 39,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 34,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 39,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 32,
+          "solved": true,
+          "ms": 1.5
+        }
+      ],
+      "score": 45.484
+    },
+    {
+      "id": "square-066",
+      "level": 48,
+      "phase": 3,
+      "n": 6,
+      "pieces": 7,
+      "concavity": 4,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7
+      ],
+      "orientations": 7,
+      "placement_options": 126,
+      "median_search_nodes": 59,
+      "trials": [
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 10.8
+        },
+        {
+          "nodes": 60,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 62,
+          "solved": true,
+          "ms": 3.0
+        },
+        {
+          "nodes": 59,
+          "solved": true,
+          "ms": 4.2
+        }
+      ],
+      "score": 45.715
+    },
+    {
+      "id": "square-067",
+      "level": 49,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 154,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.5
+        }
+      ],
+      "score": 27.599
+    },
+    {
+      "id": "square-021",
+      "level": 50,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 156,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 25,
+          "solved": true,
+          "ms": 2.1
+        },
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 1.0
+        }
+      ],
+      "score": 30.619
+    },
+    {
+      "id": "square-068",
+      "level": 51,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 150,
+      "median_search_nodes": 16,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.5
+        }
+      ],
+      "score": 34.2
+    },
+    {
+      "id": "square-024",
+      "level": 52,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 147,
+      "median_search_nodes": 18,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 1.6
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 2.3
+        }
+      ],
+      "score": 37.053
+    },
+    {
+      "id": "square-069",
+      "level": 53,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 152,
+      "median_search_nodes": 22,
+      "trials": [
+        {
+          "nodes": 32,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 32,
+          "solved": true,
+          "ms": 0.7
+        }
+      ],
+      "score": 37.708
+    },
+    {
+      "id": "square-070",
+      "level": 54,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 149,
+      "median_search_nodes": 48,
+      "trials": [
+        {
+          "nodes": 84,
+          "solved": true,
+          "ms": 3.5
+        },
+        {
+          "nodes": 48,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 88,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 36,
+          "solved": true,
+          "ms": 1.1
+        }
+      ],
+      "score": 40.408
+    },
+    {
+      "id": "square-019",
+      "level": 55,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 143,
+      "median_search_nodes": 40,
+      "trials": [
+        {
+          "nodes": 40,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 44,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 42,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 0.7
+        }
+      ],
+      "score": 41.29
+    },
+    {
+      "id": "square-023",
+      "level": 56,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 147,
+      "median_search_nodes": 40,
+      "trials": [
+        {
+          "nodes": 64,
+          "solved": true,
+          "ms": 2.6
+        },
+        {
+          "nodes": 47,
+          "solved": true,
+          "ms": 2.0
+        },
+        {
+          "nodes": 40,
+          "solved": true,
+          "ms": 1.7
+        },
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.5
+        }
+      ],
+      "score": 41.33
+    },
+    {
+      "id": "square-022",
+      "level": 57,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 151,
+      "median_search_nodes": 41,
+      "trials": [
+        {
+          "nodes": 66,
+          "solved": true,
+          "ms": 1.7
+        },
+        {
+          "nodes": 41,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.2
+        },
+        {
+          "nodes": 77,
+          "solved": true,
+          "ms": 1.7
+        },
+        {
+          "nodes": 41,
+          "solved": true,
+          "ms": 2.6
+        }
+      ],
+      "score": 41.649
+    },
+    {
+      "id": "square-071",
+      "level": 58,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 148,
+      "median_search_nodes": 69,
+      "trials": [
+        {
+          "nodes": 43,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 69,
+          "solved": true,
+          "ms": 3.3
+        },
+        {
+          "nodes": 75,
+          "solved": true,
+          "ms": 2.4
+        },
+        {
+          "nodes": 99,
+          "solved": true,
+          "ms": 7.3
+        },
+        {
+          "nodes": 69,
+          "solved": true,
+          "ms": 6.4
+        }
+      ],
+      "score": 44.514
+    },
+    {
+      "id": "square-020",
+      "level": 59,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 147,
+      "median_search_nodes": 65,
+      "trials": [
+        {
+          "nodes": 71,
+          "solved": true,
+          "ms": 2.3
+        },
+        {
+          "nodes": 63,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 66,
+          "solved": true,
+          "ms": 1.8
+        },
+        {
+          "nodes": 65,
+          "solved": true,
+          "ms": 2.3
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.4
+        }
+      ],
+      "score": 46.825
+    },
+    {
+      "id": "square-072",
+      "level": 60,
+      "phase": 3,
+      "n": 6,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "orientations": 8,
+      "placement_options": 158,
+      "median_search_nodes": 183,
+      "trials": [
+        {
+          "nodes": 263,
+          "solved": true,
+          "ms": 14.3
+        },
+        {
+          "nodes": 95,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 291,
+          "solved": true,
+          "ms": 14.6
+        },
+        {
+          "nodes": 183,
+          "solved": true,
+          "ms": 14.9
+        },
+        {
+          "nodes": 164,
+          "solved": true,
+          "ms": 3.3
+        }
+      ],
+      "score": 57.368
+    },
+    {
+      "id": "square-025",
+      "level": 61,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 184,
+      "median_search_nodes": 11,
+      "trials": [
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 33.72
+    },
+    {
+      "id": "square-073",
+      "level": 62,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 182,
+      "median_search_nodes": 13,
+      "trials": [
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 0.8
+        }
+      ],
+      "score": 33.879
+    },
+    {
+      "id": "square-028",
+      "level": 63,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 175,
+      "median_search_nodes": 16,
+      "trials": [
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 1.5
+        }
+      ],
+      "score": 36.05
+    },
+    {
+      "id": "square-074",
+      "level": 64,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 0,
       "areas": [
         5,
         5,
@@ -603,31 +3044,44 @@
         7,
         7
       ],
-      "orientations": 30,
-      "placement_options": 688,
-      "median_search_nodes": 595,
+      "orientations": 8,
+      "placement_options": 185,
+      "median_search_nodes": 16,
       "trials": [
         {
-          "nodes": 595,
+          "nodes": 17,
           "solved": true,
-          "ms": 59.0
+          "ms": 0.7
         },
         {
-          "nodes": 376,
+          "nodes": 10,
           "solved": true,
-          "ms": 35.7
+          "ms": 0.6
         },
         {
-          "nodes": 627,
+          "nodes": 16,
           "solved": true,
-          "ms": 71.7
+          "ms": 0.7
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 0.6
         }
       ],
-      "score": 93.74
+      "score": 36.15
     },
     {
-      "level": 30,
-      "tier": "Expert",
+      "id": "square-030",
+      "level": 65,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
       "concavity": 2,
       "rectangles": 0,
       "areas": [
@@ -640,31 +3094,800 @@
         7,
         7
       ],
-      "orientations": 32,
-      "placement_options": 768,
-      "median_search_nodes": 1630,
+      "orientations": 8,
+      "placement_options": 192,
+      "median_search_nodes": 17,
       "trials": [
         {
-          "nodes": 1977,
+          "nodes": 24,
           "solved": true,
-          "ms": 193.5
+          "ms": 1.5
         },
         {
-          "nodes": 1205,
+          "nodes": 17,
           "solved": true,
-          "ms": 113.5
+          "ms": 1.2
         },
         {
-          "nodes": 1630,
+          "nodes": 16,
           "solved": true,
-          "ms": 166.3
+          "ms": 1.0
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.8
+        },
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.6
         }
       ],
-      "score": 111.19
+      "score": 36.879
     },
     {
-      "level": 31,
-      "tier": "Master",
+      "id": "square-075",
+      "level": 66,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        5,
+        6,
+        6,
+        6,
+        6,
+        6,
+        7,
+        7
+      ],
+      "orientations": 8,
+      "placement_options": 184,
+      "median_search_nodes": 23,
+      "trials": [
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 2.0
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.4
+        },
+        {
+          "nodes": 25,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 0.9
+        }
+      ],
+      "score": 37.12
+    },
+    {
+      "id": "square-026",
+      "level": 67,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 173,
+      "median_search_nodes": 16,
+      "trials": [
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 1.0
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 0.3
+        },
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.3
+        }
+      ],
+      "score": 37.63
+    },
+    {
+      "id": "square-076",
+      "level": 68,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 189,
+      "median_search_nodes": 22,
+      "trials": [
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 20,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 1.7
+        },
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 1.1
+        }
+      ],
+      "score": 38.078
+    },
+    {
+      "id": "square-077",
+      "level": 69,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        5,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 192,
+      "median_search_nodes": 29,
+      "trials": [
+        {
+          "nodes": 28,
+          "solved": true,
+          "ms": 4.4
+        },
+        {
+          "nodes": 43,
+          "solved": true,
+          "ms": 3.9
+        },
+        {
+          "nodes": 51,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 16,
+          "solved": true,
+          "ms": 1.8
+        },
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 1.9
+        }
+      ],
+      "score": 39.775
+    },
+    {
+      "id": "square-027",
+      "level": 70,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 0,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        7,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 178,
+      "median_search_nodes": 26,
+      "trials": [
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.3
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 26,
+          "solved": true,
+          "ms": 1.6
+        },
+        {
+          "nodes": 27,
+          "solved": true,
+          "ms": 1.4
+        }
+      ],
+      "score": 39.819
+    },
+    {
+      "id": "square-078",
+      "level": 71,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        7,
+        7,
+        7
+      ],
+      "orientations": 8,
+      "placement_options": 185,
+      "median_search_nodes": 22,
+      "trials": [
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.5
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 2.3
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 0.9
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 0.4
+        }
+      ],
+      "score": 41.238
+    },
+    {
+      "id": "square-079",
+      "level": 72,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 6,
+      "rectangles": 1,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 199,
+      "median_search_nodes": 29,
+      "trials": [
+        {
+          "nodes": 29,
+          "solved": true,
+          "ms": 2.8
+        },
+        {
+          "nodes": 22,
+          "solved": true,
+          "ms": 1.4
+        },
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 4.2
+        },
+        {
+          "nodes": 39,
+          "solved": true,
+          "ms": 5.3
+        },
+        {
+          "nodes": 36,
+          "solved": true,
+          "ms": 2.2
+        }
+      ],
+      "score": 43.045
+    },
+    {
+      "id": "square-029",
+      "level": 73,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 4,
+      "rectangles": 1,
+      "areas": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        7,
+        7,
+        7
+      ],
+      "orientations": 8,
+      "placement_options": 187,
+      "median_search_nodes": 44,
+      "trials": [
+        {
+          "nodes": 42,
+          "solved": true,
+          "ms": 1.8
+        },
+        {
+          "nodes": 44,
+          "solved": true,
+          "ms": 2.6
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 46,
+          "solved": true,
+          "ms": 3.8
+        },
+        {
+          "nodes": 46,
+          "solved": true,
+          "ms": 4.1
+        }
+      ],
+      "score": 46.005
+    },
+    {
+      "id": "square-080",
+      "level": 74,
+      "phase": 4,
+      "n": 7,
+      "pieces": 8,
+      "concavity": 8,
+      "rectangles": 0,
+      "areas": [
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "orientations": 8,
+      "placement_options": 188,
+      "median_search_nodes": 45,
+      "trials": [
+        {
+          "nodes": 45,
+          "solved": true,
+          "ms": 14.1
+        },
+        {
+          "nodes": 33,
+          "solved": true,
+          "ms": 22.2
+        },
+        {
+          "nodes": 48,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 49,
+          "solved": true,
+          "ms": 5.9
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 0.6
+        }
+      ],
+      "score": 52.468
+    },
+    {
+      "id": "square-081",
+      "level": 75,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        6,
+        7,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 214,
+      "median_search_nodes": 23,
+      "trials": [
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 2.6
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 2.7
+        },
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 8.6
+        },
+        {
+          "nodes": 23,
+          "solved": true,
+          "ms": 3.8
+        },
+        {
+          "nodes": 25,
+          "solved": true,
+          "ms": 3.3
+        }
+      ],
+      "score": 37.42
+    },
+    {
+      "id": "square-082",
+      "level": 76,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 0,
+      "rectangles": 3,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        6,
+        7,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 227,
+      "median_search_nodes": 62,
+      "trials": [
+        {
+          "nodes": 49,
+          "solved": true,
+          "ms": 10.8
+        },
+        {
+          "nodes": 344,
+          "solved": true,
+          "ms": 96.2
+        },
+        {
+          "nodes": 330,
+          "solved": true,
+          "ms": 193.6
+        },
+        {
+          "nodes": 60,
+          "solved": true,
+          "ms": 28.6
+        },
+        {
+          "nodes": 62,
+          "solved": true,
+          "ms": 27.4
+        }
+      ],
+      "score": 41.088
+    },
+    {
+      "id": "square-083",
+      "level": 77,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        5,
+        6,
+        7,
+        7,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 230,
+      "median_search_nodes": 39,
+      "trials": [
+        {
+          "nodes": 86,
+          "solved": true,
+          "ms": 7.2
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 3.7
+        },
+        {
+          "nodes": 110,
+          "solved": true,
+          "ms": 13.2
+        },
+        {
+          "nodes": 38,
+          "solved": true,
+          "ms": 1.8
+        },
+        {
+          "nodes": 39,
+          "solved": true,
+          "ms": 2.6
+        }
+      ],
+      "score": 43.475
+    },
+    {
+      "id": "square-084",
+      "level": 78,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        4,
+        4,
+        4,
+        5,
+        5,
+        6,
+        7,
+        7,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 231,
+      "median_search_nodes": 51,
+      "trials": [
+        {
+          "nodes": 54,
+          "solved": true,
+          "ms": 4.2
+        },
+        {
+          "nodes": 51,
+          "solved": true,
+          "ms": 10.3
+        },
+        {
+          "nodes": 21,
+          "solved": true,
+          "ms": 5.4
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 73,
+          "solved": true,
+          "ms": 11.7
+        }
+      ],
+      "score": 46.514
+    },
+    {
+      "id": "square-085",
+      "level": 79,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 227,
+      "median_search_nodes": 92,
+      "trials": [
+        {
+          "nodes": 18,
+          "solved": true,
+          "ms": 2.7
+        },
+        {
+          "nodes": 92,
+          "solved": true,
+          "ms": 13.6
+        },
+        {
+          "nodes": 92,
+          "solved": true,
+          "ms": 39.1
+        },
+        {
+          "nodes": 92,
+          "solved": true,
+          "ms": 234.8
+        },
+        {
+          "nodes": 83,
+          "solved": true,
+          "ms": 16.6
+        }
+      ],
+      "score": 50.183
+    },
+    {
+      "id": "square-086",
+      "level": 80,
+      "phase": 4,
+      "n": 7,
+      "pieces": 9,
+      "concavity": 4,
+      "rectangles": 0,
+      "areas": [
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        7
+      ],
+      "orientations": 9,
+      "placement_options": 237,
+      "median_search_nodes": 124,
+      "trials": [
+        {
+          "nodes": 77,
+          "solved": true,
+          "ms": 8.5
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 1.5
+        },
+        {
+          "nodes": 124,
+          "solved": true,
+          "ms": 10.5
+        },
+        {
+          "nodes": 156,
+          "solved": true,
+          "ms": 17.2
+        },
+        {
+          "nodes": 126,
+          "solved": true,
+          "ms": 6.1
+        }
+      ],
+      "score": 61.296
+    },
+    {
+      "id": "square-031",
+      "level": 81,
+      "phase": 5,
+      "n": 8,
+      "pieces": 8,
       "concavity": 16,
       "rectangles": 0,
       "areas": [
@@ -677,68 +3900,44 @@
         8,
         9
       ],
-      "orientations": 32,
-      "placement_options": 912,
-      "median_search_nodes": 33,
+      "orientations": 8,
+      "placement_options": 228,
+      "median_search_nodes": 9,
       "trials": [
         {
-          "nodes": 52,
+          "nodes": 9,
           "solved": true,
-          "ms": 8.2
+          "ms": 0.6
         },
         {
-          "nodes": 33,
+          "nodes": 14,
           "solved": true,
-          "ms": 6.1
+          "ms": 0.5
         },
         {
-          "nodes": 13,
+          "nodes": 9,
           "solved": true,
-          "ms": 2.4
+          "ms": 0.6
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 1.2
+        },
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.5
         }
       ],
-      "score": 65.72
+      "score": 41.655
     },
     {
-      "level": 32,
-      "tier": "Master",
-      "concavity": 2,
-      "rectangles": 1,
-      "areas": [
-        7,
-        7,
-        7,
-        8,
-        8,
-        9,
-        9,
-        9
-      ],
-      "orientations": 30,
-      "placement_options": 858,
-      "median_search_nodes": 101,
-      "trials": [
-        {
-          "nodes": 101,
-          "solved": true,
-          "ms": 12.9
-        },
-        {
-          "nodes": 64,
-          "solved": true,
-          "ms": 8.9
-        },
-        {
-          "nodes": 153,
-          "solved": true,
-          "ms": 20.8
-        }
-      ],
-      "score": 67.56
-    },
-    {
-      "level": 33,
-      "tier": "Master",
+      "id": "square-033",
+      "level": 82,
+      "phase": 5,
+      "n": 8,
+      "pieces": 8,
       "concavity": 2,
       "rectangles": 0,
       "areas": [
@@ -751,31 +3950,94 @@
         9,
         9
       ],
-      "orientations": 32,
-      "placement_options": 892,
-      "median_search_nodes": 99,
+      "orientations": 8,
+      "placement_options": 223,
+      "median_search_nodes": 14,
       "trials": [
         {
-          "nodes": 100,
+          "nodes": 14,
           "solved": true,
-          "ms": 16.4
+          "ms": 0.9
         },
         {
-          "nodes": 99,
+          "nodes": 19,
           "solved": true,
-          "ms": 17.8
+          "ms": 0.7
         },
         {
-          "nodes": 52,
+          "nodes": 9,
           "solved": true,
-          "ms": 6.8
+          "ms": 1.4
+        },
+        {
+          "nodes": 13,
+          "solved": true,
+          "ms": 1.1
+        },
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 1.0
         }
       ],
-      "score": 71.41
+      "score": 35.085
     },
     {
-      "level": 34,
-      "tier": "Master",
+      "id": "square-032",
+      "level": 83,
+      "phase": 5,
+      "n": 8,
+      "pieces": 8,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        7,
+        7,
+        7,
+        8,
+        8,
+        9,
+        9,
+        9
+      ],
+      "orientations": 8,
+      "placement_options": 232,
+      "median_search_nodes": 15,
+      "trials": [
+        {
+          "nodes": 9,
+          "solved": true,
+          "ms": 0.6
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 20,
+          "solved": true,
+          "ms": 3.6
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 0.7
+        },
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 1.2
+        }
+      ],
+      "score": 32.92
+    },
+    {
+      "id": "square-034",
+      "level": 84,
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
       "concavity": 4,
       "rectangles": 0,
       "areas": [
@@ -789,31 +4051,44 @@
         8,
         8
       ],
-      "orientations": 36,
-      "placement_options": 1072,
-      "median_search_nodes": 1433,
+      "orientations": 9,
+      "placement_options": 268,
+      "median_search_nodes": 19,
       "trials": [
         {
-          "nodes": 1433,
+          "nodes": 10,
           "solved": true,
-          "ms": 257.6
+          "ms": 1.4
         },
         {
-          "nodes": 1524,
+          "nodes": 31,
           "solved": true,
-          "ms": 258.9
+          "ms": 7.0
         },
         {
-          "nodes": 343,
+          "nodes": 19,
           "solved": true,
-          "ms": 46.1
+          "ms": 1.8
+        },
+        {
+          "nodes": 11,
+          "solved": true,
+          "ms": 11.9
+        },
+        {
+          "nodes": 31,
+          "solved": true,
+          "ms": 2.7
         }
       ],
-      "score": 107.66
+      "score": 40.455
     },
     {
-      "level": 35,
-      "tier": "Master",
+      "id": "square-035",
+      "level": 85,
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
       "concavity": 0,
       "rectangles": 0,
       "areas": [
@@ -827,31 +4102,44 @@
         8,
         8
       ],
-      "orientations": 34,
-      "placement_options": 1060,
-      "median_search_nodes": 2317,
+      "orientations": 9,
+      "placement_options": 280,
+      "median_search_nodes": 24,
       "trials": [
         {
-          "nodes": 3231,
+          "nodes": 24,
           "solved": true,
-          "ms": 516.1
+          "ms": 4.3
         },
         {
-          "nodes": 2317,
+          "nodes": 28,
           "solved": true,
-          "ms": 364.6
+          "ms": 4.8
         },
         {
-          "nodes": 1499,
+          "nodes": 21,
           "solved": true,
-          "ms": 247.2
+          "ms": 8.1
+        },
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 2.1
+        },
+        {
+          "nodes": 28,
+          "solved": true,
+          "ms": 2.2
         }
       ],
-      "score": 111.79
+      "score": 39.951
     },
     {
-      "level": 36,
-      "tier": "Master",
+      "id": "square-036",
+      "level": 86,
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
       "concavity": 2,
       "rectangles": 0,
       "areas": [
@@ -865,27 +4153,752 @@
         8,
         8
       ],
-      "orientations": 36,
-      "placement_options": 1116,
-      "median_search_nodes": 2667,
+      "orientations": 9,
+      "placement_options": 279,
+      "median_search_nodes": 44,
       "trials": [
         {
-          "nodes": 2667,
+          "nodes": 28,
           "solved": true,
-          "ms": 875.2
+          "ms": 4.7
         },
         {
-          "nodes": 1954,
+          "nodes": 47,
           "solved": true,
-          "ms": 306.6
+          "ms": 4.9
         },
         {
-          "nodes": 2917,
+          "nodes": 44,
           "solved": true,
-          "ms": 497.4
+          "ms": 5.1
+        },
+        {
+          "nodes": 10,
+          "solved": true,
+          "ms": 9.3
+        },
+        {
+          "nodes": 46,
+          "solved": true,
+          "ms": 6.4
         }
       ],
-      "score": 115.22
+      "score": 48.325
+    },
+    {
+      "id": "square-087",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 297,
+      "median_search_nodes": 134,
+      "trials": [
+        {
+          "nodes": 45,
+          "solved": true,
+          "ms": 3.9
+        },
+        {
+          "nodes": 154,
+          "solved": true,
+          "ms": 14.0
+        },
+        {
+          "nodes": 120,
+          "solved": true,
+          "ms": 13.0
+        },
+        {
+          "nodes": 143,
+          "solved": true,
+          "ms": 15.9
+        },
+        {
+          "nodes": 134,
+          "solved": true,
+          "ms": 14.4
+        }
+      ],
+      "score": 55.185,
+      "level": 87
+    },
+    {
+      "id": "square-088",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 6,
+      "rectangles": 2,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 282,
+      "median_search_nodes": 134,
+      "trials": [
+        {
+          "nodes": 187,
+          "solved": true,
+          "ms": 55.1
+        },
+        {
+          "nodes": 134,
+          "solved": true,
+          "ms": 61.4
+        },
+        {
+          "nodes": 17,
+          "solved": true,
+          "ms": 13.2
+        },
+        {
+          "nodes": 56,
+          "solved": true,
+          "ms": 26.4
+        },
+        {
+          "nodes": 218,
+          "solved": true,
+          "ms": 44.8
+        }
+      ],
+      "score": 58.235,
+      "level": 88
+    },
+    {
+      "id": "square-089",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 6,
+      "rectangles": 1,
+      "areas": [
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 293,
+      "median_search_nodes": 134,
+      "trials": [
+        {
+          "nodes": 107,
+          "solved": true,
+          "ms": 139.1
+        },
+        {
+          "nodes": 140,
+          "solved": true,
+          "ms": 298.7
+        },
+        {
+          "nodes": 134,
+          "solved": true,
+          "ms": 134.1
+        },
+        {
+          "nodes": 34,
+          "solved": true,
+          "ms": 12.6
+        },
+        {
+          "nodes": 180,
+          "solved": true,
+          "ms": 158.0
+        }
+      ],
+      "score": 61.345,
+      "level": 89
+    },
+    {
+      "id": "square-090",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 6,
+      "rectangles": 2,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 281,
+      "median_search_nodes": 136,
+      "trials": [
+        {
+          "nodes": 160,
+          "solved": true,
+          "ms": 16.8
+        },
+        {
+          "nodes": 136,
+          "solved": true,
+          "ms": 16.4
+        },
+        {
+          "nodes": 84,
+          "solved": true,
+          "ms": 12.7
+        },
+        {
+          "nodes": 119,
+          "solved": true,
+          "ms": 13.3
+        },
+        {
+          "nodes": 174,
+          "solved": true,
+          "ms": 17.9
+        }
+      ],
+      "score": 58.394,
+      "level": 90
+    },
+    {
+      "id": "square-091",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 285,
+      "median_search_nodes": 137,
+      "trials": [
+        {
+          "nodes": 146,
+          "solved": true,
+          "ms": 16.8
+        },
+        {
+          "nodes": 187,
+          "solved": true,
+          "ms": 20.9
+        },
+        {
+          "nodes": 137,
+          "solved": true,
+          "ms": 14.1
+        },
+        {
+          "nodes": 30,
+          "solved": true,
+          "ms": 3.6
+        },
+        {
+          "nodes": 12,
+          "solved": true,
+          "ms": 1.5
+        }
+      ],
+      "score": 58.318,
+      "level": 91
+    },
+    {
+      "id": "square-092",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 4,
+      "rectangles": 3,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 296,
+      "median_search_nodes": 139,
+      "trials": [
+        {
+          "nodes": 15,
+          "solved": true,
+          "ms": 12.8
+        },
+        {
+          "nodes": 180,
+          "solved": true,
+          "ms": 211.1
+        },
+        {
+          "nodes": 139,
+          "solved": true,
+          "ms": 32.3
+        },
+        {
+          "nodes": 58,
+          "solved": true,
+          "ms": 20.0
+        },
+        {
+          "nodes": 148,
+          "solved": true,
+          "ms": 41.2
+        }
+      ],
+      "score": 54.194,
+      "level": 92
+    },
+    {
+      "id": "square-100",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 4,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 308,
+      "median_search_nodes": 140,
+      "trials": [
+        {
+          "nodes": 172,
+          "solved": true,
+          "ms": 43.0
+        },
+        {
+          "nodes": 140,
+          "solved": true,
+          "ms": 22.7
+        },
+        {
+          "nodes": 14,
+          "solved": true,
+          "ms": 2.6
+        },
+        {
+          "nodes": 268,
+          "solved": true,
+          "ms": 108.4
+        },
+        {
+          "nodes": 62,
+          "solved": true,
+          "ms": 16.2
+        }
+      ],
+      "score": 49.796,
+      "level": 93
+    },
+    {
+      "id": "square-094",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 1,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 302,
+      "median_search_nodes": 141,
+      "trials": [
+        {
+          "nodes": 175,
+          "solved": true,
+          "ms": 19.1
+        },
+        {
+          "nodes": 141,
+          "solved": true,
+          "ms": 16.2
+        },
+        {
+          "nodes": 72,
+          "solved": true,
+          "ms": 10.0
+        },
+        {
+          "nodes": 66,
+          "solved": true,
+          "ms": 8.8
+        },
+        {
+          "nodes": 151,
+          "solved": true,
+          "ms": 16.7
+        }
+      ],
+      "score": 58.818,
+      "level": 94
+    },
+    {
+      "id": "square-095",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 8,
+      "rectangles": 4,
+      "areas": [
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 301,
+      "median_search_nodes": 147,
+      "trials": [
+        {
+          "nodes": 147,
+          "solved": true,
+          "ms": 15.4
+        },
+        {
+          "nodes": 125,
+          "solved": true,
+          "ms": 11.2
+        },
+        {
+          "nodes": 158,
+          "solved": true,
+          "ms": 16.4
+        },
+        {
+          "nodes": 101,
+          "solved": true,
+          "ms": 11.1
+        },
+        {
+          "nodes": 159,
+          "solved": true,
+          "ms": 16.5
+        }
+      ],
+      "score": 55.086,
+      "level": 95
+    },
+    {
+      "id": "square-096",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 3,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 299,
+      "median_search_nodes": 149,
+      "trials": [
+        {
+          "nodes": 194,
+          "solved": true,
+          "ms": 23.5
+        },
+        {
+          "nodes": 199,
+          "solved": true,
+          "ms": 24.7
+        },
+        {
+          "nodes": 149,
+          "solved": true,
+          "ms": 21.7
+        },
+        {
+          "nodes": 44,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 110,
+          "solved": true,
+          "ms": 15.8
+        }
+      ],
+      "score": 53.421,
+      "level": 96
+    },
+    {
+      "id": "square-097",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 2,
+      "areas": [
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 298,
+      "median_search_nodes": 159,
+      "trials": [
+        {
+          "nodes": 225,
+          "solved": true,
+          "ms": 48.1
+        },
+        {
+          "nodes": 19,
+          "solved": true,
+          "ms": 2.2
+        },
+        {
+          "nodes": 110,
+          "solved": true,
+          "ms": 18.3
+        },
+        {
+          "nodes": 159,
+          "solved": true,
+          "ms": 21.5
+        },
+        {
+          "nodes": 163,
+          "solved": true,
+          "ms": 19.0
+        }
+      ],
+      "score": 57.155,
+      "level": 97
+    },
+    {
+      "id": "square-098",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 2,
+      "rectangles": 3,
+      "areas": [
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 308,
+      "median_search_nodes": 187,
+      "trials": [
+        {
+          "nodes": 141,
+          "solved": true,
+          "ms": 9.2
+        },
+        {
+          "nodes": 218,
+          "solved": true,
+          "ms": 17.0
+        },
+        {
+          "nodes": 187,
+          "solved": true,
+          "ms": 13.3
+        },
+        {
+          "nodes": 66,
+          "solved": true,
+          "ms": 4.5
+        },
+        {
+          "nodes": 235,
+          "solved": true,
+          "ms": 16.6
+        }
+      ],
+      "score": 56.117,
+      "level": 98
+    },
+    {
+      "id": "square-099",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 6,
+      "rectangles": 3,
+      "areas": [
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 291,
+      "median_search_nodes": 202,
+      "trials": [
+        {
+          "nodes": 24,
+          "solved": true,
+          "ms": 3.4
+        },
+        {
+          "nodes": 202,
+          "solved": true,
+          "ms": 22.4
+        },
+        {
+          "nodes": 225,
+          "solved": true,
+          "ms": 26.4
+        },
+        {
+          "nodes": 293,
+          "solved": true,
+          "ms": 32.3
+        },
+        {
+          "nodes": 100,
+          "solved": true,
+          "ms": 8.6
+        }
+      ],
+      "score": 60.033,
+      "level": 99
+    },
+    {
+      "id": "square-100",
+      "phase": 5,
+      "n": 8,
+      "pieces": 9,
+      "concavity": 6,
+      "rectangles": 2,
+      "areas": [
+        6,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8,
+        8
+      ],
+      "orientations": 9,
+      "placement_options": 284,
+      "median_search_nodes": 228,
+      "trials": [
+        {
+          "nodes": 232,
+          "solved": true,
+          "ms": 21.8
+        },
+        {
+          "nodes": 228,
+          "solved": true,
+          "ms": 21.3
+        },
+        {
+          "nodes": 237,
+          "solved": true,
+          "ms": 22.8
+        },
+        {
+          "nodes": 172,
+          "solved": true,
+          "ms": 18.7
+        },
+        {
+          "nodes": 28,
+          "solved": true,
+          "ms": 2.0
+        }
+      ],
+      "score": 64.354,
+      "level": 100
     }
-  ]
+  ],
+  "additional_search": "Final phase refined through 4300+ connected-shape mutations, tested with five fixed-orientation solver orders."
 }

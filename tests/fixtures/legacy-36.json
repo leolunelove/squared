@@ -1,0 +1,494 @@
+[
+  {
+    "n": 3,
+    "layout": [
+      "AAB",
+      "ACB",
+      "CCB"
+    ],
+    "rotate": false,
+    "title": "A little beginning"
+  },
+  {
+    "n": 3,
+    "layout": [
+      "ABB",
+      "ACB",
+      "ACC"
+    ],
+    "rotate": false,
+    "title": "Room to play"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAB",
+      "ACBB",
+      "CCCB",
+      "DDDD"
+    ],
+    "rotate": false,
+    "title": "A new shape"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAB",
+      "CCBB",
+      "CDBD",
+      "CDDD"
+    ],
+    "rotate": false,
+    "title": "Find your rhythm"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAA",
+      "BBBC",
+      "DDBC",
+      "DDCC"
+    ],
+    "rotate": false,
+    "title": "A different angle"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "ABBB",
+      "AABC",
+      "DDCC",
+      "DDDC"
+    ],
+    "rotate": false,
+    "title": "Turn it around"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ACBDD",
+      "ACCCD",
+      "AAECD",
+      "EEEED"
+    ],
+    "rotate": false,
+    "title": "A little deeper"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ABCCD",
+      "AACCD",
+      "EECDD",
+      "EEEED"
+    ],
+    "rotate": false,
+    "title": "In good company"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AAABB",
+      "ACABB",
+      "CCDBE",
+      "CDDEE",
+      "CDDEE"
+    ],
+    "rotate": false,
+    "title": "Piece by piece"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AABCC",
+      "AABBC",
+      "DDBEC",
+      "DDEEC",
+      "DDEEE"
+    ],
+    "rotate": false,
+    "title": "A fresh perspective"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "ABBBCC",
+      "AAABCC",
+      "ADDBBC",
+      "ADEEFC",
+      "DDEEFF",
+      "DEEFFF"
+    ],
+    "rotate": false,
+    "title": "The bigger picture"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "ABBBCC",
+      "ADBBCE",
+      "ADDCCE",
+      "AFDEEE",
+      "FFDGGG",
+      "FFFGGG"
+    ],
+    "rotate": false,
+    "title": "Everything in place"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BBBGCC",
+      "EEBGCC",
+      "EEBGCC",
+      "EBBGAA",
+      "DDFFFA",
+      "DDFAAA"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "A new little knot"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DFFFGG",
+      "DFDGGG",
+      "DDDEEG",
+      "CBBEEG",
+      "CCBAAA",
+      "CBBBAA"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "Take another look"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "FFFAAA",
+      "FEEGGA",
+      "EEEGAA",
+      "BBEGGG",
+      "DBBBCG",
+      "DDDCCC"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "Leave a little room"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BBEEAA",
+      "BEEAAA",
+      "BBCCFA",
+      "CCCCFF",
+      "GGDCFD",
+      "GGDDDD"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "Pieces in conversation"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "CAAAAG",
+      "CABBBG",
+      "CCCBBG",
+      "FFBBEG",
+      "DFFDEE",
+      "DDDDEE"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "The quiet twist"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "EEDDDD",
+      "EEDGGD",
+      "EEFGGB",
+      "CEFGBB",
+      "CFFABA",
+      "CCAAAA"
+    ],
+    "rotate": false,
+    "tier": "Tricky",
+    "title": "No straight answers"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DDHHHH",
+      "DGGGGH",
+      "DAGBBE",
+      "FAABBE",
+      "FFABEE",
+      "FCCCCE"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "An extra possibility"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "GGHHHH",
+      "GGHEEE",
+      "BBBAFE",
+      "BAAAFF",
+      "BADCCF",
+      "DDDDCC"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "Close, but not quite"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "FAAEEE",
+      "FAAEDE",
+      "FFBBDD",
+      "CFGBBD",
+      "CGGGHH",
+      "CCCHHH"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "Mind the middle"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "EFFFDD",
+      "EFDDDC",
+      "EFGGCC",
+      "EEGGAC",
+      "BBHGAA",
+      "BBHHHA"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "A smaller opening"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DDDHHH",
+      "DBGGFH",
+      "BBGGFE",
+      "CBFFFE",
+      "CCCAEE",
+      "CAAAAE"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "Around the corner"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "CCCGGG",
+      "CFFFFG",
+      "CEFBBB",
+      "EEDBHB",
+      "EADDHH",
+      "AAADDH"
+    ],
+    "rotate": false,
+    "tier": "Intricate",
+    "title": "One move ahead"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "BBEEECC",
+      "BBBECCC",
+      "AAAEDCC",
+      "AGGEDDD",
+      "AGGGGDF",
+      "AGHGFFF",
+      "AAHHHHF"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "A wider world"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "EBBBBFF",
+      "EEGBFFA",
+      "EGGGGFA",
+      "EEEGAAA",
+      "CCGGHAA",
+      "CCCDHHH",
+      "CDDDDDH"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "Follow the edges"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "CCCCFFF",
+      "CCFFFAH",
+      "BBBBAAH",
+      "BEEEAAH",
+      "EEEEDHH",
+      "EGGGDDH",
+      "GGGDDDD"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "The space between"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "HHHHCCC",
+      "HGHHFCC",
+      "GGGFFFC",
+      "GEAAAFC",
+      "EEEABFC",
+      "EEDABFF",
+      "DDDDBBB"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "An unexpected fit"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "CBBBEEA",
+      "CCBFEEA",
+      "CCBFEEA",
+      "CDDFEAA",
+      "HDFFFFA",
+      "HDDHGGG",
+      "HHHHGGG"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "Look a little longer"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "BBBBHHC",
+      "BBBHHCC",
+      "GGEEHCC",
+      "GEEEECC",
+      "GEFFDDD",
+      "GFFAAAD",
+      "FFFAADD"
+    ],
+    "rotate": false,
+    "tier": "Expert",
+    "title": "A patient square"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "HHHHFFFF",
+      "HHHFFFGF",
+      "EEEEGGGF",
+      "EAAEGBGG",
+      "EAAEGBCC",
+      "AAADBBBC",
+      "DDADBCBC",
+      "DDDDBCCC"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "The long way around"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "CCCCHHFF",
+      "CCCAHHFF",
+      "EEAAHHFF",
+      "BEAAAHFF",
+      "BEEEAHGG",
+      "BEEEDDGG",
+      "BBBDDDDG",
+      "BBBDGGGG"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "An intricate balance"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "GGDDDEEE",
+      "GGDDDDEE",
+      "GGDDBEEF",
+      "GBBBBEEF",
+      "HBACCCFF",
+      "HBAAACFF",
+      "HHHAACCF",
+      "HHHHACCC"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "Every corner counts"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "CCCCDDDD",
+      "FCCEEEED",
+      "FFEEHHED",
+      "FFFFHHHD",
+      "IIIHHGGG",
+      "IIIHGGBB",
+      "AIAGGGBB",
+      "AAAABBBB"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "A deeper arrangement"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "GGCCEEDD",
+      "GGCCEEDD",
+      "GGCEEHHD",
+      "IGCEEHHD",
+      "IICBAHHD",
+      "IBBBAHFF",
+      "IBBAAAFF",
+      "IBBAAFFF"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "The final tangle"
+  },
+  {
+    "n": 8,
+    "layout": [
+      "IIIIICCC",
+      "IIIGGGGC",
+      "BBBBEGGC",
+      "BBEEEHHC",
+      "FEEEHHHC",
+      "FFFEADHD",
+      "FFFAADDD",
+      "AAAAADDD"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "A square well earned"
+  }
+]

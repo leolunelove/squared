@@ -12,13 +12,13 @@ const icons={
 const icon=name=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>`;
 const colors=[['#7caaa0','#5c9187','#507e73','sage'],['#e5ba79','#d5a35d','#b98b4a','honey'],['#e7a18a','#d7866e','#bb705c','peach'],['#9ca9cc','#7e8fb6','#6d7fa3','periwinkle'],['#bac18b','#9eaa72','#87945b','olive'],['#c5a9bd','#ae8fa7','#997a93','mauve'],['#82aeb9','#6595a2','#56818b','blue'],['#d79cb0','#bb788e','#9d6074','rose'],['#b3b6aa','#929b8b','#7b8874','stone']];
 const levels=LEVEL_DATA.map(readLevel);
-const tierFor=index=>levels[index].tier??(index<6?'First steps':'Finding flow');
+const phaseFor=index=>PHASES[levels[index].phase-1];
 const playerSaveKey='squared-save-v1';
 // Session-only release playtests start from a copy and never write player progress.
 const playtest=new URLSearchParams(location.search).get('playtest')==='1';
 const key=playtest?'squared-playtest-v1':playerSaveKey,gameStorage=()=>playtest?sessionStorage:localStorage;let saved={};
 try{saved=JSON.parse(gameStorage().getItem(key)||(playtest?localStorage.getItem(playerSaveKey):null)||'{}')??{};}catch{}
-let {completed,unlocked,levelIndex}=restoreProgress(saved,levels.length);
+let {completed,unlocked,levelIndex,boards,migrated}=restoreCampaign(saved,levels);
 let sound=saved.sound!==false,level,placements=[],rotations=[],history=[],selected=null,drag=null,geometry=null,keyboardTarget=null,hintTarget=null,solved=false,finishTimer=null,audio=null,storageOkay=true,trayIds=[],dragFrame=0,hintSerial=0,hintTask=null;
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const reducedMotion=()=>motionPreference.matches;
@@ -27,7 +27,8 @@ $('#sound').innerHTML=icon(sound?'sound':'muted');$('#help').innerHTML=icon('hel
 $('#undo').innerHTML=icon('undo')+'Undo';$('#hint').innerHTML=icon('hint')+'Hint';$('#restart').innerHTML=icon('restart')+'Restart';
 $$('.close-dialog.icon-button').forEach(b=>b.innerHTML=icon('close'));
 function persist(){
-  try{gameStorage().setItem(key,JSON.stringify({current:levelIndex,completed:[...completed],placements,rotations,sound,version:2}));}
+  try{if(level)boards[level.id]={version:2,...snapshot(),history};
+    gameStorage().setItem(key,JSON.stringify(campaignSave(levels,{completed,unlocked,levelIndex,boards,sound}))); }
   catch{storageOkay=false;}
 }
 function say(text){$('#status').textContent=text;}
@@ -43,7 +44,7 @@ function tone(kind='place'){
   notes.forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=now+i*(kind==='finish'?.09:.022);o.type='sine';o.frequency.setValueAtTime(f,t);if(kind==='place')o.frequency.exponentialRampToValueAtTime(f*.7,t+.1);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(kind==='finish'?.055:.035,t+.009);g.gain.exponentialRampToValueAtTime(.0001,t+(kind==='finish'?.65:.16));o.connect(g).connect(audio.destination);o.start(t);o.stop(t+.8);});
 }
 function snapshot(){return {placements:placements.map(p=>p?{...p}:null),rotations:[...rotations]};}
-function remember(){history.push(snapshot());if(history.length>80)history.shift();}
+function remember(state=snapshot()){history.push(state);if(history.length>80)history.shift();}
 function restore(state){placements=state.placements.map(p=>p?{...p}:null);rotations=[...state.rotations];}
 function pieceCells(id){return turn(level.pieces[id].cells,rotations[id]);}
 function svgPiece(id,cells,ghost=false){
@@ -104,17 +105,17 @@ function updateControls(){
   $('#hint').setAttribute('aria-label',solved?'Continue after this square':'Show a helpful placement');
   $('#restart').disabled=false;
 }
-function load(index,restored=null){
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
+function load(index){
+  cancelDrag();if(level)persist();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
   // Every piece keeps its own home throughout the puzzle, including after a reload.
-  trayIds=index===0?[0,2,1]:level.pieces.map(p=>p.id);
-  const arrangement=restoreArrangement(level,restored);({placements,rotations}=arrangement);
-  $('#level-num').textContent=String(index+1).padStart(2,'0');$('#level-total').textContent=`/ ${levels.length}`;$('#dimension').textContent=`${level.n} × ${level.n}`;$('#level-eyebrow').textContent=index<12?'A LITTLE PIECE OF CALM':`${tierFor(index).toUpperCase()} SQUARE`;
+  trayIds=level.id==='square-001'?[0,2,1]:level.pieces.map(p=>p.id);
+  const arrangement=restoreArrangement(level,boards[level.id]);({placements,rotations}=arrangement);history=restoreHistory(level,boards[level.id]);
+  $('#level-num').textContent=String(index+1).padStart(2,'0');$('#level-total').textContent=`/ ${levels.length}`;$('#dimension').textContent=`${level.n} × ${level.n}`;$('#level-eyebrow').textContent='A LITTLE PIECE OF CALM';$('#phase-name').textContent=phaseFor(index).name;
   $('#pieces').innerHTML='';nodes.length=0;
-  level.pieces.forEach(({id})=>{const el=document.createElement('button');el.type='button';el.className='piece';el.dataset.piece=id;el.setAttribute('aria-pressed','false');el.addEventListener('pointerdown',e=>pointerDown(e,id));el.addEventListener('click',e=>{if(e.detail===0&&!solved){wakeAudio();choose(id);}});$('#pieces').append(el);nodes.push(el);});
-  say(index===0?'One last piece. Make it a square.':`${level.title}. Take your time.`);
-  if(arrangement.repaired)say('Pieces refreshed for drag-only play. Your completed squares are saved.');
-  layout();persist();checkComplete(false);
+  level.pieces.forEach(({id})=>{const el=document.createElement('button');el.type='button';el.className='piece resizing';el.dataset.piece=id;el.setAttribute('aria-pressed','false');el.addEventListener('pointerdown',e=>pointerDown(e,id));el.addEventListener('click',e=>{if(e.detail===0&&!solved){wakeAudio();choose(id);}});$('#pieces').append(el);nodes.push(el);});
+  say(level.id==='square-001'?'One last piece. Make it a square.':`${level.title}. Take your time.`);
+  if(arrangement.repaired||migrated)say('Your squares are saved. Some level numbers have changed.');migrated=false;
+  layout();persist();checkComplete(false);requestAnimationFrame(()=>requestAnimationFrame(()=>nodes.forEach(node=>node.classList.remove('resizing'))));
 }
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function pointerDown(e,id){
@@ -138,7 +139,7 @@ function dragTarget(){
   const origin={x:(x-bx)/cell,y:(y-by)/cell};
   const candidate={x:Math.round(origin.x),y:Math.round(origin.y),r:rotations[drag.id]};
   const {w,h}=size(pieceCells(drag.id));const near=x+w*cell>bx&&x<bx+boardSize&&y+h*cell>by&&y<by+boardSize;
-  drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;
+  drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;drag.candidate=candidate;
   drag.overTray=drag.point.y>trayTop-12;
   if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
     if(drag.touch&&snapKey&&snapKey!==drag.lastSnapKey&&performance.now()-drag.lastFeedback>90){haptic(3);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
@@ -167,9 +168,9 @@ function endDrag(e,cancel=false){
   if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
   if(cancel){restore(d.before);layout();return;}
   if(!d.active){choose(d.id);return;}
-  if(d.p){history.push(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
-  else if(d.overTray&&d.before.placements[d.id]){history.push(d.before);placements[d.id]=null;say('A little room to try again.');}
-  else{restore(d.before);tone('miss');say('Almost. Try a little more space.');}
+  if(d.p){remember(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
+  else if(d.overTray&&d.before.placements[d.id]){remember(d.before);placements[d.id]=null;say('A little room to try again.');}
+  else{restore(d.before);tone('miss');say(placementMessage(placementIssue(level,placements,d.id,d.candidate)));}
   layout();if(d.p)settlePiece(d.id);persist();checkComplete();
 }
 function cancelDrag(){if(drag)endDrag(null,true);}
@@ -180,7 +181,7 @@ function settlePiece(id){
 function placeSelected(p){
   if(selected===null||solved)return;const id=selected;
   if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();settlePiece(id);persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
-  else{tone('miss');say('That space is taken, or the piece is outside the square.');}
+  else{tone('miss');say(placementMessage(placementIssue(level,placements,id,p)));}
 }
 stage.addEventListener('pointermove',pointerMove);
 stage.addEventListener('pointerup',e=>endDrag(e));stage.addEventListener('pointercancel',e=>endDrag(e,true));stage.addEventListener('lostpointercapture',e=>{if(drag&&e.pointerId===drag.pointerId&&!stage.hasPointerCapture(e.pointerId))endDrag(e,true);});
@@ -228,7 +229,7 @@ $('#hint').addEventListener('click',async()=>{
   say(`Try the ${colors[target.id][3]} piece in the dotted space.`);tone('pick');
 });
 function checkComplete(celebrate=true){
-  if(!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');completed.add(levelIndex);while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
+  if(!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');completed.add(levelIndex);unlocked=Math.max(unlocked,Math.min(levels.length-1,levelIndex+1));while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
   if(celebrate){tone('finish');haptic([10,60,16]);sparkle();}finishTimer=setTimeout(openSuccess,celebrate?1000:550);
 }
 function sparkle(){
@@ -236,14 +237,19 @@ function sparkle(){
   for(let i=0;i<22;i++){const el=document.createElement('i');el.className='spark';const angle=i/22*Math.PI*2,x=geometry.bx+geometry.boardSize/2+Math.cos(angle)*geometry.boardSize*.48,y=geometry.by+geometry.boardSize/2+Math.sin(angle)*geometry.boardSize*.48;el.style.cssText=`background:${colors[i%colors.length][0]};--x:${x}px;--y:${y}px;--dx:${Math.cos(angle)*(25+Math.random()*35)}px;--dy:${Math.sin(angle)*40-15}px;--spin:${Math.random()*240}deg;animation-delay:${Math.random()*.1}s`;holder.append(el);}setTimeout(()=>holder.innerHTML='',1300);
 }
 function openSuccess(){
-  if(!solved)return;const last=levelIndex===levels.length-1;$('#success-kicker').textContent=last?'EVERY SQUARE, COMPLETE':'EVERY PIECE BELONGS';$('#success-title').textContent=last?'A lovely little collection.':'All squared away.';$('#success-text').textContent=last?`All ${levels.length} squares complete. Come back any time.`:'A little mess. A perfect fit.';$('#next').innerHTML=last?'Your collection <span aria-hidden="true">↗</span>':'Next square <span aria-hidden="true">→</span>';$('#success').classList.add('show');$('#success').setAttribute('aria-hidden','false');$('#success').setAttribute('role','dialog');$('#success').setAttribute('aria-modal','true');$('.app').inert=true;$('#next').focus({preventScroll:true});
+  if(!solved)return;const last=levelIndex===levels.length-1,all=completed.size===levels.length;
+  $('#success-kicker').textContent=last?(all?'EVERY SQUARE, COMPLETE':'A SQUARE WELL EARNED'):'EVERY PIECE BELONGS';
+  $('#success-title').textContent=last?(all?'A lovely little collection.':'The final square, squared.'):'All squared away.';
+  $('#success-text').textContent=last?(all?`All ${levels.length} squares complete. Come back any time.`:`${levels.length-completed.size} squares still waiting in your collection.`):'A little mess. A perfect fit.';
+  $('#next').innerHTML=last?'Your collection <span aria-hidden="true">↗</span>':'Next square <span aria-hidden="true">→</span>';
+  $('#success').classList.add('show');$('#success').setAttribute('aria-hidden','false');$('#success').setAttribute('role','dialog');$('#success').setAttribute('aria-modal','true');$('.app').inert=true;$('#next').focus({preventScroll:true});
 }
 function closeSuccess(){$('#success').classList.remove('show');$('#success').setAttribute('aria-hidden','true');$('#success').removeAttribute('aria-modal');$('.app').inert=false;}
 $('#next').addEventListener('click',()=>{wakeAudio();if(levelIndex===levels.length-1){closeSuccess();openLevels();}else{load(levelIndex+1);nodes.find((_,i)=>!placements[i])?.focus({preventScroll:true});}});
 $('#replay').addEventListener('click',()=>{clearTimeout(finishTimer);closeSuccess();say('All squared away. Tap Next when you’re ready.');$('#hint').focus({preventScroll:true});});
 function openLevels(){
-  cancelDrag();clearTimeout(finishTimer);$('#collection-progress').textContent=`${completed.size} of ${levels.length} squares complete. A little more room to play.`;
-  $('#level-grid').innerHTML=levels.map((l,i)=>`${i===0||tierFor(i)!==tierFor(i-1)?`<h3 class="level-section-title">${tierFor(i)}<small>${i+1}–${Math.min(i+6,levels.length)}</small></h3>`:''}<button class="level-tile ${i===levelIndex?'current':''}" data-level="${i}" ${i>unlocked?'disabled':''} aria-label="Level ${i+1}, ${l.n} by ${l.n}${completed.has(i)?', complete':i>unlocked?', locked':''}" ${i===levelIndex?'aria-current="true"':''}>${String(i+1).padStart(2,'0')} ${completed.has(i)?'<span class="check" aria-hidden="true">✓</span>':''}<small>${i>unlocked?'LOCKED':`${l.n} × ${l.n}`}</small></button>`).join('');
+  cancelDrag();clearTimeout(finishTimer);$('#collection-progress').textContent=`${completed.size} of ${levels.length} squares complete. ${completed.size===levels.length?'A lovely little collection.':'A little more room to play.'}`;
+  $('#level-grid').innerHTML=levels.map((l,i)=>`${i%20===0?`<h3 class="level-section-title">${phaseFor(i).name}<small>${i+1}–${i+20} · ${[...completed].filter(c=>c>=i&&c<i+20).length}/20</small></h3>`:''}<button class="level-tile ${i===levelIndex?'current':''}" data-level="${i}" ${i>unlocked?'disabled':''} aria-label="Level ${i+1}, ${l.n} by ${l.n}${completed.has(i)?', complete':i>unlocked?', locked':''}" ${i===levelIndex?'aria-current="true"':''}>${String(i+1).padStart(2,'0')} ${completed.has(i)?'<span class="check" aria-hidden="true">✓</span>':''}<small>${i>unlocked?'LOCKED':`${l.n} × ${l.n}`}</small></button>`).join('');
   $('#levels-dialog .dialog-footer').textContent=storageOkay?'Your progress is saved on this device.':'Progress could not be saved in this browser.';$('#levels-dialog').showModal();requestAnimationFrame(()=>$('#level-grid [aria-current="true"]')?.scrollIntoView({block:'center'}));
 }
 $('#level-button').addEventListener('click',openLevels);$('.brand').addEventListener('click',e=>{e.preventDefault();openLevels();});
@@ -266,4 +272,4 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelDrag
 window.addEventListener('pagehide',()=>{cancelDrag();persist();});
 let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();layout();requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
 $('#sound').setAttribute('aria-label',sound?'Turn sound off':'Turn sound on');$('#sound').setAttribute('aria-pressed',String(sound));
-load(levelIndex,saved.current===levelIndex?saved:null);
+load(levelIndex);

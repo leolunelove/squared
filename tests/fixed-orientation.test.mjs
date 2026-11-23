@@ -22,8 +22,8 @@ for(const [index,data] of raw.entries()){
  assert.ok(migrated.rotations.every(r=>r===0));
  assert.deepEqual(migrated.placements[0],canonical[0],'Compatible placed pieces stay in place');
  assert.ok(solve(l,migrated.placements).solution,'Migrated board can still be finished');
- assert.equal(restoreProgress(old,36).completed.size,index,'Earned completion count is preserved');
- assert.equal(restoreProgress(old,36).levelIndex,index,'Current level is preserved');
+ assert.equal(restoreProgress(old,100).completed.size,index,'Earned completion count is preserved');
+ assert.equal(restoreProgress(old,100).levelIndex,index,'Current level is preserved');
  // Old globally rotated boards must not strand pieces at unavailable angles.
  const rotated=l.pieces.map(piece=>{
   const cells=piece.cells.map(([x,y])=>[l.n-1-y-piece.solution.y,x+piece.solution.x]);

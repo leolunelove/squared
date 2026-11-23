@@ -1,6 +1,6 @@
 # Squared
 
-A calm square-building puzzle designed for touch. Use every piece to fill the board, with no gaps or overlaps. Thirty-six levels grow from 3×3 to 8×8, with every piece already facing its fitting direction.
+A calm square-building puzzle designed for touch. Use every piece to fill the board, with no gaps or overlaps. One hundred levels grow from 3×3 to 8×8, with every piece already facing its fitting direction.
 
 ## Play
 
@@ -20,7 +20,11 @@ Sound uses quiet synthesized notes. Haptics use the browser vibration API where 
 
 ## Campaign
 
-All 36 layouts and earned completions are preserved. Legacy saves are migrated to fixed orientations: compatible placements stay, turned pieces return to the tray, and an incompatible partial board refreshes without changing completed levels. Six chapters introduce larger squares gradually: First steps (1–6), Finding flow (7–12), Tricky (13–18), Intricate (19–24), Expert (25–30), and Master (31–36). The final chapter uses 8×8 boards, reaching nine pieces in the final three puzzles. Solver search effort, shape complexity and placement ambiguity inform the ordering; these are design aids rather than measured human difficulty ratings.
+Five phases contain twenty puzzles each: Learn (1–20), Connect (21–40), Compare (41–60), Plan (61–80), and Master (81–100). Boards grow from 3×3 to 8×8, with up to nine pieces. Each phase introduces its larger board or piece count gently, then increases structural ambiguity.
+
+All 36 existing puzzle layouts retain stable IDs. Legacy completion marks and the current square migrate to those IDs even when the displayed level number changes. Unfinished arrangements and up to eighty Undo steps are saved separately for each visited puzzle. A legacy player retains access to their former current square and the newly inserted puzzles before it.
+
+Five shuffled fixed-orientation exact-cover searches, concavity, rectangular clues and placement ambiguity inform the ordering. These are structural design aids rather than measured human difficulty ratings. Final calibration needs real-player sessions.
 
 Release playthroughs use `?playtest=1`, which seeds a separate session save from the player’s progress and never writes to the campaign save.
 
@@ -39,6 +43,7 @@ node tests/engine.test.mjs
 node tests/mobile.test.mjs
 node tests/progression.test.mjs
 node tests/fixed-orientation.test.mjs
+node tests/campaign.test.mjs
 ```
 
 The grid engine accepts every valid tiling, rather than checking against a single prescribed solution. There are no accounts, analytics, network requests, or runtime packages.

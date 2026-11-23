@@ -19,14 +19,14 @@
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 5
+      "solverNodes": 4
     },
     {
       "level": 4,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 8
+      "solverNodes": 6
     },
     {
       "level": 5,
@@ -47,210 +47,658 @@
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 6
+      "solverNodes": 5
     },
     {
       "level": 8,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 6
+      "solverNodes": 5
     },
     {
       "level": 9,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 6
+      "solverNodes": 5
     },
     {
       "level": 10,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 6
+      "solverNodes": 8
     },
     {
       "level": 11,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 7
+      "solverNodes": 8
     },
     {
       "level": 12,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 8
+      "solverNodes": 7
     },
     {
       "level": 13,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 8
+      "solverNodes": 5
     },
     {
       "level": 14,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 49
+      "solverNodes": 11
     },
     {
       "level": 15,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 13
+      "solverNodes": 6
     },
     {
       "level": 16,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 13
+      "solverNodes": 14
     },
     {
       "level": 17,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 26
+      "solverNodes": 19
     },
     {
       "level": 18,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 26
+      "solverNodes": 14
     },
     {
       "level": 19,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 46
+      "solverNodes": 12
     },
     {
       "level": 20,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 68
+      "solverNodes": 13
     },
     {
       "level": 21,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 24
+      "solverNodes": 8
     },
     {
       "level": 22,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 39
+      "solverNodes": 6
     },
     {
       "level": 23,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 26
+      "solverNodes": 6
     },
     {
       "level": 24,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 18
+      "solverNodes": 6
     },
     {
       "level": 25,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 11
+      "solverNodes": 9
     },
     {
       "level": 26,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 17
+      "solverNodes": 6
     },
     {
       "level": 27,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 26
+      "solverNodes": 9
     },
     {
       "level": 28,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 14
+      "solverNodes": 6
     },
     {
       "level": 29,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 13
+      "solverNodes": 6
     },
     {
       "level": 30,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 20
+      "solverNodes": 14
     },
     {
       "level": 31,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 14
+      "solverNodes": 8
     },
     {
       "level": 32,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 16
+      "solverNodes": 8
     },
     {
       "level": 33,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 10
+      "solverNodes": 7
     },
     {
       "level": 34,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 14
+      "solverNodes": 8
     },
     {
       "level": 35,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
-      "solverNodes": 19
+      "solverNodes": 14
     },
     {
       "level": 36,
       "solvableWithoutRotation": true,
       "saveMigration": true,
       "workerHint": true,
+      "solverNodes": 14
+    },
+    {
+      "level": 37,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 8
+    },
+    {
+      "level": 38,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 16
+    },
+    {
+      "level": 39,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 8
+    },
+    {
+      "level": 40,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 52
+    },
+    {
+      "level": 41,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
       "solverNodes": 13
+    },
+    {
+      "level": 42,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 13
+    },
+    {
+      "level": 43,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 35
+    },
+    {
+      "level": 44,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 13
+    },
+    {
+      "level": 45,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 26
+    },
+    {
+      "level": 46,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 49
+    },
+    {
+      "level": 47,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 26
+    },
+    {
+      "level": 48,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 59
+    },
+    {
+      "level": 49,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 11
+    },
+    {
+      "level": 50,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 24
+    },
+    {
+      "level": 51,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 9
+    },
+    {
+      "level": 52,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 18
+    },
+    {
+      "level": 53,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 20
+    },
+    {
+      "level": 54,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 76
+    },
+    {
+      "level": 55,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 46
+    },
+    {
+      "level": 56,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 26
+    },
+    {
+      "level": 57,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 39
+    },
+    {
+      "level": 58,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 125
+    },
+    {
+      "level": 59,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 68
+    },
+    {
+      "level": 60,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 101
+    },
+    {
+      "level": 61,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 11
+    },
+    {
+      "level": 62,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 9
+    },
+    {
+      "level": 63,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 14
+    },
+    {
+      "level": 64,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 18
+    },
+    {
+      "level": 65,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 20
+    },
+    {
+      "level": 66,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 12
+    },
+    {
+      "level": 67,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 17
+    },
+    {
+      "level": 68,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 12
+    },
+    {
+      "level": 69,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 56
+    },
+    {
+      "level": 70,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 26
+    },
+    {
+      "level": 71,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 23
+    },
+    {
+      "level": 72,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 42
+    },
+    {
+      "level": 73,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 13
+    },
+    {
+      "level": 74,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 51
+    },
+    {
+      "level": 75,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 16
+    },
+    {
+      "level": 76,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 127
+    },
+    {
+      "level": 77,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 14
+    },
+    {
+      "level": 78,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 15
+    },
+    {
+      "level": 79,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 37
+    },
+    {
+      "level": 80,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 41
+    },
+    {
+      "level": 81,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 14
+    },
+    {
+      "level": 82,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 10
+    },
+    {
+      "level": 83,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 16
+    },
+    {
+      "level": 84,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 14
+    },
+    {
+      "level": 85,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 19
+    },
+    {
+      "level": 86,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 13
+    },
+    {
+      "level": 87,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 130
+    },
+    {
+      "level": 88,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 19
+    },
+    {
+      "level": 89,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 119
+    },
+    {
+      "level": 90,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 20
+    },
+    {
+      "level": 91,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 115
+    },
+    {
+      "level": 92,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 50
+    },
+    {
+      "level": 93,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 380
+    },
+    {
+      "level": 94,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 27
+    },
+    {
+      "level": 95,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 145
+    },
+    {
+      "level": 96,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 98
+    },
+    {
+      "level": 97,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 144
+    },
+    {
+      "level": 98,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 80
+    },
+    {
+      "level": 99,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 262
+    },
+    {
+      "level": 100,
+      "solvableWithoutRotation": true,
+      "saveMigration": true,
+      "workerHint": true,
+      "solverNodes": 147
     }
   ],
   "status": "passed"

@@ -7,7 +7,11 @@
       "CCB"
     ],
     "rotate": false,
-    "title": "A little beginning"
+    "title": "A little beginning",
+    "id": "square-001",
+    "legacyIndex": 0,
+    "phase": 1,
+    "tier": "Learn"
   },
   {
     "n": 3,
@@ -17,7 +21,51 @@
       "ACC"
     ],
     "rotate": false,
-    "title": "Room to play"
+    "title": "Room to play",
+    "id": "square-002",
+    "legacyIndex": 1,
+    "phase": 1,
+    "tier": "Learn"
+  },
+  {
+    "n": 3,
+    "layout": [
+      "BBB",
+      "AAC",
+      "AAC"
+    ],
+    "rotate": false,
+    "id": "square-037",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A small discovery"
+  },
+  {
+    "n": 3,
+    "layout": [
+      "CCC",
+      "BBC",
+      "BAA"
+    ],
+    "rotate": false,
+    "id": "square-038",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A little room"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "BACC",
+      "BACC",
+      "BAAA",
+      "BDDD"
+    ],
+    "rotate": false,
+    "id": "square-039",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "Follow the shape"
   },
   {
     "n": 4,
@@ -28,18 +76,25 @@
       "DDDD"
     ],
     "rotate": false,
-    "title": "A new shape"
+    "title": "A new shape",
+    "id": "square-003",
+    "legacyIndex": 2,
+    "phase": 1,
+    "tier": "Learn"
   },
   {
     "n": 4,
     "layout": [
-      "AAAB",
-      "CCBB",
-      "CDBD",
-      "CDDD"
+      "BCCD",
+      "BCDD",
+      "BDDA",
+      "BAAA"
     ],
     "rotate": false,
-    "title": "Find your rhythm"
+    "id": "square-040",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "Soft edges"
   },
   {
     "n": 4,
@@ -50,7 +105,68 @@
       "DDCC"
     ],
     "rotate": false,
-    "title": "A different angle"
+    "title": "A different fit",
+    "id": "square-005",
+    "legacyIndex": 4,
+    "phase": 1,
+    "tier": "Learn"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAA",
+      "BBAC",
+      "BBDC",
+      "DDDC"
+    ],
+    "rotate": false,
+    "id": "square-041",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "One beside another"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AAAB",
+      "CCBB",
+      "CDBD",
+      "CDDD"
+    ],
+    "rotate": false,
+    "title": "Find your rhythm",
+    "id": "square-004",
+    "legacyIndex": 3,
+    "phase": 1,
+    "tier": "Learn"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "CCAA",
+      "CBAA",
+      "CBDD",
+      "BBBD"
+    ],
+    "rotate": false,
+    "id": "square-042",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "An easy beginning"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "CCBB",
+      "CBBB",
+      "CCAA",
+      "DDDA"
+    ],
+    "rotate": false,
+    "id": "square-043",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "Room for one more"
   },
   {
     "n": 4,
@@ -61,43 +177,124 @@
       "DDDC"
     ],
     "rotate": false,
-    "title": "Turn it around"
+    "title": "Find your opening",
+    "id": "square-006",
+    "legacyIndex": 5,
+    "phase": 1,
+    "tier": "Learn"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "AADD",
+      "BAAD",
+      "BCCD",
+      "BCDD"
+    ],
+    "rotate": false,
+    "id": "square-044",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A familiar corner"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "BADD",
+      "BACD",
+      "BCCD",
+      "BEEE"
+    ],
+    "rotate": false,
+    "id": "square-045",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A small surprise"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "BBDD",
+      "BDDC",
+      "EAAC",
+      "EAAC"
+    ],
+    "rotate": false,
+    "id": "square-046",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "The shape of things"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "DAAA",
+      "DECC",
+      "EECC",
+      "BBBB"
+    ],
+    "rotate": false,
+    "id": "square-047",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "Finding a place"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "CABB",
+      "CABE",
+      "AAEE",
+      "DDDE"
+    ],
+    "rotate": false,
+    "id": "square-048",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A gentle puzzle"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "BDAA",
+      "BDDA",
+      "BEEA",
+      "CCEE"
+    ],
+    "rotate": false,
+    "id": "square-049",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "A closer fit"
+  },
+  {
+    "n": 4,
+    "layout": [
+      "CCCD",
+      "CAAD",
+      "EEBD",
+      "EBBB"
+    ],
+    "rotate": false,
+    "id": "square-050",
+    "phase": 1,
+    "tier": "Learn",
+    "title": "Ready for more"
   },
   {
     "n": 5,
     "layout": [
-      "ABBBB",
-      "ACBDD",
-      "ACCCD",
-      "AAECD",
-      "EEEED"
+      "DBBBB",
+      "DDAEE",
+      "DAAEE",
+      "DACCC",
+      "AACCC"
     ],
     "rotate": false,
-    "title": "A little deeper"
-  },
-  {
-    "n": 5,
-    "layout": [
-      "ABBBB",
-      "ABCCD",
-      "AACCD",
-      "EECDD",
-      "EEEED"
-    ],
-    "rotate": false,
-    "title": "In good company"
-  },
-  {
-    "n": 5,
-    "layout": [
-      "AAABB",
-      "ACABB",
-      "CCDBE",
-      "CDDEE",
-      "CDDEE"
-    ],
-    "rotate": false,
-    "title": "Piece by piece"
+    "id": "square-051",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Start at the edge"
   },
   {
     "n": 5,
@@ -109,20 +306,150 @@
       "DDEEE"
     ],
     "rotate": false,
-    "title": "A fresh perspective"
+    "title": "A fresh perspective",
+    "id": "square-010",
+    "legacyIndex": 9,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "BBDDA",
+      "CBDDA",
+      "CBDAA",
+      "CBDEE",
+      "CCCEE"
+    ],
+    "rotate": false,
+    "id": "square-052",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "A corner to keep"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AAAEE",
+      "ACAEE",
+      "CCADD",
+      "CCDDD",
+      "BBBBD"
+    ],
+    "rotate": false,
+    "id": "square-053",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "A natural connection"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "BBDEE",
+      "CBDDE",
+      "CBDEE",
+      "CCAAE",
+      "CCAAA"
+    ],
+    "rotate": false,
+    "id": "square-054",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Through the middle"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "AAABB",
+      "ACABB",
+      "CCDBE",
+      "CDDEE",
+      "CDDEE"
+    ],
+    "rotate": false,
+    "title": "Piece by piece",
+    "id": "square-009",
+    "legacyIndex": 8,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "EDDDD",
+      "EEEDB",
+      "AAABB",
+      "CAAAB",
+      "CCCCB"
+    ],
+    "rotate": false,
+    "id": "square-055",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "A little patience"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ABCCD",
+      "AACCD",
+      "EECDD",
+      "EEEED"
+    ],
+    "rotate": false,
+    "title": "In good company",
+    "id": "square-008",
+    "legacyIndex": 7,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "ABBBB",
+      "ACBDD",
+      "ACCCD",
+      "AAECD",
+      "EEEED"
+    ],
+    "rotate": false,
+    "title": "A little deeper",
+    "id": "square-007",
+    "legacyIndex": 6,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 5,
+    "layout": [
+      "DDDDA",
+      "BBBDA",
+      "BBAAA",
+      "BCCEE",
+      "CCEEE"
+    ],
+    "rotate": false,
+    "id": "square-056",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "An open invitation"
   },
   {
     "n": 6,
     "layout": [
-      "ABBBCC",
-      "AAABCC",
-      "ADDBBC",
-      "ADEEFC",
-      "DDEEFF",
-      "DEEFFF"
+      "AABBBG",
+      "AABBGG",
+      "DABGGE",
+      "DCCEEE",
+      "DCCFFE",
+      "DCCFFE"
     ],
     "rotate": false,
-    "title": "The bigger picture"
+    "id": "square-057",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Around the bend"
   },
   {
     "n": 6,
@@ -135,7 +462,108 @@
       "FFFGGG"
     ],
     "rotate": false,
-    "title": "Everything in place"
+    "title": "Everything in place",
+    "id": "square-012",
+    "legacyIndex": 11,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "ABBBCC",
+      "AAABCC",
+      "ADDBBC",
+      "ADEEFC",
+      "DDEEFF",
+      "DEEFFF"
+    ],
+    "rotate": false,
+    "title": "The bigger picture",
+    "id": "square-011",
+    "legacyIndex": 10,
+    "phase": 2,
+    "tier": "Connect"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BBBBGG",
+      "DBAAGG",
+      "DAAEGC",
+      "DFEECC",
+      "DFEEEC",
+      "FFECCC"
+    ],
+    "rotate": false,
+    "id": "square-058",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Find the opening"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "AAEEEE",
+      "GAAFEE",
+      "GDFFFE",
+      "GDDDCC",
+      "GGBDCC",
+      "BBBCCC"
+    ],
+    "rotate": false,
+    "id": "square-059",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "An unexpected neighbour"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BBBAGG",
+      "BBAAGG",
+      "EBADGF",
+      "EEDDDF",
+      "CECCDF",
+      "CCCFFF"
+    ],
+    "rotate": false,
+    "id": "square-060",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Room to reconsider"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BGGEEE",
+      "BBGEED",
+      "BBGGDD",
+      "BBFFCD",
+      "FFFACD",
+      "AAAACC"
+    ],
+    "rotate": false,
+    "id": "square-061",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "The next connection"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "CCCBBB",
+      "CGBBAA",
+      "GGFFFA",
+      "EGFFDA",
+      "EGDDDA",
+      "EEEDDD"
+    ],
+    "rotate": false,
+    "id": "square-062",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "A considered choice"
   },
   {
     "n": 6,
@@ -148,36 +576,43 @@
       "DDFAAA"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "A new little knot"
+    "tier": "Connect",
+    "title": "A new little knot",
+    "id": "square-013",
+    "legacyIndex": 12,
+    "phase": 2
   },
   {
     "n": 6,
     "layout": [
-      "DFFFGG",
-      "DFDGGG",
-      "DDDEEG",
-      "CBBEEG",
-      "CCBAAA",
-      "CBBBAA"
+      "DDDDFF",
+      "GGDDFF",
+      "GGECFA",
+      "EEECCA",
+      "BBBBCA",
+      "BBCCCA"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "Take another look"
+    "id": "square-063",
+    "phase": 2,
+    "tier": "Connect",
+    "title": "Coming together"
   },
   {
     "n": 6,
     "layout": [
-      "FFFAAA",
-      "FEEGGA",
-      "EEEGAA",
-      "BBEGGG",
-      "DBBBCG",
-      "DDDCCC"
+      "BBBFFA",
+      "DBBFAA",
+      "DEBFGA",
+      "DEBGGA",
+      "DECCGG",
+      "EEECCC"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "Leave a little room"
+    "id": "square-064",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "Look twice"
   },
   {
     "n": 6,
@@ -190,8 +625,44 @@
       "GGDDDD"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "Pieces in conversation"
+    "tier": "Compare",
+    "title": "Pieces in conversation",
+    "id": "square-016",
+    "legacyIndex": 15,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "CCEFGG",
+      "CCEFFG",
+      "EEEEFG",
+      "DDDDFF",
+      "DDBAAA",
+      "DBBBAA"
+    ],
+    "rotate": false,
+    "id": "square-065",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "A similar shape"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "FFFAAA",
+      "FEEGGA",
+      "EEEGAA",
+      "BBEGGG",
+      "DBBBCG",
+      "DDDCCC"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "Leave a little room",
+    "id": "square-015",
+    "legacyIndex": 14,
+    "phase": 3
   },
   {
     "n": 6,
@@ -204,8 +675,28 @@
       "DDDDEE"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "The quiet twist"
+    "tier": "Compare",
+    "title": "The quiet twist",
+    "id": "square-017",
+    "legacyIndex": 16,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DFFFGG",
+      "DFDGGG",
+      "DDDEEG",
+      "CBBEEG",
+      "CCBAAA",
+      "CBBBAA"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "Take another look",
+    "id": "square-014",
+    "legacyIndex": 13,
+    "phase": 3
   },
   {
     "n": 6,
@@ -218,36 +709,43 @@
       "CCAAAA"
     ],
     "rotate": false,
-    "tier": "Tricky",
-    "title": "No straight answers"
+    "tier": "Compare",
+    "title": "No straight answers",
+    "id": "square-018",
+    "legacyIndex": 17,
+    "phase": 3
   },
   {
     "n": 6,
     "layout": [
-      "DDHHHH",
-      "DGGGGH",
-      "DAGBBE",
-      "FAABBE",
-      "FFABEE",
-      "FCCCCE"
+      "BBBAAA",
+      "BBBDDA",
+      "GCCCDD",
+      "GCFFFE",
+      "GCCFEE",
+      "GCFFEE"
     ],
     "rotate": false,
-    "tier": "Intricate",
-    "title": "An extra possibility"
+    "id": "square-066",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "Almost the same"
   },
   {
     "n": 6,
     "layout": [
-      "GGHHHH",
-      "GGHEEE",
-      "BBBAFE",
-      "BAAAFF",
-      "BADCCF",
-      "DDDDCC"
+      "ADDDHH",
+      "AAADDH",
+      "BBBBHH",
+      "CCCGGF",
+      "CEEGGF",
+      "EEEFFF"
     ],
     "rotate": false,
-    "tier": "Intricate",
-    "title": "Close, but not quite"
+    "id": "square-067",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "A different possibility"
   },
   {
     "n": 6,
@@ -260,36 +758,27 @@
       "CCCHHH"
     ],
     "rotate": false,
-    "tier": "Intricate",
-    "title": "Mind the middle"
+    "tier": "Compare",
+    "title": "Mind the middle",
+    "id": "square-021",
+    "legacyIndex": 20,
+    "phase": 3
   },
   {
     "n": 6,
     "layout": [
-      "EFFFDD",
-      "EFDDDC",
-      "EFGGCC",
-      "EEGGAC",
-      "BBHGAA",
-      "BBHHHA"
+      "AAADDD",
+      "GAACCD",
+      "GGHCFF",
+      "EGHCFF",
+      "EHHCBF",
+      "EEHBBB"
     ],
     "rotate": false,
-    "tier": "Intricate",
-    "title": "A smaller opening"
-  },
-  {
-    "n": 6,
-    "layout": [
-      "DDDHHH",
-      "DBGGFH",
-      "BBGGFE",
-      "CBFFFE",
-      "CCCAEE",
-      "CAAAAE"
-    ],
-    "rotate": false,
-    "tier": "Intricate",
-    "title": "Around the corner"
+    "id": "square-068",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "Compare the corners"
   },
   {
     "n": 6,
@@ -302,8 +791,143 @@
       "AAADDH"
     ],
     "rotate": false,
-    "tier": "Intricate",
-    "title": "One move ahead"
+    "tier": "Compare",
+    "title": "One move ahead",
+    "id": "square-024",
+    "legacyIndex": 23,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "BCCCGG",
+      "BBFCGG",
+      "BFFCHG",
+      "AFEHHD",
+      "AEEHHD",
+      "AAEEDD"
+    ],
+    "rotate": false,
+    "id": "square-069",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "Not quite there"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "EEEAAF",
+      "HHEAAF",
+      "CHHDDF",
+      "CCCCDF",
+      "GGGBDD",
+      "GGBBBB"
+    ],
+    "rotate": false,
+    "id": "square-070",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "A subtle difference"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DDHHHH",
+      "DGGGGH",
+      "DAGBBE",
+      "FAABBE",
+      "FFABEE",
+      "FCCCCE"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "An extra possibility",
+    "id": "square-019",
+    "legacyIndex": 18,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "DDDHHH",
+      "DBGGFH",
+      "BBGGFE",
+      "CBFFFE",
+      "CCCAEE",
+      "CAAAAE"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "Around the corner",
+    "id": "square-023",
+    "legacyIndex": 22,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "EFFFDD",
+      "EFDDDC",
+      "EFGGCC",
+      "EEGGAC",
+      "BBHGAA",
+      "BBHHHA"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "A smaller opening",
+    "id": "square-022",
+    "legacyIndex": 21,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "EEEEFF",
+      "EAHHFF",
+      "CAAHHH",
+      "CADGBB",
+      "CADGBB",
+      "CDDGGB"
+    ],
+    "rotate": false,
+    "id": "square-071",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "The right neighbour"
+  },
+  {
+    "n": 6,
+    "layout": [
+      "GGHHHH",
+      "GGHEEE",
+      "BBBAFE",
+      "BAAAFF",
+      "BADCCF",
+      "DDDDCC"
+    ],
+    "rotate": false,
+    "tier": "Compare",
+    "title": "Close, but not quite",
+    "id": "square-020",
+    "legacyIndex": 19,
+    "phase": 3
+  },
+  {
+    "n": 6,
+    "layout": [
+      "CCCEEE",
+      "CHCEED",
+      "GHBBBD",
+      "GHBADD",
+      "GHAAFF",
+      "GGAAFF"
+    ],
+    "rotate": false,
+    "id": "square-072",
+    "phase": 3,
+    "tier": "Compare",
+    "title": "A careful comparison"
   },
   {
     "n": 7,
@@ -317,38 +941,28 @@
       "AAHHHHF"
     ],
     "rotate": false,
-    "tier": "Expert",
-    "title": "A wider world"
+    "tier": "Plan",
+    "title": "A wider world",
+    "id": "square-025",
+    "legacyIndex": 24,
+    "phase": 4
   },
   {
     "n": 7,
     "layout": [
-      "EBBBBFF",
-      "EEGBFFA",
-      "EGGGGFA",
-      "EEEGAAA",
-      "CCGGHAA",
-      "CCCDHHH",
-      "CDDDDDH"
+      "BBCCCCC",
+      "BBDCCFF",
+      "BGDDDFF",
+      "HGGDDDF",
+      "HHGADEE",
+      "HHGAAAE",
+      "HAAAEEE"
     ],
     "rotate": false,
-    "tier": "Expert",
-    "title": "Follow the edges"
-  },
-  {
-    "n": 7,
-    "layout": [
-      "CCCCFFF",
-      "CCFFFAH",
-      "BBBBAAH",
-      "BEEEAAH",
-      "EEEEDHH",
-      "EGGGDDH",
-      "GGGDDDD"
-    ],
-    "rotate": false,
-    "tier": "Expert",
-    "title": "The space between"
+    "id": "square-073",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Before the next move"
   },
   {
     "n": 7,
@@ -362,23 +976,28 @@
       "DDDDBBB"
     ],
     "rotate": false,
-    "tier": "Expert",
-    "title": "An unexpected fit"
+    "tier": "Plan",
+    "title": "An unexpected fit",
+    "id": "square-028",
+    "legacyIndex": 27,
+    "phase": 4
   },
   {
     "n": 7,
     "layout": [
-      "CBBBEEA",
-      "CCBFEEA",
-      "CCBFEEA",
-      "CDDFEAA",
-      "HDFFFFA",
-      "HDDHGGG",
-      "HHHHGGG"
+      "DAAAHHH",
+      "DAAHHFH",
+      "DACFFFF",
+      "DDCCCEE",
+      "DDCCCEB",
+      "GGGEEEB",
+      "GGGGBBB"
     ],
     "rotate": false,
-    "tier": "Expert",
-    "title": "Look a little longer"
+    "id": "square-074",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Leave an opening"
   },
   {
     "n": 7,
@@ -392,8 +1011,269 @@
       "FFFAADD"
     ],
     "rotate": false,
-    "tier": "Expert",
-    "title": "A patient square"
+    "tier": "Plan",
+    "title": "A patient square",
+    "id": "square-030",
+    "legacyIndex": 29,
+    "phase": 4
+  },
+  {
+    "n": 7,
+    "layout": [
+      "AAGGGGG",
+      "AAAAGHG",
+      "AFFFHHD",
+      "FFFEHHD",
+      "BBEEEDD",
+      "BBCCEED",
+      "BBCCCCD"
+    ],
+    "rotate": false,
+    "id": "square-075",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "A quiet strategy"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "EBBBBFF",
+      "EEGBFFA",
+      "EGGGGFA",
+      "EEEGAAA",
+      "CCGGHAA",
+      "CCCDHHH",
+      "CDDDDDH"
+    ],
+    "rotate": false,
+    "tier": "Plan",
+    "title": "Follow the edges",
+    "id": "square-026",
+    "legacyIndex": 25,
+    "phase": 4
+  },
+  {
+    "n": 7,
+    "layout": [
+      "HHHFBBB",
+      "HHHFFBB",
+      "EDHFFBB",
+      "EDDDGBC",
+      "EEEDGCC",
+      "AEGGGCC",
+      "AAAACCC"
+    ],
+    "rotate": false,
+    "id": "square-076",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "One piece ahead"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "EEAABBB",
+      "EEAAABB",
+      "EDDDDFB",
+      "EDDFFFF",
+      "EDCCCCC",
+      "HHHCGGG",
+      "HHCCGGG"
+    ],
+    "rotate": false,
+    "id": "square-077",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "A place to begin"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "CCCCFFF",
+      "CCFFFAH",
+      "BBBBAAH",
+      "BEEEAAH",
+      "EEEEDHH",
+      "EGGGDDH",
+      "GGGDDDD"
+    ],
+    "rotate": false,
+    "tier": "Plan",
+    "title": "The space between",
+    "id": "square-027",
+    "legacyIndex": 26,
+    "phase": 4
+  },
+  {
+    "n": 7,
+    "layout": [
+      "HHHHHEE",
+      "FFHHEEE",
+      "FFFFDDD",
+      "AAAAADD",
+      "ACABDDG",
+      "CCBBBBG",
+      "CCCBGGG"
+    ],
+    "rotate": false,
+    "id": "square-078",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Think it through"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "EEEBBGG",
+      "EDBBBGG",
+      "EDDBCGC",
+      "FFDDCCC",
+      "FFAAAAH",
+      "FFAHAAH",
+      "FFAHHHH"
+    ],
+    "rotate": false,
+    "id": "square-079",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Hold that thought"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "CBBBEEA",
+      "CCBFEEA",
+      "CCBFEEA",
+      "CDDFEAA",
+      "HDFFFFA",
+      "HDDHGGG",
+      "HHHHGGG"
+    ],
+    "rotate": false,
+    "tier": "Plan",
+    "title": "Look a little longer",
+    "id": "square-029",
+    "legacyIndex": 28,
+    "phase": 4
+  },
+  {
+    "n": 7,
+    "layout": [
+      "AAACDDD",
+      "AABCDCD",
+      "HHBCCCC",
+      "HBBBGGG",
+      "HHFFFFG",
+      "HHFEEEG",
+      "HFFFEEG"
+    ],
+    "rotate": false,
+    "id": "square-080",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "A little foresight"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "IIIFGGG",
+      "IIDFFGE",
+      "IDDDFGE",
+      "DDHCFFE",
+      "BHHCCCE",
+      "BBHAACC",
+      "BHHHAAC"
+    ],
+    "rotate": false,
+    "id": "square-081",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "An open question"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "BBBBBGG",
+      "AABGGGG",
+      "AAFCCCC",
+      "FFFFDII",
+      "HHFDDIE",
+      "HHFDDIE",
+      "HHDDEEE"
+    ],
+    "rotate": false,
+    "id": "square-082",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Room for a plan"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "GGHHHAA",
+      "GGHHAAB",
+      "GGHAABB",
+      "GEHACBC",
+      "EEEFCCC",
+      "IIFFFFD",
+      "IIFDDDD"
+    ],
+    "rotate": false,
+    "id": "square-083",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Work from within"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "AAAADDD",
+      "CAIDDHD",
+      "CCIHHHD",
+      "CBIIIIF",
+      "BBGGGFF",
+      "BBGGGFF",
+      "BBGEEEE"
+    ],
+    "rotate": false,
+    "id": "square-084",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "A thoughtful fit"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "BBBCCCC",
+      "BFIIIHH",
+      "BFFIHHH",
+      "BFFIGGG",
+      "AAFEGGG",
+      "AEEEDDD",
+      "AAAEEED"
+    ],
+    "rotate": false,
+    "id": "square-085",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "The longer view"
+  },
+  {
+    "n": 7,
+    "layout": [
+      "GGGIIII",
+      "AGAAIEE",
+      "AAAAEEH",
+      "FFDDEEH",
+      "FFDDDHH",
+      "BFBCHHH",
+      "BBBCCCC"
+    ],
+    "rotate": false,
+    "id": "square-086",
+    "phase": 4,
+    "tier": "Plan",
+    "title": "Plan a little further"
   },
   {
     "n": 8,
@@ -409,23 +1289,10 @@
     ],
     "rotate": false,
     "tier": "Master",
-    "title": "The long way around"
-  },
-  {
-    "n": 8,
-    "layout": [
-      "CCCCHHFF",
-      "CCCAHHFF",
-      "EEAAHHFF",
-      "BEAAAHFF",
-      "BEEEAHGG",
-      "BEEEDDGG",
-      "BBBDDDDG",
-      "BBBDGGGG"
-    ],
-    "rotate": false,
-    "tier": "Master",
-    "title": "An intricate balance"
+    "title": "The long way around",
+    "id": "square-031",
+    "legacyIndex": 30,
+    "phase": 5
   },
   {
     "n": 8,
@@ -441,7 +1308,29 @@
     ],
     "rotate": false,
     "tier": "Master",
-    "title": "Every corner counts"
+    "title": "Every corner counts",
+    "id": "square-033",
+    "legacyIndex": 32,
+    "phase": 5
+  },
+  {
+    "n": 8,
+    "layout": [
+      "CCCCHHFF",
+      "CCCAHHFF",
+      "EEAAHHFF",
+      "BEAAAHFF",
+      "BEEEAHGG",
+      "BEEEDDGG",
+      "BBBDDDDG",
+      "BBBDGGGG"
+    ],
+    "rotate": false,
+    "tier": "Master",
+    "title": "An intricate balance",
+    "id": "square-032",
+    "legacyIndex": 31,
+    "phase": 5
   },
   {
     "n": 8,
@@ -457,7 +1346,10 @@
     ],
     "rotate": false,
     "tier": "Master",
-    "title": "A deeper arrangement"
+    "title": "A deeper arrangement",
+    "id": "square-034",
+    "legacyIndex": 33,
+    "phase": 5
   },
   {
     "n": 8,
@@ -473,7 +1365,10 @@
     ],
     "rotate": false,
     "tier": "Master",
-    "title": "The final tangle"
+    "title": "The final tangle",
+    "id": "square-035",
+    "legacyIndex": 34,
+    "phase": 5
   },
   {
     "n": 8,
@@ -489,6 +1384,261 @@
     ],
     "rotate": false,
     "tier": "Master",
-    "title": "A square well earned"
+    "title": "A square well earned",
+    "id": "square-036",
+    "legacyIndex": 35,
+    "phase": 5
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "GGAAADBB",
+      "GGAAADBB",
+      "GGAHHDBB",
+      "GGHHFDDD",
+      "FHHHFIII",
+      "FFFFFIII",
+      "EEEECCCI",
+      "EEECCCCI"
+    ],
+    "id": "square-087",
+    "phase": 5,
+    "tier": "Master",
+    "title": "No obvious beginning"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "AAAAAFHH",
+      "DDAAFFHH",
+      "DFFFFFHH",
+      "DIIIBBBB",
+      "DIIIBCCC",
+      "DEEEBBBC",
+      "EEEEGGCC",
+      "EGGGGGCC"
+    ],
+    "id": "square-088",
+    "phase": 5,
+    "tier": "Master",
+    "title": "A patient arrangement"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "DDDAFFFH",
+      "DAAAFFHH",
+      "DAAAFHHH",
+      "DIIIBBBB",
+      "DIEIBBCC",
+      "EIEIBGCC",
+      "EEEGGGCC",
+      "EEGGGGCC"
+    ],
+    "id": "square-089",
+    "phase": 5,
+    "tier": "Master",
+    "title": "Between the edges"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "AAAAAFHH",
+      "DDDAAFHH",
+      "DDFFFFHH",
+      "DDFFBBBB",
+      "IIIEBCCC",
+      "IIIEBBBC",
+      "EEEEEGCC",
+      "EGGGGGCC"
+    ],
+    "id": "square-090",
+    "phase": 5,
+    "tier": "Master",
+    "title": "An intricate thought"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "AAAAHHHG",
+      "BBAAHHHG",
+      "BBDAHGGG",
+      "BBDAHGGG",
+      "BBDIIICC",
+      "FDDIEECC",
+      "FDFIEEEC",
+      "FFFIEEEC"
+    ],
+    "id": "square-091",
+    "phase": 5,
+    "tier": "Master",
+    "title": "An elusive opening"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "DAAAAAHH",
+      "DAFFFFHH",
+      "DDFFFFHH",
+      "DDIIBBBB",
+      "IIIGBBCC",
+      "EIEGBBCC",
+      "EIEGGGCC",
+      "EEEGGGCC"
+    ],
+    "id": "square-092",
+    "phase": 5,
+    "tier": "Master",
+    "title": "Keep looking"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "BAAAHHGG",
+      "BAAHHHGG",
+      "BBAAAHGG",
+      "BBBIIHGG",
+      "DDDIICCC",
+      "DDDIICCC",
+      "FDDIIEEE",
+      "FFFFFEEE"
+    ],
+    "id": "square-093",
+    "phase": 5,
+    "tier": "Master",
+    "title": "A delicate balance"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "DDAAAAHH",
+      "DDAAFFHH",
+      "DDFFFFHH",
+      "IFFIBBBH",
+      "IIIIBBBH",
+      "EEEIBBCC",
+      "EEEGGCCC",
+      "EGGGGCCC"
+    ],
+    "id": "square-094",
+    "phase": 5,
+    "tier": "Master",
+    "title": "The hidden connection"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "GGAAADBB",
+      "GGAAADBB",
+      "GGHHHDBB",
+      "GGHHFDDI",
+      "FHHHFIDI",
+      "FFFFFIII",
+      "EEECCICI",
+      "EEECCCCC"
+    ],
+    "id": "square-095",
+    "phase": 5,
+    "tier": "Master",
+    "title": "A deeper puzzle"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "DDAAAFHH",
+      "DDAAAFHH",
+      "DDFFFFHH",
+      "DDFIBBBH",
+      "IIIIBBBH",
+      "EEEIBBCC",
+      "EEGIIGCC",
+      "EEGGGGCC"
+    ],
+    "id": "square-096",
+    "phase": 5,
+    "tier": "Master",
+    "title": "Almost within reach"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "BAAAAAGG",
+      "BAAHHHGG",
+      "BBBHHHGG",
+      "BBBIICCC",
+      "DDDDICCC",
+      "FDDDIEEC",
+      "FIIIIEEE",
+      "FFFFFEEE"
+    ],
+    "id": "square-097",
+    "phase": 5,
+    "tier": "Master",
+    "title": "Every edge matters"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "GGAAADBB",
+      "GGAAADBB",
+      "GGHHHDBB",
+      "GGHHHDDD",
+      "EFFHHIII",
+      "EFFFFIII",
+      "EEECIICC",
+      "EEECCCCC"
+    ],
+    "id": "square-098",
+    "phase": 5,
+    "tier": "Master",
+    "title": "A little persistence"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "GGAAADBB",
+      "GGAAADBB",
+      "GGHHHDBB",
+      "GGHHFDDD",
+      "FHHHFIII",
+      "FFFFFICI",
+      "EEEEEICI",
+      "EEECCCCI"
+    ],
+    "id": "square-099",
+    "phase": 5,
+    "tier": "Master",
+    "title": "The last opening"
+  },
+  {
+    "n": 8,
+    "rotate": false,
+    "layout": [
+      "DDAAFFFH",
+      "DDAAFFHH",
+      "DDAAFHHH",
+      "DIIIBBBB",
+      "IIEIBGCC",
+      "EIEIBGCC",
+      "EEEEBGCC",
+      "EGGGGGCC"
+    ],
+    "id": "square-100",
+    "phase": 5,
+    "tier": "Master",
+    "title": "A square to remember"
   }
 ]
