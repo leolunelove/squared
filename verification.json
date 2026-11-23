@@ -138,11 +138,32 @@
       "Five phases each show20/20 after completion",
       "Final square with incomplete earlier collection has accurate copy"
     ],
-    "interruption": "Browser testing connection stalled twice; resumed using keyboard controls"
+    "interruption": "Browser testing connection stalled twice; resumed using keyboard controls",
+    "live_verified": [
+      "100 tiles in five phases",
+      "All12 existing completion identities retained",
+      "Legacy current square moves from displayed4 to10 with sameID",
+      "Two independent unfinished boards survive switching",
+      "Piece and Undo survive reload",
+      "Undo restores earlier board",
+      "Hint matches fixed orientation",
+      "Normal player count remains12 after isolated smoke test"
+    ],
+    "live_migration_evidence": "qa/live-migration-1.4.0.json"
   },
   "publication": {
-    "status": "pending",
-    "url": "https://squared.leolune.fun/"
+    "status": "live",
+    "url": "https://squared.leolune.fun/",
+    "repository": "https://github.com/leolunelove/squared",
+    "source_commit": "0be4ba95c0e53282d52d123362bc17f9b3e45bf3",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45251317551",
+    "build": "success",
+    "deploy": "success",
+    "https_status": 200,
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_bytes": 74206,
+    "live_sha256": "f2581592b2758c87501aef4d42947215f46e9b6d555095da191eac0b996b2bf3"
   },
   "not_verified": [
     "Physical-phone finger feel, sound and vibration",

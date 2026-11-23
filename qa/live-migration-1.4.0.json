@@ -1,0 +1,26 @@
+{
+  "version": "1.4.0",
+  "before": {
+    "level": 4,
+    "collection": "12 of 36 squares complete. A little more room to play."
+  },
+  "after": {
+    "level": 10,
+    "collection": "12 of 100 squares complete. A little more room to play.",
+    "retainedLegacyIndices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "isolatedSessionSave": true
+}

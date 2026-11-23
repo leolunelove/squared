@@ -8,4 +8,6 @@ The exact level-switching regression was checked in the browser: a placed piece 
 
 Five shuffled exact-cover searches, shape clues and placement ambiguity inform ordering. The final phase was refined through thousands of connected-shape candidates. These scores are structural aids; they do not establish how difficult real players find the puzzles. Physical phone touch feel, audio and haptics remain device-test boundaries.
 
-Live deployment verification is pending.
+Version 1.4.0 deployed successfully in [run 45251317551](https://github.com/leolunelove/squared/actions/runs/45251317551). HTTPS returned 200 with a validated certificate, and the served HTML matched the tested build byte for byte. The live collection contains 100 tiles in five phases.
+
+Live migration preserved all 12 original completion identities. The formerly current level 4 moved to displayed level 10 while retaining the same puzzle ID. A session-only copy of that save was used to verify two independent unfinished boards, reload persistence, Undo and a fixed-orientation hint. The normal campaign remained at 12 earned completions after the isolated smoke test. See [live migration evidence](qa/live-migration-1.4.0.json).
