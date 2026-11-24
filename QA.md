@@ -8,4 +8,4 @@ Browser checks at 375×667 include valid placement, an invalid overlapping drop,
 
 The final board fits 320×568 and 844×390 without page overflow. Placement, Undo, resizing and Restart leave no stranded held/moving classes. The three bentoad directions are a separate local concept artifact and do not rename the game.
 
-Live publication verification is pending. Physical finger input, sound quality and haptics remain device-test boundaries.
+Version 1.5.0 deployed successfully in [run 45312841651](https://github.com/leolunelove/squared/actions/runs/45312841651). HTTPS returned 200 with a validated certificate, and the live HTML matched the tested build byte for byte. A session-only copy of the player save retained the same current level and 2/100 earned completions. Live native-pointer placement, immediate Undo, re-placement and square completion passed. The normal save still showed 2/100 after testing. See [live motion evidence](qa/live-motion-1.5.0.json). Physical finger input, sound quality and haptics remain device-test boundaries.

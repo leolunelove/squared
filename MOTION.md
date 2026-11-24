@@ -1,5 +1,7 @@
 # Motion language — 1.5.0
 
+Applied from the [Polish UI motion prompt](https://aiuxplayground.com/prompts/polish-ui-motion), using the current game and source as evidence.
+
 Calm, direct, tactile: the piece follows your hand, then settles into its place.
 
 ## Audit

@@ -31,11 +31,27 @@
       "resize clears transient travel",
       "Restart returns piece to tray"
     ],
-    "fixtures": "Local-only seeded, slow-travel and forced-reduced-motion fixtures; excluded from publication"
+    "fixtures": "Local-only seeded, slow-travel and forced-reduced-motion fixtures; excluded from publication",
+    "live_evidence": "qa/live-motion-1.5.0.json",
+    "live_verified": [
+      "Same current level and2/100 earned completions after update",
+      "Native-pointer placement, immediate Undo, re-placement and completion",
+      "Normal save unchanged by isolated playtest"
+    ]
   },
   "publication": {
-    "status": "pending",
-    "url": "https://squared.leolune.fun/"
+    "status": "live",
+    "url": "https://squared.leolune.fun/",
+    "repository": "https://github.com/leolunelove/squared",
+    "source_commit": "226e1d2860de0a84f05e80a6b5f1d0e543bdb51b",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45312841651",
+    "build": "success",
+    "deploy": "success",
+    "https_status": 200,
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_bytes": 77799,
+    "live_sha256": "d70487ee7b8b29b699a2da33387bb0a78022e7bb63813795f7bd05164b153343"
   },
   "not_verified": [
     "Physical-phone finger feel",

@@ -1,0 +1,21 @@
+{
+  "version": "1.5.0",
+  "before": "2 of 100 squares complete. A little more room to play.",
+  "after": "2 of 100 squares complete. A little more room to play.",
+  "currentLevel": 3,
+  "isolatedSessionSave": true,
+  "liveChecks": [
+    "Native-pointer placement",
+    "Undo during placement travel",
+    "Re-place and complete a square",
+    "Completion dialog and quiet board state"
+  ],
+  "localChecks": [
+    "Final nine-piece square",
+    "0.55-cell edge snapping",
+    "Invalid-overlap return",
+    "Undo then re-grab with slow-travel fixture",
+    "Forced reduced motion",
+    "320x568 and844x390 layout and resize"
+  ]
+}
