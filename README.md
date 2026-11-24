@@ -1,10 +1,14 @@
-# Squared
+# bentoad
 
 A calm square-building puzzle designed for touch. Use every piece to fill the board, with no gaps or overlaps. One hundred levels grow from 3×3 to 8×8, with every piece already facing its fitting direction.
 
+## Approved brand direction
+
+The new brand is **bentoad**, using **01 Soft toad**: the rounded toad mascot, lowercase rounded wordmark, blue, navy and chalk. The approved reference and exact palette are recorded in [`brand/identity.json`](brand/identity.json). Its reference image selects the left column only. This supersedes the block-toad and yellow-green explorations. Version 1.6.0 applies this identity to the game header, browser and home-screen icons, chalk surfaces and blue interface accents. The puzzle piece colours remain familiar.
+
 ## Play
 
-[Play Squared](https://squared.leolune.fun/)
+[Play bentoad](https://squared.leolune.fun/)
 
 Open `dist/index.html` in a browser. It is a complete, self-contained game with no dependencies or external assets. Or serve it locally:
 
@@ -17,6 +21,8 @@ Visit `http://localhost:4173`. For a phone on the same network, bind the server 
 Drag pieces onto the square. Pieces keep a fixed orientation; drag them into place. Tap placement and keyboard controls are also available. Hints respect compatible pieces already on the board. More complex partial boards are searched in a background worker; if the search cannot finish promptly, the hint suggests returning a piece to the tray. Undo and restart are unlimited. Local storage saves progress and sound preference; private browsing may limit persistence.
 
 Sound uses quiet synthesized notes. Haptics use the browser vibration API where available; iOS browsers generally do not expose this API. Reduced-motion preferences are respected.
+
+Existing progress remains under `squared-save-v1` on the same `squared.leolune.fun` origin. Rebranding does not rename storage keys or change save versions, stable level IDs, arrangements, Undo histories or sound preferences.
 
 ## Motion
 

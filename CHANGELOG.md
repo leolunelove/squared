@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 — 2026-11-24
+
+- Apply the approved bentoad Soft toad identity: vector mascot, rounded outlined wordmark, blue, navy and chalk.
+- Update browser title, accessible brand label, SVG favicon and embedded 180px home-screen icon.
+- Carry the palette through controls, level navigation, instructions and completion feedback.
+- Preserve the game app, engine, motion code and all 100 levels byte for byte, including the original save keys and domain.
+- Verify 375×667, 320×568 and 844×390 layouts, pointer placement and overlap rejection, hints, Undo, reloads, independent saved boards, Restart and final-square completion.
+
 ## 1.5.0 — 24 November 2026
 
 - Pickup captures the visible pose before interrupting movement, preserving the grabbed cell.

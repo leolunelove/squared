@@ -1,0 +1,49 @@
+{
+  "name": "bentoad",
+  "status": "approved",
+  "approved_on": "2026-11-24",
+  "direction": {
+    "number": "01",
+    "name": "Soft toad"
+  },
+  "approval": "User selected direction 1 and asked to lock it in going forward.",
+  "reference": {
+    "file": "approved-direction-reference.png",
+    "selection": "Left column only, labelled 01 Soft toad. Columns 02 and 03 are unselected alternatives.",
+    "kind": "Approved visual concept; production assets must faithfully follow this reference."
+  },
+  "mascot": {
+    "description": "Soft, rounded toad with raised eyes, a squat curved body and a tucked bent hind leg.",
+    "style": "Simple, friendly silhouette with smooth curves and clear negative space."
+  },
+  "wordmark": {
+    "text": "bentoad",
+    "case": "lowercase",
+    "style": "Rounded, heavy, friendly lettering; preserve the approved reference proportions and spacing."
+  },
+  "palette": {
+    "blue": "#5872c2",
+    "navy": "#243347",
+    "chalk": "#f6f6f1"
+  },
+  "app_icon": "Chalk toad on a blue rounded-square background, following the approved reference.",
+  "supersedes": [
+    "Angular block-toad mascot",
+    "Lily/yellow-green palette",
+    "Bent b and Quiet type alternatives"
+  ],
+  "game_rules_to_preserve": [
+    "Calm existing puzzle experience",
+    "Fixed-orientation pieces and existing interaction rules",
+    "100 levels across five phases",
+    "Saved progress and stable level IDs",
+    "Polished mobile motion and reduced-motion support"
+  ],
+  "implementation_status": "Applied in version 1.6.0; release verification is recorded in verification.json.",
+  "production_assets": {
+    "mascot": "toad.svg",
+    "wordmark": "wordmark.svg",
+    "app_icon": "app-icon.svg",
+    "apple_touch_icon": "apple-touch-icon.png"
+  }
+}
