@@ -60,7 +60,29 @@ function paint(id){
   el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
   el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move.`);
 }
-function position(id,x,y,scale=1){nodes[id].style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;}
+function position(id,x,y,scale=1){nodes[id].style.transform=poseTransform({x,y,scale});}
+function visiblePose(id){
+  const rect=nodes[id].getBoundingClientRect(),stageRect=stage.getBoundingClientRect(),{w}=size(pieceCells(id));
+  return {x:rect.left-stageRect.left,y:rect.top-stageRect.top,scale:rect.width/(w*geometry.cell)};
+}
+function restingPose(id){const p=placements[id];return p?{x:geometry.bx+p.x*geometry.cell,y:geometry.by+p.y*geometry.cell,scale:1}:{...geometry.homes[id]};}
+function freezePiece(id){
+  const el=nodes[id],pose=visiblePose(id);el.classList.add('motion-held');el._travel=null;
+  el.getAnimations().forEach(animation=>animation.cancel());el.querySelector('svg')?.getAnimations().forEach(animation=>animation.cancel());
+  el.classList.remove('moving','landing');position(id,pose.x,pose.y,pose.scale);return pose;
+}
+function movePiece(id,from,kind='return'){
+  const el=nodes[id],to=restingPose(id);el.classList.add('motion-held');el._travel=null;
+  el.getAnimations().forEach(animation=>animation.cancel());position(id,to.x,to.y,to.scale);
+  el.classList.remove('dragging','held','landing');
+  if(reducedMotion()||el.classList.contains('resizing')||samePose(from,to)){el.classList.remove('motion-held','moving');return;}
+  el.classList.add('moving');if(kind==='snap')el.classList.add('landing');
+  const animation=el.animate([{transform:poseTransform(from)},{transform:poseTransform(to)}],{duration:travelDuration(from,to,kind),easing:MOTION.ease});el._travel=animation;
+  const done=()=>{if(el._travel===animation){el._travel=null;el.classList.remove('motion-held','moving','landing');}};animation.finished.then(done).catch(done);
+}
+function boardMotion(){return nodes.map((_,id)=>freezePiece(id));}
+function finishBoardMotion(poses){layout();poses.forEach((pose,id)=>movePiece(id,pose));}
+function clearCompletion(){board.classList.remove('complete','celebrating');stage.classList.remove('solved');}
 function layout(){
   if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
   const wide=width>480&&height<320;
@@ -106,7 +128,7 @@ function updateControls(){
   $('#restart').disabled=false;
 }
 function load(index){
-  cancelDrag();if(level)persist();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
+  cancelDrag();if(level)persist();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];clearCompletion();
   // Every piece keeps its own home throughout the puzzle, including after a reload.
   trayIds=level.id==='square-001'?[0,2,1]:level.pieces.map(p=>p.id);
   const arrangement=restoreArrangement(level,boards[level.id]);({placements,rotations}=arrangement);history=restoreHistory(level,boards[level.id]);
@@ -120,10 +142,9 @@ function load(index){
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function pointerDown(e,id){
   if(e.button!==0||drag||solved)return;e.preventDefault();wakeAudio();clearHint();
-  nodes[id].getAnimations().forEach(a=>a.finish());nodes[id].querySelector('svg')?.getAnimations().forEach(a=>a.finish());
-  const point=stagePoint(e),rect=nodes[id].getBoundingClientRect(),cells=pieceCells(id),{w,h}=size(cells);
+  const point=stagePoint(e),pose=freezePiece(id),shape=size(pieceCells(id));nodes[id].classList.add('held');
   choose(id);
-  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
+  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),touch:e.pointerType==='touch',fromScale:pose.scale,grab:grabAtPose(point,pose,geometry.cell,shape),lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
   try{stage.setPointerCapture(e.pointerId);}catch{}
 }
 function pointerMove(e){
@@ -142,12 +163,12 @@ function dragTarget(){
   drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;drag.candidate=candidate;
   drag.overTray=drag.point.y>trayTop-12;
   if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
-    if(drag.touch&&snapKey&&snapKey!==drag.lastSnapKey&&performance.now()-drag.lastFeedback>90){haptic(3);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
+    if(drag.touch&&snapKey&&!drag.lastSnapKey&&performance.now()-drag.lastFeedback>140){haptic(2);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
   }else preview.classList.remove('visible');
 }
 function renderDrag(time){
   dragFrame=0;if(!drag?.active)return;
-  const progress=reducedMotion()?1:(time-drag.started)/135;
+  const progress=reducedMotion()?1:(time-drag.started)/MOTION.pickup;
   const pose=liftedPose(drag.point,drag.grab,geometry.cell,drag.fromScale,drag.lift,progress);
   position(drag.id,pose.x,pose.y,pose.scale);dragTarget();
   if(progress<1)dragFrame=requestAnimationFrame(renderDrag);
@@ -162,25 +183,21 @@ function endDrag(e,cancel=false){
   cancelAnimationFrame(dragFrame);dragFrame=0;
   // Pointer-up can arrive before the next animation frame or the last pointer-move.
   if(drag.active&&!cancel){if(e)drag.point=stagePoint(e);dragTarget();}
-  const d=drag;drag=null;preview.classList.remove('visible');nodes[d.id]?.classList.remove('dragging');
+  const d=drag,from=visiblePose(drag.id);drag=null;preview.classList.remove('visible');
   // Pointer-up releases capture automatically. Explicit release is only needed
   // when cancelling; otherwise a late lost-capture event can race the next pickup.
   if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
-  if(cancel){restore(d.before);layout();return;}
-  if(!d.active){choose(d.id);return;}
+  if(cancel){restore(d.before);layout();movePiece(d.id,from);return;}
+  if(!d.active){choose(d.id);layout();movePiece(d.id,from);return;}
   if(d.p){remember(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
   else if(d.overTray&&d.before.placements[d.id]){remember(d.before);placements[d.id]=null;say('A little room to try again.');}
   else{restore(d.before);tone('miss');say(placementMessage(placementIssue(level,placements,d.id,d.candidate)));}
-  layout();if(d.p)settlePiece(d.id);persist();checkComplete();
+  layout();movePiece(d.id,from,d.p?'snap':'return');persist();checkComplete();
 }
 function cancelDrag(){if(drag)endDrag(null,true);}
-function settlePiece(id){
-  if(reducedMotion())return;
-  nodes[id].querySelector('svg')?.animate([{transform:'scale(1.025) translateY(-1px)'},{transform:'scale(.992) translateY(1px)',offset:.65},{transform:'none'}],{duration:220,easing:'cubic-bezier(.2,.8,.2,1)'});
-}
 function placeSelected(p){
   if(selected===null||solved)return;const id=selected;
-  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();settlePiece(id);persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
+  if(canPlace(level,placements,id,p)){const from=freezePiece(id);remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();movePiece(id,from,'snap');persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
   else{tone('miss');say(placementMessage(placementIssue(level,placements,id,p)));}
 }
 stage.addEventListener('pointermove',pointerMove);
@@ -191,10 +208,10 @@ board.addEventListener('pointerdown',e=>{
   placeSelected({x:Math.floor((p.x-geometry.bx)/geometry.cell),y:Math.floor((p.y-geometry.by)/geometry.cell),r:rotations[selected]});
 });
 $('#undo').addEventListener('click',()=>{
-  if(!history.length)return;cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();solved=false;board.classList.remove('complete');restore(history.pop());choose(null);layout();persist();say('Back a little. Try another way.');
+  if(!history.length)return;cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();const poses=boardMotion();solved=false;clearCompletion();restore(history.pop());choose(null);finishBoardMotion(poses);persist();say('Back a little. Try another way.');
 });
 $('#restart').addEventListener('click',()=>{
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();solved=false;board.classList.remove('complete');({placements,rotations}=restoreArrangement(level));choose(null);layout();persist();say('A fresh little start.');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();const poses=boardMotion();solved=false;clearCompletion();({placements,rotations}=restoreArrangement(level));choose(null);finishBoardMotion(poses);persist();say('A fresh little start.');
 });
 function requestHintSearch(){
   return new Promise(resolve=>{
@@ -229,12 +246,8 @@ $('#hint').addEventListener('click',async()=>{
   say(`Try the ${colors[target.id][3]} piece in the dotted space.`);tone('pick');
 });
 function checkComplete(celebrate=true){
-  if(!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');completed.add(levelIndex);unlocked=Math.max(unlocked,Math.min(levels.length-1,levelIndex+1));while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
-  if(celebrate){tone('finish');haptic([10,60,16]);sparkle();}finishTimer=setTimeout(openSuccess,celebrate?1000:550);
-}
-function sparkle(){
-  const holder=$('#sparkles');holder.innerHTML='';if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  for(let i=0;i<22;i++){const el=document.createElement('i');el.className='spark';const angle=i/22*Math.PI*2,x=geometry.bx+geometry.boardSize/2+Math.cos(angle)*geometry.boardSize*.48,y=geometry.by+geometry.boardSize/2+Math.sin(angle)*geometry.boardSize*.48;el.style.cssText=`background:${colors[i%colors.length][0]};--x:${x}px;--y:${y}px;--dx:${Math.cos(angle)*(25+Math.random()*35)}px;--dy:${Math.sin(angle)*40-15}px;--spin:${Math.random()*240}deg;animation-delay:${Math.random()*.1}s`;holder.append(el);}setTimeout(()=>holder.innerHTML='',1300);
+  if(solved||!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');stage.classList.add('solved');completed.add(levelIndex);unlocked=Math.max(unlocked,Math.min(levels.length-1,levelIndex+1));while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
+  if(celebrate){tone('finish');haptic([8,55,12]);if(!reducedMotion())board.classList.add('celebrating');}finishTimer=setTimeout(openSuccess,reducedMotion()?MOTION.reducedCompletion:celebrate?MOTION.completion:MOTION.restoredCompletion);
 }
 function openSuccess(){
   if(!solved)return;const last=levelIndex===levels.length-1,all=completed.size===levels.length;
@@ -270,6 +283,7 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelDrag();audio?.suspend().catch(()=>{});}});
 window.addEventListener('pagehide',()=>{cancelDrag();persist();});
-let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();layout();requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
+let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();nodes.forEach((_,id)=>freezePiece(id));layout();nodes.forEach(n=>n.classList.remove('motion-held','moving','landing','held'));requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
 $('#sound').setAttribute('aria-label',sound?'Turn sound off':'Turn sound on');$('#sound').setAttribute('aria-pressed',String(sound));
+motionPreference.addEventListener('change',()=>{cancelDrag();nodes.forEach((_,id)=>freezePiece(id));layout();nodes.forEach(n=>n.classList.remove('motion-held','moving','landing','held'));});
 load(levelIndex);

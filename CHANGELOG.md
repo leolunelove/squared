@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.5.0 — 24 November 2026
+
+- Pickup captures the visible pose before interrupting movement, preserving the grabbed cell.
+- Added short, interruptible landings and distance-aware returns. Undo and Restart cancel old visual travel cleanly.
+- Made the landing preview track its grid cell immediately.
+- Replaced placement overshoot, looping hint pulses and confetti with a steady hint and a single completion halo.
+- Shortened the wait for completion and the result-card entrance.
+- Kept immediate alternatives for reduced motion and cleared transient motion on resize.
+- Preserved all 100 levels, permanent IDs, rules and saved progress.
+
+
 ## 1.4.0 — 23 November 2026
 
 - Expanded the campaign to 100 levels in five phases: Learn, Connect, Compare, Plan and Master.

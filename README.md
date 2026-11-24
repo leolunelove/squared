@@ -18,6 +18,10 @@ Drag pieces onto the square. Pieces keep a fixed orientation; drag them into pla
 
 Sound uses quiet synthesized notes. Haptics use the browser vibration API where available; iOS browsers generally do not expose this API. Reduced-motion preferences are respected.
 
+## Motion
+
+Pickup grows over 120ms while preserving the visible grabbed cell. Drag movement follows the pointer directly. Legal placements settle over 150ms; rejected drops return over 180–260ms. A quiet board halo replaces confetti, with completion available after 520ms. New gestures, Undo, Restart and resizing interrupt travel cleanly. Reduced motion uses immediate movement and no halo. See `MOTION.md` for the audit, interaction specifications and working rules.
+
 ## Campaign
 
 Five phases contain twenty puzzles each: Learn (1–20), Connect (21–40), Compare (41–60), Plan (61–80), and Master (81–100). Boards grow from 3×3 to 8×8, with up to nine pieces. Each phase introduces its larger board or piece count gently, then increases structural ambiguity.
@@ -44,6 +48,7 @@ node tests/mobile.test.mjs
 node tests/progression.test.mjs
 node tests/fixed-orientation.test.mjs
 node tests/campaign.test.mjs
+node tests/motion.test.mjs
 ```
 
 The grid engine accepts every valid tiling, rather than checking against a single prescribed solution. There are no accounts, analytics, network requests, or runtime packages.

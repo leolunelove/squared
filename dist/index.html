@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f3ec"><meta name="description" content="A little piece of calm. Fit every piece into a perfect square in this tactile, untimed puzzle game.">
   <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="squared-version" content="1.4.0">
+  <meta name="squared-version" content="1.5.0">
   <title>Squared — a little piece of calm</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f5f3ec'/%3E%3Cpath d='M12 12h24v16H24v24H12z' fill='%235e9690'/%3E%3Cpath d='M40 12h12v40H28V32h12z' fill='%23dc886c'/%3E%3C/svg%3E">
   <style>:root{color-scheme:light;--paper:#f5f3ec;--ink:#343e3b;--muted:#89908a;--teal:#4e827b;--line:#e4e5db;--ease:cubic-bezier(.2,.85,.25,1)}
@@ -32,6 +32,11 @@ html{-webkit-text-size-adjust:100%}.piece{transition:transform .24s cubic-bezier
 /* Readability keeps the existing palette and composition, with clearer game text. */
 .tool{font-size:14px;gap:6px}.status-area p{font-size:14px;color:#65715f;max-width:100%;line-height:1.35}.status-area{height:55px;padding-inline:4px}.tray-label{font-size:12px;color:#77816f;letter-spacing:1px}.tray-label span:last-child{font-size:12px;color:#77816f}.dimension{display:flex;flex-direction:column;align-items:flex-end;gap:3px;color:#707d68;font-size:12px;margin-bottom:8px;letter-spacing:.4px}#phase-name{font-size:12px;font-weight:550;color:#61725e}.level-label .slash{color:#7d8874}.level-section-title{font-size:15px;color:#61725e}.level-section-title small{font-size:12px;color:#77816f}.level-tile small{font-size:12px}.dialog-copy{font-size:16px;color:#66725e}.keyboard-note{font-size:14px;color:#748069}.dialog-footer{font-size:12px;color:#78836f}.success p{font-size:15px;color:#6f7c63}.primary-button{font-size:15px}.text-button{font-size:14px}.dialog-heading .eyebrow{font-size:10px;color:#7b866f}.dimension #dimension{white-space:nowrap}
 @media(max-height:620px){.status-area{height:49px}.status-area p{font-size:13px}.tool{font-size:14px}.tray-label{font-size:11px}.dimension{font-size:12px;margin-bottom:5px}}
+
+/* Motion language: direct manipulation, short landings, a quiet completion. */
+.piece.motion-held,.piece.moving,.piece.held{transition:none}.piece.held{z-index:25;filter:drop-shadow(0 5px 2px #4a4e3814) drop-shadow(0 10px 10px #3a42331a)}.piece.dragging{z-index:50;transition:filter .1s;filter:drop-shadow(0 8px 3px #4a4e3815) drop-shadow(0 14px 11px #3a423324)}.piece.moving{z-index:22}.piece.landing{filter:drop-shadow(0 2px 1px #59624b18)}.ghost{transition:opacity .075s;will-change:opacity}.piece.hinted,.hint-ghost path{animation:none}.piece.hinted{filter:drop-shadow(0 0 3px #68947c70)}.hint-ghost path{stroke-width:.035}.board{transition:background .25s,box-shadow .3s}.stage.solved .piece.placed{filter:drop-shadow(0 1px 0 #59624b0a);transition:filter .2s}.board.celebrating::after{animation:square-bloom .46s cubic-bezier(.18,.8,.22,1) both}.success{transition:opacity .22s,visibility .22s}.success-card{transform:translateY(8px) scale(.985);transition:transform .25s cubic-bezier(.18,.8,.22,1)}.level-tile:hover:not(:disabled){transform:none}.tool[aria-busy=true] svg{animation:none;opacity:.65}
+@keyframes square-bloom{0%{border-color:#7ca38988;box-shadow:0 0 0 0 #79a68a24}55%{border-color:#7ca38955;box-shadow:0 0 0 9px #79a68a0b}100%{border-color:#c4d3bc88;box-shadow:0 0 0 15px #79a68a00}}
+@media(prefers-reduced-motion:reduce){.board,.stage.solved .piece.placed,.success-card{transition:none!important}.board.celebrating::after{animation:none!important}}
 </style>
 </head>
 <body>
@@ -225,6 +230,19 @@ function outline(cells) {
   }return loops.join('');
 }
 
+const MOTION={pickup:120,snap:150,returnMin:180,returnMax:260,completion:520,restoredCompletion:180,reducedCompletion:80,ease:'cubic-bezier(.18,.8,.22,1)'};
+// Read the visible pose before interrupting motion, so the grabbed cell stays put.
+function grabAtPose(point,pose,cell,shape){
+  return {x:Math.max(0,Math.min(shape.w,(point.x-pose.x)/(cell*pose.scale))),y:Math.max(0,Math.min(shape.h,(point.y-pose.y)/(cell*pose.scale)))};
+}
+function poseTransform(pose){return `translate3d(${pose.x}px,${pose.y}px,0) scale(${pose.scale})`;}
+function travelDuration(from,to,kind='return'){
+  if(kind==='snap')return MOTION.snap;
+  const distance=Math.hypot(to.x-from.x,to.y-from.y);
+  return Math.round(Math.max(MOTION.returnMin,Math.min(MOTION.returnMax,MOTION.returnMin+distance*.12)));
+}
+function samePose(a,b){return Math.abs(a.x-b.x)<.25&&Math.abs(a.y-b.y)<.25&&Math.abs(a.scale-b.scale)<.001;}
+
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const icons={
   sound:'<path d="M11 4 6 8H3v8h3l5 4V4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>',
@@ -287,7 +305,29 @@ function paint(id){
   el.style.width=s.w*geometry.cell+'px';el.style.height=s.h*geometry.cell+'px';
   el.setAttribute('aria-label',`${colors[id][3]} piece, ${level.pieces[id].cells.length} squares${placements[id]?', on board':', in tray'}. Select to move.`);
 }
-function position(id,x,y,scale=1){nodes[id].style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;}
+function position(id,x,y,scale=1){nodes[id].style.transform=poseTransform({x,y,scale});}
+function visiblePose(id){
+  const rect=nodes[id].getBoundingClientRect(),stageRect=stage.getBoundingClientRect(),{w}=size(pieceCells(id));
+  return {x:rect.left-stageRect.left,y:rect.top-stageRect.top,scale:rect.width/(w*geometry.cell)};
+}
+function restingPose(id){const p=placements[id];return p?{x:geometry.bx+p.x*geometry.cell,y:geometry.by+p.y*geometry.cell,scale:1}:{...geometry.homes[id]};}
+function freezePiece(id){
+  const el=nodes[id],pose=visiblePose(id);el.classList.add('motion-held');el._travel=null;
+  el.getAnimations().forEach(animation=>animation.cancel());el.querySelector('svg')?.getAnimations().forEach(animation=>animation.cancel());
+  el.classList.remove('moving','landing');position(id,pose.x,pose.y,pose.scale);return pose;
+}
+function movePiece(id,from,kind='return'){
+  const el=nodes[id],to=restingPose(id);el.classList.add('motion-held');el._travel=null;
+  el.getAnimations().forEach(animation=>animation.cancel());position(id,to.x,to.y,to.scale);
+  el.classList.remove('dragging','held','landing');
+  if(reducedMotion()||el.classList.contains('resizing')||samePose(from,to)){el.classList.remove('motion-held','moving');return;}
+  el.classList.add('moving');if(kind==='snap')el.classList.add('landing');
+  const animation=el.animate([{transform:poseTransform(from)},{transform:poseTransform(to)}],{duration:travelDuration(from,to,kind),easing:MOTION.ease});el._travel=animation;
+  const done=()=>{if(el._travel===animation){el._travel=null;el.classList.remove('motion-held','moving','landing');}};animation.finished.then(done).catch(done);
+}
+function boardMotion(){return nodes.map((_,id)=>freezePiece(id));}
+function finishBoardMotion(poses){layout();poses.forEach((pose,id)=>movePiece(id,pose));}
+function clearCompletion(){board.classList.remove('complete','celebrating');stage.classList.remove('solved');}
 function layout(){
   if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
   const wide=width>480&&height<320;
@@ -333,7 +373,7 @@ function updateControls(){
   $('#restart').disabled=false;
 }
 function load(index){
-  cancelDrag();if(level)persist();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];board.classList.remove('complete');
+  cancelDrag();if(level)persist();clearTimeout(finishTimer);closeSuccess();clearHint();levelIndex=index;level=levels[index];solved=false;selected=null;keyboardTarget=null;history=[];clearCompletion();
   // Every piece keeps its own home throughout the puzzle, including after a reload.
   trayIds=level.id==='square-001'?[0,2,1]:level.pieces.map(p=>p.id);
   const arrangement=restoreArrangement(level,boards[level.id]);({placements,rotations}=arrangement);history=restoreHistory(level,boards[level.id]);
@@ -347,10 +387,9 @@ function load(index){
 function stagePoint(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function pointerDown(e,id){
   if(e.button!==0||drag||solved)return;e.preventDefault();wakeAudio();clearHint();
-  nodes[id].getAnimations().forEach(a=>a.finish());nodes[id].querySelector('svg')?.getAnimations().forEach(a=>a.finish());
-  const point=stagePoint(e),rect=nodes[id].getBoundingClientRect(),cells=pieceCells(id),{w,h}=size(cells);
+  const point=stagePoint(e),pose=freezePiece(id),shape=size(pieceCells(id));nodes[id].classList.add('held');
   choose(id);
-  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),touch:e.pointerType==='touch',fromScale:rect.width/(w*geometry.cell),grab:{x:Math.max(0,Math.min(w,(e.clientX-rect.left)/(rect.width/w))),y:Math.max(0,Math.min(h,(e.clientY-rect.top)/(rect.height/h)))},lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
+  drag={id,pointerId:e.pointerId,start:point,point,active:false,before:snapshot(),touch:e.pointerType==='touch',fromScale:pose.scale,grab:grabAtPose(point,pose,geometry.cell,shape),lift:e.pointerType==='touch'?Math.min(48,geometry.cell*.85):0,p:null,overTray:false,lastSnapKey:null,lastFeedback:0};
   try{stage.setPointerCapture(e.pointerId);}catch{}
 }
 function pointerMove(e){
@@ -369,12 +408,12 @@ function dragTarget(){
   drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;drag.candidate=candidate;
   drag.overTray=drag.point.y>trayTop-12;
   if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
-    if(drag.touch&&snapKey&&snapKey!==drag.lastSnapKey&&performance.now()-drag.lastFeedback>90){haptic(3);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
+    if(drag.touch&&snapKey&&!drag.lastSnapKey&&performance.now()-drag.lastFeedback>140){haptic(2);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
   }else preview.classList.remove('visible');
 }
 function renderDrag(time){
   dragFrame=0;if(!drag?.active)return;
-  const progress=reducedMotion()?1:(time-drag.started)/135;
+  const progress=reducedMotion()?1:(time-drag.started)/MOTION.pickup;
   const pose=liftedPose(drag.point,drag.grab,geometry.cell,drag.fromScale,drag.lift,progress);
   position(drag.id,pose.x,pose.y,pose.scale);dragTarget();
   if(progress<1)dragFrame=requestAnimationFrame(renderDrag);
@@ -389,25 +428,21 @@ function endDrag(e,cancel=false){
   cancelAnimationFrame(dragFrame);dragFrame=0;
   // Pointer-up can arrive before the next animation frame or the last pointer-move.
   if(drag.active&&!cancel){if(e)drag.point=stagePoint(e);dragTarget();}
-  const d=drag;drag=null;preview.classList.remove('visible');nodes[d.id]?.classList.remove('dragging');
+  const d=drag,from=visiblePose(drag.id);drag=null;preview.classList.remove('visible');
   // Pointer-up releases capture automatically. Explicit release is only needed
   // when cancelling; otherwise a late lost-capture event can race the next pickup.
   if(cancel||!e)try{stage.releasePointerCapture(d.pointerId);}catch{}
-  if(cancel){restore(d.before);layout();return;}
-  if(!d.active){choose(d.id);return;}
+  if(cancel){restore(d.before);layout();movePiece(d.id,from);return;}
+  if(!d.active){choose(d.id);layout();movePiece(d.id,from);return;}
   if(d.p){remember(d.before);placements[d.id]=d.p;clearHint();tone('place');haptic(8);choose(null);say(['A little closer.','That feels right.','Finding its place.'][Math.floor(Math.random()*3)]);}
   else if(d.overTray&&d.before.placements[d.id]){remember(d.before);placements[d.id]=null;say('A little room to try again.');}
   else{restore(d.before);tone('miss');say(placementMessage(placementIssue(level,placements,d.id,d.candidate)));}
-  layout();if(d.p)settlePiece(d.id);persist();checkComplete();
+  layout();movePiece(d.id,from,d.p?'snap':'return');persist();checkComplete();
 }
 function cancelDrag(){if(drag)endDrag(null,true);}
-function settlePiece(id){
-  if(reducedMotion())return;
-  nodes[id].querySelector('svg')?.animate([{transform:'scale(1.025) translateY(-1px)'},{transform:'scale(.992) translateY(1px)',offset:.65},{transform:'none'}],{duration:220,easing:'cubic-bezier(.2,.8,.2,1)'});
-}
 function placeSelected(p){
   if(selected===null||solved)return;const id=selected;
-  if(canPlace(level,placements,id,p)){remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();settlePiece(id);persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
+  if(canPlace(level,placements,id,p)){const from=freezePiece(id);remember();placements[id]={...p};rotations[id]=p.r;clearHint();choose(null);tone('place');haptic(8);layout();movePiece(id,from,'snap');persist();checkComplete();if(!solved)say('That feels right. Keep going.');}
   else{tone('miss');say(placementMessage(placementIssue(level,placements,id,p)));}
 }
 stage.addEventListener('pointermove',pointerMove);
@@ -418,10 +453,10 @@ board.addEventListener('pointerdown',e=>{
   placeSelected({x:Math.floor((p.x-geometry.bx)/geometry.cell),y:Math.floor((p.y-geometry.by)/geometry.cell),r:rotations[selected]});
 });
 $('#undo').addEventListener('click',()=>{
-  if(!history.length)return;cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();solved=false;board.classList.remove('complete');restore(history.pop());choose(null);layout();persist();say('Back a little. Try another way.');
+  if(!history.length)return;cancelDrag();clearTimeout(finishTimer);closeSuccess();clearHint();const poses=boardMotion();solved=false;clearCompletion();restore(history.pop());choose(null);finishBoardMotion(poses);persist();say('Back a little. Try another way.');
 });
 $('#restart').addEventListener('click',()=>{
-  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();solved=false;board.classList.remove('complete');({placements,rotations}=restoreArrangement(level));choose(null);layout();persist();say('A fresh little start.');
+  cancelDrag();clearTimeout(finishTimer);closeSuccess();remember();clearHint();const poses=boardMotion();solved=false;clearCompletion();({placements,rotations}=restoreArrangement(level));choose(null);finishBoardMotion(poses);persist();say('A fresh little start.');
 });
 function requestHintSearch(){
   return new Promise(resolve=>{
@@ -456,12 +491,8 @@ $('#hint').addEventListener('click',async()=>{
   say(`Try the ${colors[target.id][3]} piece in the dotted space.`);tone('pick');
 });
 function checkComplete(celebrate=true){
-  if(!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');completed.add(levelIndex);unlocked=Math.max(unlocked,Math.min(levels.length-1,levelIndex+1));while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
-  if(celebrate){tone('finish');haptic([10,60,16]);sparkle();}finishTimer=setTimeout(openSuccess,celebrate?1000:550);
-}
-function sparkle(){
-  const holder=$('#sparkles');holder.innerHTML='';if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  for(let i=0;i<22;i++){const el=document.createElement('i');el.className='spark';const angle=i/22*Math.PI*2,x=geometry.bx+geometry.boardSize/2+Math.cos(angle)*geometry.boardSize*.48,y=geometry.by+geometry.boardSize/2+Math.sin(angle)*geometry.boardSize*.48;el.style.cssText=`background:${colors[i%colors.length][0]};--x:${x}px;--y:${y}px;--dx:${Math.cos(angle)*(25+Math.random()*35)}px;--dy:${Math.sin(angle)*40-15}px;--spin:${Math.random()*240}deg;animation-delay:${Math.random()*.1}s`;holder.append(el);}setTimeout(()=>holder.innerHTML='',1300);
+  if(solved||!complete(level,placements))return;solved=true;choose(null);clearHint();board.classList.add('complete');stage.classList.add('solved');completed.add(levelIndex);unlocked=Math.max(unlocked,Math.min(levels.length-1,levelIndex+1));while(completed.has(unlocked)&&unlocked<levels.length-1)unlocked++;persist();updateControls();say('Every piece, exactly where it belongs.');
+  if(celebrate){tone('finish');haptic([8,55,12]);if(!reducedMotion())board.classList.add('celebrating');}finishTimer=setTimeout(openSuccess,reducedMotion()?MOTION.reducedCompletion:celebrate?MOTION.completion:MOTION.restoredCompletion);
 }
 function openSuccess(){
   if(!solved)return;const last=levelIndex===levels.length-1,all=completed.size===levels.length;
@@ -497,8 +528,9 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelDrag();audio?.suspend().catch(()=>{});}});
 window.addEventListener('pagehide',()=>{cancelDrag();persist();});
-let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();layout();requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
+let resizeFrame;new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;if(geometry&&Math.abs(width-geometry.width)<1&&Math.abs(height-geometry.height)<1)return;cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{nodes.forEach(n=>n.classList.add('resizing'));cancelDrag();nodes.forEach((_,id)=>freezePiece(id));layout();nodes.forEach(n=>n.classList.remove('motion-held','moving','landing','held'));requestAnimationFrame(()=>nodes.forEach(n=>n.classList.remove('resizing')));});}).observe(stage);
 $('#sound').setAttribute('aria-label',sound?'Turn sound off':'Turn sound on');$('#sound').setAttribute('aria-pressed',String(sound));
+motionPreference.addEventListener('change',()=>{cancelDrag();nodes.forEach((_,id)=>freezePiece(id));layout();nodes.forEach(n=>n.classList.remove('motion-held','moving','landing','held'));});
 load(levelIndex);
 </script>
 </body></html>
