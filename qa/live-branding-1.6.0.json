@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-24",
+  "build": "1.6.0",
+  "url": "https://squared.leolune.fun/",
+  "source_commit": "8e05d046adca64de2b98e4b0267dfcb0badaaa68",
+  "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45373111814",
+  "https_status": 200,
+  "ssl_verify_result": 0,
+  "live_build_matches_tested_build": true,
+  "html_bytes": 98852,
+  "html_sha256": "febd9060af28df8fe7a933ca6d7b54b14944344a9a50813ee1e528124b50fe46",
+  "player_save_before": {
+    "current_level": 3,
+    "completed": 2,
+    "remaining": 3,
+    "sound": true
+  },
+  "player_save_after": {
+    "current_level": 3,
+    "completed": 2,
+    "remaining": 3,
+    "sound": true
+  },
+  "normal_progress_preserved": true,
+  "live_mobile_test": {
+    "viewport": "375x667",
+    "page_bounds": "375x667",
+    "session_only": true,
+    "steps": [
+      "Branded header and title visible",
+      "Native pointer placement",
+      "Undo restored tray",
+      "Re-grab and placement",
+      "All three pieces assembled and square completed",
+      "Next square advanced the isolated session to level 4",
+      "Normal save still level 3 with 2 completed squares after reload"
+    ]
+  },
+  "screenshot": "bentoad-mobile-1.6.0.jpg",
+  "not_verified": [
+    "Physical-device finger feel, haptics and audio"
+  ]
+}

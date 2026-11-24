@@ -47,12 +47,28 @@
       "current_level": 3,
       "completed": 2,
       "remaining": 3
+    },
+    "live_evidence": "qa/live-branding-1.6.0.json",
+    "live_after": {
+      "current_level": 3,
+      "completed": 2,
+      "remaining": 3,
+      "sound": true
     }
   },
   "publication": {
-    "status": "ready_to_publish",
+    "status": "live",
     "url": "https://squared.leolune.fun/",
-    "repository": "https://github.com/leolunelove/squared"
+    "repository": "https://github.com/leolunelove/squared",
+    "source_commit": "8e05d046adca64de2b98e4b0267dfcb0badaaa68",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45373111814",
+    "build": "success",
+    "deploy": "success",
+    "https_status": 200,
+    "ssl_verify_result": 0,
+    "live_build_matches_local": true,
+    "live_sha256": "febd9060af28df8fe7a933ca6d7b54b14944344a9a50813ee1e528124b50fe46",
+    "live_bytes": 98852
   },
   "not_verified": [
     "Physical-phone finger feel",
