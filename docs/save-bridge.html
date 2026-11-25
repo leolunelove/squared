@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>bentoad · saved squares</title><style>body{background:#f6f6f1;color:#243347;font:16px/1.6 system-ui,sans-serif;max-width:360px;margin:70px auto;padding:24px}h1{font-size:26px;letter-spacing:-.7px}a{color:#5872c2}</style></head><body><h1>Your squares are still here.</h1><p id="status">This page brings your saved game to the new bentoad address.</p><a href="/classic.html">Open your previous saved game</a><script>
+const targetOrigin='https://bentoad.leolune.fun';
+window.addEventListener('message',event=>{
+  const parentSource=parent!==window&&event.source===parent;
+  const openerSource=opener&&event.source===opener;
+  if(event.origin!==targetOrigin||(!parentSource&&!openerSource)||event.data?.type!=='bentoad-save-request'||typeof event.data.nonce!=='string'||!/^[a-zA-Z0-9-]{16,100}$/.test(event.data.nonce))return;
+  const response={type:'bentoad-save-response',nonce:event.data.nonce};
+  try{response.save=localStorage.getItem('squared-save-v1');document.querySelector('#status').textContent='Your saved squares are ready at the new address. The original save is staying here too.';}
+  catch{response.error='storage-unavailable';}
+  event.source.postMessage(response,targetOrigin);
+});
+</script></body></html>
