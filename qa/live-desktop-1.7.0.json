@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-25",
+  "build": "1.7.0",
+  "url": "https://squared.leolune.fun/",
+  "source_commit": "5c3c3c7142e81c0e4b42a2eebdd08c9250e9730e",
+  "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45691031614",
+  "https_status": 200,
+  "ssl_verify_result": 0,
+  "html_bytes": 102427,
+  "html_sha256": "23820097da8d9f1507a1919e6f5ef91c7afef70c85144165a7856d107968eae1",
+  "live_build_matches_tested_build": true,
+  "normal_save_preserved": true,
+  "evidence": {
+    "before": {
+      "level": "07",
+      "pieces": [
+        {
+          "id": "0",
+          "placed": false
+        },
+        {
+          "id": "1",
+          "placed": true
+        },
+        {
+          "id": "2",
+          "placed": true
+        },
+        {
+          "id": "3",
+          "placed": false
+        }
+      ],
+      "remaining": "2 to go",
+      "sound": "true",
+      "collection": "6 of 100 squares complete. A little more room to play.",
+      "grid": [
+        {
+          "id": "1",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "2",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    "after": {
+      "grid": [
+        {
+          "id": "1",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "2",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "level": "07",
+      "remaining": "2 to go",
+      "sound": "true",
+      "collection": "6 of 100 squares complete. A little more room to play."
+    },
+    "normalPane": {
+      "boardWidth": 315,
+      "grid": [
+        {
+          "id": "1",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "2",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "level": "07",
+      "page": [
+        732,
+        751
+      ],
+      "remaining": "2 to go",
+      "sound": "true",
+      "viewport": [
+        732,
+        751
+      ],
+      "collection": "6 of 100 squares complete. A little more room to play."
+    },
+    "wideDesktop": {
+      "boardWidth": 424,
+      "page": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "liveTests": [
+      "Mouse placement",
+      "Undo",
+      "Hint respecting the existing noncanonical arrangement",
+      "Square completion",
+      "Next advanced isolated session to level 8"
+    ],
+    "sessionOnly": true
+  },
+  "screenshots": [
+    "desktop-1.7.0.jpg",
+    "desktop-pane-1.7.0.jpg"
+  ]
+}

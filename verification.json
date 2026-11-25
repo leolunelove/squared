@@ -299,11 +299,21 @@
           ]
         }
       ]
-    }
+    },
+    "live_evidence": "qa/live-desktop-1.7.0.json"
   },
   "publication": {
-    "status": "ready_to_publish",
-    "url": "https://squared.leolune.fun/"
+    "url": "https://squared.leolune.fun/",
+    "source_commit": "5c3c3c7142e81c0e4b42a2eebdd08c9250e9730e",
+    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45691031614",
+    "https_status": 200,
+    "ssl_verify_result": 0,
+    "html_bytes": 102427,
+    "html_sha256": "23820097da8d9f1507a1919e6f5ef91c7afef70c85144165a7856d107968eae1",
+    "status": "live",
+    "build": "success",
+    "deploy": "success",
+    "live_build_matches_tested_build": true
   },
   "not_verified": [
     "Physical device touch feel, native OS reduced motion, audio and haptics"

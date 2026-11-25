@@ -8,8 +8,10 @@ Browser checks covered 1280×720, 1440×900, 1024×600, 732×751, 700×600, 699�
 
 Resizing initially exposed a hidden desktop-sized preview contributing to page scroll. Layout now clears unused marker geometry and updates active keyboard/hint previews. After the fix, tested page scroll dimensions match each viewport; visible hints scale to the new board correctly.
 
-The existing normal save before deployment showed level 7, 6 completed squares, sound enabled, honey at (3,0) and peach at (0,0). Local QA used isolated session keys. Post-deployment evidence will be recorded in qa/live-desktop-1.7.0.json. Physical-phone touch feel, OS motion settings, audio and haptics remain device-test boundaries.
+The existing normal save before deployment showed level 7, 6 completed squares, sound enabled, honey at (3,0) and peach at (0,0). Local QA used isolated session keys. Post-deployment evidence is recorded in qa/live-desktop-1.7.0.json. Physical-phone touch feel, OS motion settings, audio and haptics remain device-test boundaries.
 
 A placed sage piece dropped onto an occupied desktop cell returned to its original (2,0) position. Dragging it back to the right-hand tray then removed it from the board. The tray hit region follows the horizontal layout on desktop and short landscape screens; mobile retains its vertical tray boundary.
 
 The compact desktop layout also fits the actual 732×751 in-app pane: a 315px board, a three-column nine-piece tray, and all controls remain within the viewport. All nine pieces were placed successfully by mouse at that size. The 700×600 lower desktop boundary fits without scrolling; at 699px and at phone sizes the original mobile arrangement is used.
+
+The published build passed live verification at the actual 732×751 pane and at 1280×720. The in-app pane now shows a 315px board beside the pieces. Mouse placement, Undo, compatible hints, square completion and Next passed in a session-only copy, advancing that copy to level 8. The normal save remained at level 7 with 6 completions, two pieces remaining, sound enabled and the same placed-piece coordinates after reload. GitHub Pages run 45691031614 succeeded, HTTPS validated, and the live HTML matched the tested build byte for byte.
