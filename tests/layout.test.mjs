@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {stageLayout} from '../src/layout.js';
+import {stageLayout,overTrayAtPoint} from '../src/layout.js';
 import {readLevel,size} from '../src/engine.js';
 const levels=JSON.parse(readFileSync(new URL('../src/levels.json',import.meta.url))).map(readLevel);
 let checks=0;
@@ -21,6 +21,8 @@ for(const [width,height] of [[816,336],[936,456],[1160,636],[1160,816]])for(cons
   check(g.boardSize>300,'Desktop makes the square larger than the compact mobile board');
   check(g.bx>=0&&g.by>=0&&g.bx+g.boardSize<=g.trayX-24,'Board and tray are separated');
   check(g.by+g.boardSize<=height,'The board remains inside the stage');
+  check(!overTrayAtPoint({x:g.bx+g.boardSize/2,y:g.by+g.boardSize/2},{...g,sideTray:g.wide}),'An invalid board drop is not mistaken for returning to the side tray');
+  check(overTrayAtPoint({x:g.trayX+g.trayWidth/2,y:g.trayTop+20},{...g,sideTray:g.wide}),'Dragging a placed piece back to the side tray removes it from the board');
   const rectangles=[];
   level.pieces.forEach(({cells},i)=>{
     const {w,h}=size(cells),maxdim=Math.max(w,h);
@@ -35,4 +37,6 @@ for(const [width,height] of [[816,336],[936,456],[1160,636],[1160,816]])for(cons
     rectangles.push(rect);
   });
 }
+check(!overTrayAtPoint({x:100,y:180},{sideTray:false,trayTop:300}),'The mobile board is outside the bottom tray');
+check(overTrayAtPoint({x:100,y:400},{sideTray:false,trayTop:300}),'The mobile tray keeps its vertical boundary');
 console.log(JSON.stringify({responsive_layout_checks:checks,campaign_levels:levels.length,status:'passed'}));

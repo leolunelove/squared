@@ -6,12 +6,12 @@
     "engine_sha256": "e275fdd2152ca97e5c0fa28720abf624266f0fe48b40a5a0e409a59e4a7ee99b",
     "motion_sha256": "825c5b5b174a76e834dd3977ce3f3f8098d7fe5fc8f7fadd0f9505b87d4b14f2",
     "levels_sha256": "9ca48bc39a90394f415d95912cdbf54043f3858c117f2285a4f475104c09913e",
-    "app_outside_layout_function": true,
     "storage_keys": [
       "squared-save-v1",
       "squared-playtest-v1"
     ],
-    "domain": "squared.leolune.fun"
+    "domain": "squared.leolune.fun",
+    "save_progression_and_motion_logic": true
   },
   "tests": {
     "engine": 6273,
@@ -20,7 +20,7 @@
     "fixed_orientation_solutions_and_hint_workers": 100,
     "legacy_save_round_trips": 74,
     "motion": 192,
-    "responsive_layout": 15762,
+    "responsive_layout": 16564,
     "status": "passed"
   },
   "browser": {
@@ -41,7 +41,9 @@
       "Five-column desktop level picker",
       "Full nine-piece final-square completion by mouse drags",
       "Undo and Restart",
-      "Hidden and active hint markers across resizing without page overflow"
+      "Hidden and active hint markers across resizing without page overflow",
+      "Placed-piece overlap rejection returns to the previous board position",
+      "Dragging a placed piece back to the right-hand tray removes it from the board"
     ],
     "evidence": {
       "normalSaveBefore": {
@@ -199,7 +201,24 @@
         }
       ]
     },
-    "fixtures": "Dedicated local session fixture, excluded from publication"
+    "fixtures": "Dedicated local session fixture, excluded from publication",
+    "placed_piece_return": {
+      "invalidDrop": {
+        "from": [
+          355.6978759765625,
+          246.5
+        ],
+        "placed": true,
+        "remaining": "7 to go",
+        "to": [
+          898.390625,
+          394
+        ],
+        "x": 2,
+        "y": 0
+      },
+      "afterReturnToTray": "8 to go"
+    }
   },
   "publication": {
     "status": "ready_to_publish",

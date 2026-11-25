@@ -15,3 +15,6 @@ export function stageLayout(width,height,pieceCount,desktop=false){
   const actualRows=Math.ceil(pieceCount/cols)||1;
   return {wide,boardSize,bx,by,trayX,trayWidth,trayTop,trayHeight,cols,actualRows,slotW:trayWidth/cols,slotH:trayHeight/actualRows,labelTop,labelLeft:wide?trayX:8};
 }
+export function overTrayAtPoint(point,geometry){
+  return geometry.sideTray?point.x>geometry.trayX-12:point.y>geometry.trayTop-12;
+}

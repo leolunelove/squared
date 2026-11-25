@@ -348,6 +348,9 @@ function stageLayout(width,height,pieceCount,desktop=false){
   const actualRows=Math.ceil(pieceCount/cols)||1;
   return {wide,boardSize,bx,by,trayX,trayWidth,trayTop,trayHeight,cols,actualRows,slotW:trayWidth/cols,slotH:trayHeight/actualRows,labelTop,labelLeft:wide?trayX:8};
 }
+function overTrayAtPoint(point,geometry){
+  return geometry.sideTray?point.x>geometry.trayX-12:point.y>geometry.trayTop-12;
+}
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const icons={
@@ -436,9 +439,9 @@ function finishBoardMotion(poses){layout();poses.forEach((pose,id)=>movePiece(id
 function clearCompletion(){board.classList.remove('complete','celebrating');stage.classList.remove('solved');}
 function layout(){
   if(!level)return;const {width,height}=stage.getBoundingClientRect(),ids=trayIds;
-  const {boardSize,bx,by,trayX,trayWidth,trayTop,cols,slotW,slotH,labelTop,labelLeft}=stageLayout(width,height,ids.length,matchMedia(DESKTOP_QUERY).matches);
+  const {wide,boardSize,bx,by,trayX,trayWidth,trayTop,cols,slotW,slotH,labelTop,labelLeft}=stageLayout(width,height,ids.length,matchMedia(DESKTOP_QUERY).matches);
   const cell=boardSize/level.n;
-  geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
+  geometry={width,height,boardSize,cell,bx,by,trayX,trayTop,sideTray:wide,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
   const gridKey=`${level.n}:${boardSize}`;
   if(board.dataset.grid!==gridKey){board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');board.dataset.grid=gridKey;}
@@ -506,13 +509,13 @@ function pointerMove(e){
   if(!dragFrame)dragFrame=requestAnimationFrame(renderDrag);
 }
 function dragTarget(){
-  const {cell,bx,by,boardSize,trayTop}=geometry;
+  const {cell,bx,by,boardSize}=geometry;
   const {x,y}=liftedPose(drag.point,drag.grab,cell,drag.fromScale,drag.lift,1);
   const origin={x:(x-bx)/cell,y:(y-by)/cell};
   const candidate={x:Math.round(origin.x),y:Math.round(origin.y),r:rotations[drag.id]};
   const {w,h}=size(pieceCells(drag.id));const near=x+w*cell>bx&&x<bx+boardSize&&y+h*cell>by&&y<by+boardSize;
   drag.p=near?magneticPlacement(level,placements,drag.id,origin,rotations[drag.id]):null;drag.candidate=candidate;
-  drag.overTray=drag.point.y>trayTop-12;
+  drag.overTray=overTrayAtPoint(drag.point,geometry);
   if(near){showGhost(preview,drag.id,drag.p??candidate,!drag.p);const snapKey=drag.p?`${drag.p.x}:${drag.p.y}`:null;
     if(drag.touch&&snapKey&&!drag.lastSnapKey&&performance.now()-drag.lastFeedback>140){haptic(2);drag.lastFeedback=performance.now();}drag.lastSnapKey=snapKey;
   }else preview.classList.remove('visible');
