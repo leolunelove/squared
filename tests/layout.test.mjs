@@ -16,9 +16,9 @@ for(const [input,expected] of [
   for(const [key,value] of Object.entries(expected))check(near(result[key],value),`Existing mobile ${key} is preserved`);
 }
 // Exercise every campaign shape on compact laptops, desktop and large screens.
-for(const [width,height] of [[816,336],[936,456],[1160,636],[1160,816]])for(const level of levels){
+for(const [width,height] of [[604,400],[644,503],[816,336],[936,456],[1160,636],[1160,816]])for(const level of levels){
   const g=stageLayout(width,height,level.pieces.length,true),cell=g.boardSize/level.n;
-  check(g.boardSize>300,'Desktop makes the square larger than the compact mobile board');
+  check(g.boardSize>280,'Desktop uses the available space for a substantial square');
   check(g.bx>=0&&g.by>=0&&g.bx+g.boardSize<=g.trayX-24,'Board and tray are separated');
   check(g.by+g.boardSize<=height,'The board remains inside the stage');
   check(!overTrayAtPoint({x:g.bx+g.boardSize/2,y:g.by+g.boardSize/2},{...g,sideTray:g.wide}),'An invalid board drop is not mistaken for returning to the side tray');

@@ -1,5 +1,5 @@
 // Presentation geometry only. Mobile keeps its established board and tray sizing.
-export const DESKTOP_QUERY='(min-width: 960px) and (min-height: 600px)';
+export const DESKTOP_QUERY='(min-width: 700px) and (min-height: 600px)';
 export function stageLayout(width,height,pieceCount,desktop=false){
   const rows=pieceCount>3?2:1,wide=desktop||(width>480&&height<320);
   const boardColumn=width*.54;

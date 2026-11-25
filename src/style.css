@@ -82,7 +82,7 @@ dialog::backdrop{background:#dce2ec9c}
 
 /* A roomy tabletop on desktop; retain the original mobile composition below it. */
 .calm-copy{display:flex;align-items:center;gap:7px}.desktop-note{display:none}
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:700px) and (min-height:600px){
   body{background:var(--paper)}
   .app{width:min(calc(100% - 64px),1240px);height:100svh;min-height:600px;max-height:1080px;padding:0 40px;border:0;background:transparent;display:grid;grid-template-columns:54% 46%;grid-template-rows:88px 68px minmax(300px,1fr) 64px 44px}
   .topbar{grid-column:1/-1;grid-row:1;height:auto;border-bottom:1px solid var(--line)}
@@ -102,4 +102,12 @@ dialog::backdrop{background:#dce2ec9c}
   .tray-label{font-size:12px;letter-spacing:1.2px}.tray-label span:last-child{font-size:12px}
   #levels-dialog{width:600px}#levels-dialog .level-grid{grid-template-columns:repeat(5,1fr)}
   .success-card{width:400px;padding:40px 32px 26px}
+}
+
+@media(min-width:700px) and (max-width:959px) and (min-height:600px){
+  .app{width:calc(100% - 40px);padding-inline:24px;grid-template-rows:80px 60px minmax(260px,1fr) 64px 44px}
+  .intro{padding-inline:12px}.stage{min-height:260px}
+  .brand-mark{width:39px;height:33px}.brand-wordmark{width:122px;height:30px}
+  .tools{gap:8px;padding-left:16px}.tool{min-width:72px;font-size:13px}
+  .status-area p{font-size:14px}.footnote{font-size:10px;gap:12px}
 }

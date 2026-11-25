@@ -20,7 +20,7 @@
     "fixed_orientation_solutions_and_hint_workers": 100,
     "legacy_save_round_trips": 74,
     "motion": 192,
-    "responsive_layout": 16564,
+    "responsive_layout": 24836,
     "status": "passed"
   },
   "browser": {
@@ -28,7 +28,9 @@
       "1280x720",
       "1440x900",
       "1024x600",
-      "959x720",
+      "732x751",
+      "700x600",
+      "699x720",
       "375x667",
       "320x568",
       "844x390"
@@ -93,18 +95,6 @@
           "viewport": [
             1024,
             600
-          ]
-        },
-        {
-          "controlsBottom": 698,
-          "ghostWidth": 0,
-          "page": [
-            959,
-            720
-          ],
-          "viewport": [
-            959,
-            720
           ]
         },
         {
@@ -218,6 +208,97 @@
         "y": 0
       },
       "afterReturnToTray": "8 to go"
+    },
+    "compact_desktop": {
+      "narrowDesktop": {
+        "viewport": [
+          732,
+          751
+        ],
+        "boardWidth": 315,
+        "page": [
+          732,
+          751
+        ]
+      },
+      "allNinePieces": [
+        "8 to go",
+        "7 to go",
+        "6 to go",
+        "5 to go",
+        "4 to go",
+        "3 to go",
+        "2 to go",
+        "1 to go",
+        "A perfect fit"
+      ],
+      "breakpoints": [
+        {
+          "boardWidth": 298,
+          "controlsBottom": 556,
+          "keyboardNote": "block",
+          "page": [
+            700,
+            600
+          ],
+          "viewport": [
+            700,
+            600
+          ]
+        },
+        {
+          "boardWidth": 267,
+          "controlsBottom": 698,
+          "keyboardNote": "none",
+          "page": [
+            699,
+            720
+          ],
+          "viewport": [
+            699,
+            720
+          ]
+        },
+        {
+          "boardWidth": 238,
+          "controlsBottom": 645,
+          "keyboardNote": "none",
+          "page": [
+            375,
+            667
+          ],
+          "viewport": [
+            375,
+            667
+          ]
+        },
+        {
+          "boardWidth": 197,
+          "controlsBottom": 548,
+          "keyboardNote": "none",
+          "page": [
+            320,
+            568
+          ],
+          "viewport": [
+            320,
+            568
+          ]
+        },
+        {
+          "boardWidth": 186,
+          "controlsBottom": 390,
+          "keyboardNote": "none",
+          "page": [
+            844,
+            390
+          ],
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ]
     }
   },
   "publication": {

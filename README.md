@@ -26,7 +26,7 @@ Existing progress remains under `squared-save-v1` on the same `squared.leolune.f
 
 ## Desktop layout
 
-At 960px wide and 600px tall, the game expands into a tabletop: a square up to 520px on the left, fixed piece homes on the right, controls below, and a wider five-column level picker. Smaller screens retain the mobile layout. Keyboard selection, arrow-key positioning and Enter placement remain available. Resizing retains the same arrangement and updates active hints and previews.
+At 700px wide and 600px tall, the game expands into a tabletop: a square up to 520px on the left, fixed piece homes on the right, controls below, and a wider five-column level picker. Smaller screens retain the mobile layout. Keyboard selection, arrow-key positioning and Enter placement remain available. Resizing retains the same arrangement and updates active hints and previews.
 
 ## Motion
 

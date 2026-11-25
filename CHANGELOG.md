@@ -7,7 +7,7 @@
 - Preserve the compact mobile layout, puzzle data, motion, storage keys, level IDs and progress.
 - Match the return-to-tray region to the side-by-side layout, preserving invalid-drop return behaviour.
 - Reposition active placement markers on resize and clear hidden oversized markers that could otherwise cause page scrolling.
-- Verify mouse and keyboard completion, full nine-piece desktop play, desktop/mobile transitions, saved positions, and 16,564 responsive geometry checks.
+- Verify mouse and keyboard completion, full nine-piece desktop play, desktop/mobile transitions, saved positions, and 24,836 responsive geometry checks.
 
 ## 1.6.0 — 2026-11-24
 
