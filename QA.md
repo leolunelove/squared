@@ -1,13 +1,11 @@
-# bentoad branding verification — 1.6.0
+# Desktop adaptation verification — 1.7.0
 
-The approved Soft toad identity is applied to the header, accessible brand label, page metadata, favicon, home-screen icon and blue/chalk interface. Vector artwork and an embedded touch icon preserve the standalone build without runtime font or image requests.
+Desktop screens at least 960×600 use a larger left-hand square and a right-hand tray. Boards reach 424px at 1280×720 and 520px at 1440×900. Controls remain below the tray; the level picker uses five columns. Mobile layout and short landscape layout are preserved.
 
-The application, engine, motion module and all 100 level definitions match the published 1.5.0 source byte for byte. The permanent storage key, session playtest key, stable level IDs, save format, per-level boards, Undo history and sound preference are unchanged. The domain remains squared.leolune.fun.
+All six existing suites and the new responsive suite pass. The latter checks mobile geometry baselines, separated board/tray bounds and nonoverlapping piece homes for all 100 levels on compact laptops and larger screens: 15,762 checks. Engine, motion and level definitions are byte-identical to 1.6.0; application code outside the layout function is unchanged. Storage keys, domain, IDs and save format are retained.
 
-All six suites pass: 6,273 engine checks, 6,473 mobile geometry checks, 39,696 progression checks, all 100 fixed-orientation solutions and hint workers, 74 legacy-save round trips, independent arrangement/history round trips and 192 motion checks.
+Browser checks covered 1280×720, 1440×900, 1024×600, 959×720, 375×667, 320×568 and 844×390. Mouse placement, rejected overlaps, keyboard completion, Next, Undo, Restart, level navigation and mobile placement after a desktop resize passed. All nine final-square pieces were placed with native pointer drags from a blank board.
 
-Browser QA covered 375×667, 320×568 and 844×390. Header controls do not overlap, page bounds fit the viewport, and the instructions dialog scrolls. Native-pointer checks covered rejected overlap, hints, completion, Undo, reload and the final nine-piece square from a seeded partial arrangement. Two saved boards and their separate Undo histories survived level switching and reload. Landscape Restart returned all nine pieces to the tray. The fixture writes a dedicated session key and is excluded from publication.
+Resizing initially exposed a hidden desktop-sized preview contributing to page scroll. Layout now clears unused marker geometry and updates active keyboard/hint previews. After the fix, tested page scroll dimensions match each viewport; visible hints scale to the new board correctly.
 
-Before publication, the existing live player board showed level 3, three pieces remaining and 2/100 earned completions. Post-deployment evidence is recorded in qa/live-branding-1.6.0.json. Physical finger feel, native OS motion preference, sound and haptics remain device-test boundaries.
-
-Version 1.6.0 is live. [Pages run 45373111814](https://github.com/leolunelove/squared/actions/runs/45373111814) succeeded, and HTTPS returned 200 with a validated certificate. The live 98,852-byte HTML matches the tested build by SHA-256. Live placement, Undo, square completion and Next passed at 375×667 in an isolated session. Reloading the normal game still showed level 3, three pieces remaining, 2/100 earned completions and sound enabled.
+The existing normal save before deployment showed level 7, 6 completed squares, sound enabled, honey at (3,0) and peach at (0,0). Local QA used isolated session keys. Post-deployment evidence will be recorded in qa/live-desktop-1.7.0.json. Physical-phone touch feel, OS motion settings, audio and haptics remain device-test boundaries.

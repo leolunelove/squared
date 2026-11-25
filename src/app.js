@@ -84,21 +84,15 @@ function boardMotion(){return nodes.map((_,id)=>freezePiece(id));}
 function finishBoardMotion(poses){layout();poses.forEach((pose,id)=>movePiece(id,pose));}
 function clearCompletion(){board.classList.remove('complete','celebrating');stage.classList.remove('solved');}
 function layout(){
-  if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
-  const wide=width>480&&height<320;
-  const boardSize=Math.floor(wide?Math.min(height-22,300,width*.43):Math.min(width-42,320,height*(rows===2?.55:.62)));
-  const cell=boardSize/level.n,bx=wide?(width*.45-boardSize)/2:(width-boardSize)/2,by=wide?8:12;
-  const trayX=wide?width*.46+12:0,trayWidth=wide?width-trayX-8:width;
-  const trayTop=wide?44:by+boardSize+48,trayHeight=Math.max(50,height-trayTop-8);
-  const ids=trayIds;
-  const cols=ids.length>8?5:ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
-  const slotW=trayWidth/cols,slotH=trayHeight/actualRows;
+  if(!level)return;const {width,height}=stage.getBoundingClientRect(),ids=trayIds;
+  const {boardSize,bx,by,trayX,trayWidth,trayTop,cols,slotW,slotH,labelTop,labelLeft}=stageLayout(width,height,ids.length,matchMedia(DESKTOP_QUERY).matches);
+  const cell=boardSize/level.n;
   geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
   const gridKey=`${level.n}:${boardSize}`;
   if(board.dataset.grid!==gridKey){board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');board.dataset.grid=gridKey;}
   board.setAttribute('aria-label',`${level.n} by ${level.n} square board`);
-  Object.assign($('#tray-label').style,{top:(wide?12:by+boardSize+18)+'px',left:(wide?trayX:8)+'px'});
+  Object.assign($('#tray-label').style,{top:labelTop+'px',left:labelLeft+'px'});
   ids.forEach((id,i)=>{
     const {w,h}=size(pieceCells(id)),maxdim=Math.max(w,h);
     const scale=Math.min(.82,(slotW-18)/(maxdim*cell),(slotH-12)/(maxdim*cell));
@@ -111,7 +105,13 @@ function layout(){
     if(placements[id])position(id,bx+placements[id].x*cell,by+placements[id].y*cell);
     else {const p=geometry.homes[id];position(id,p.x,p.y,p.scale);}
   });
+  // A hidden desktop-sized marker must not extend a smaller viewport after resize.
+  if(!drag?.active){
+    if(keyboardTarget&&selected!==null)showGhost(preview,selected,keyboardTarget,!canPlace(level,placements,selected,keyboardTarget));
+    else {preview.classList.remove('visible');preview.replaceChildren();preview.removeAttribute('style');}
+  }
   if(hintTarget)showGhost(hintGhost,hintTarget.id,hintTarget.p);
+  else {hintGhost.replaceChildren();hintGhost.removeAttribute('style');}
   updateControls();
 }
 function setHintBusy(busy){$('#hint').disabled=busy;$('#hint').setAttribute('aria-busy',String(busy));}

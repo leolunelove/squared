@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 — 2026-11-25
+
+- Adapt desktop screens to a larger square on the left and a separate piece tray on the right, with responsive sizing and fixed piece homes.
+- Add a wider desktop level picker and visible keyboard guidance.
+- Preserve the compact mobile layout, puzzle data, motion, storage keys, level IDs and progress.
+- Reposition active placement markers on resize and clear hidden oversized markers that could otherwise cause page scrolling.
+- Verify mouse and keyboard completion, full nine-piece desktop play, desktop/mobile transitions, saved positions, and 15,762 responsive geometry checks.
+
 ## 1.6.0 — 2026-11-24
 
 - Apply the approved bentoad Soft toad identity: vector mascot, rounded outlined wordmark, blue, navy and chalk.

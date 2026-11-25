@@ -79,3 +79,27 @@ dialog::backdrop{background:#dce2ec9c}
 @media(max-width:350px){.brand{gap:7px}.brand-mark{width:35px;height:30px}.brand-wordmark{width:112px;height:28px}}
 
 .tray-label span:last-child{color:#85909e}.dialog-heading .eyebrow{color:#7d8795}.piece.hinted{filter:drop-shadow(0 0 3px #5872c270)}
+
+/* A roomy tabletop on desktop; retain the original mobile composition below it. */
+.calm-copy{display:flex;align-items:center;gap:7px}.desktop-note{display:none}
+@media(min-width:960px) and (min-height:600px){
+  body{background:var(--paper)}
+  .app{width:min(calc(100% - 64px),1240px);height:100svh;min-height:600px;max-height:1080px;padding:0 40px;border:0;background:transparent;display:grid;grid-template-columns:54% 46%;grid-template-rows:88px 68px minmax(300px,1fr) 64px 44px}
+  .topbar{grid-column:1/-1;grid-row:1;height:auto;border-bottom:1px solid var(--line)}
+  .brand-mark{width:44px;height:38px}.brand-wordmark{width:138px;height:34px}
+  .header-actions{gap:8px}
+  .intro{grid-column:1/-1;grid-row:2;padding:8px 20px 5px}
+  .intro>.level-button>.eyebrow{display:block;font-size:9px}
+  .level-label{font-size:24px;line-height:1.5}
+  .dimension{margin-bottom:9px;font-size:13px;gap:4px}#phase-name{font-size:13px}
+  .stage{grid-column:1/-1;grid-row:3;min-height:300px}
+  .status-area{grid-column:1;grid-row:4;height:auto;padding:0 16px}
+  .status-area p{font-size:15px;max-width:480px}
+  .tools{grid-column:2;grid-row:4;height:auto;gap:12px;padding-left:32px}
+  .tool{height:48px;min-width:94px;font-size:14px}
+  .footnote{grid-column:1/-1;grid-row:5;height:auto;justify-content:space-between;font-size:12px;border-top:1px solid var(--line)}
+  .desktop-note{display:inline;color:#7d8795}
+  .tray-label{font-size:12px;letter-spacing:1.2px}.tray-label span:last-child{font-size:12px}
+  #levels-dialog{width:600px}#levels-dialog .level-grid{grid-template-columns:repeat(5,1fr)}
+  .success-card{width:400px;padding:40px 32px 26px}
+}

@@ -24,6 +24,10 @@ Sound uses quiet synthesized notes. Haptics use the browser vibration API where 
 
 Existing progress remains under `squared-save-v1` on the same `squared.leolune.fun` origin. Rebranding does not rename storage keys or change save versions, stable level IDs, arrangements, Undo histories or sound preferences.
 
+## Desktop layout
+
+At 960px wide and 600px tall, the game expands into a tabletop: a square up to 520px on the left, fixed piece homes on the right, controls below, and a wider five-column level picker. Smaller screens retain the mobile layout. Keyboard selection, arrow-key positioning and Enter placement remain available. Resizing retains the same arrangement and updates active hints and previews.
+
 ## Motion
 
 Pickup grows over 120ms while preserving the visible grabbed cell. Drag movement follows the pointer directly. Legal placements settle over 150ms; rejected drops return over 180–260ms. A quiet board halo replaces confetti, with completion available after 520ms. New gestures, Undo, Restart and resizing interrupt travel cleanly. Reduced motion uses immediate movement and no halo. See `MOTION.md` for the audit, interaction specifications and working rules.
@@ -55,6 +59,7 @@ node tests/progression.test.mjs
 node tests/fixed-orientation.test.mjs
 node tests/campaign.test.mjs
 node tests/motion.test.mjs
+node tests/layout.test.mjs
 ```
 
 The grid engine accepts every valid tiling, rather than checking against a single prescribed solution. There are no accounts, analytics, network requests, or runtime packages.

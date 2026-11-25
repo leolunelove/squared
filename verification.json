@@ -1,78 +1,211 @@
 {
-  "date": "2026-11-24",
-  "build": "1.6.0",
-  "brand": "bentoad / 01 Soft toad",
-  "scope": "Presentation and build assets only",
-  "unchanged_gameplay_sha256": {
-    "app.js": "6af68fc919412b09af29c8034fdf633ebb6b5a6d761b07160c6169d455aafd89",
-    "engine.js": "e275fdd2152ca97e5c0fa28720abf624266f0fe48b40a5a0e409a59e4a7ee99b",
-    "motion.js": "825c5b5b174a76e834dd3977ce3f3f8098d7fe5fc8f7fadd0f9505b87d4b14f2",
-    "levels.json": "9ca48bc39a90394f415d95912cdbf54043f3858c117f2285a4f475104c09913e"
-  },
-  "save_compatibility": {
-    "same_origin": "https://squared.leolune.fun",
-    "player_key": "squared-save-v1",
-    "playtest_key": "squared-playtest-v1",
-    "app_engine_motion_and_levels_unchanged": true,
-    "legacy_save_round_trips": 74,
-    "independent_board_and_undo_history_round_trip": true
+  "date": "2026-11-25",
+  "build": "1.7.0",
+  "change": "Adaptive desktop layout",
+  "unchanged": {
+    "engine_sha256": "e275fdd2152ca97e5c0fa28720abf624266f0fe48b40a5a0e409a59e4a7ee99b",
+    "motion_sha256": "825c5b5b174a76e834dd3977ce3f3f8098d7fe5fc8f7fadd0f9505b87d4b14f2",
+    "levels_sha256": "9ca48bc39a90394f415d95912cdbf54043f3858c117f2285a4f475104c09913e",
+    "app_outside_layout_function": true,
+    "storage_keys": [
+      "squared-save-v1",
+      "squared-playtest-v1"
+    ],
+    "domain": "squared.leolune.fun"
   },
   "tests": {
-    "engine_checks": 6273,
-    "mobile_geometry_checks": 6473,
-    "progression_checks": 39696,
+    "engine": 6273,
+    "mobile_geometry": 6473,
+    "progression": 39696,
     "fixed_orientation_solutions_and_hint_workers": 100,
-    "campaign": "passed",
-    "motion_checks": 192
+    "legacy_save_round_trips": 74,
+    "motion": 192,
+    "responsive_layout": 15762,
+    "status": "passed"
   },
   "browser": {
-    "viewport_checks": [
+    "sizes": [
+      "1280x720",
+      "1440x900",
+      "1024x600",
+      "959x720",
       "375x667",
       "320x568",
       "844x390"
     ],
     "verified": [
-      "Brand header fits without overlapping 44px action buttons",
-      "No horizontal or vertical page overflow at checked sizes",
-      "Native pointer overlap rejection and return",
-      "Hint marker and valid pointer completion",
-      "Completion card, Stay, Undo and reload",
-      "Two independent saved arrangements and Undo histories retained across level switching and reload",
-      "Nine-piece final square completed with pointer drags from a seeded partial arrangement",
-      "Landscape Restart exposes all nine pieces",
-      "Instructions dialog scrolls with close control visible"
+      "Desktop board and tray composition",
+      "Mouse overlap rejection and valid snapping",
+      "Mobile placement after desktop resize",
+      "Keyboard square completion and Next",
+      "Five-column desktop level picker",
+      "Full nine-piece final-square completion by mouse drags",
+      "Undo and Restart",
+      "Hidden and active hint markers across resizing without page overflow"
     ],
-    "fixtures": "Local-only session save fixture; excluded from publication",
-    "live_before": {
-      "current_level": 3,
-      "completed": 2,
-      "remaining": 3
+    "evidence": {
+      "normalSaveBefore": {
+        "level": "07",
+        "pieces": [
+          {
+            "id": "0",
+            "placed": false
+          },
+          {
+            "id": "1",
+            "placed": true
+          },
+          {
+            "id": "2",
+            "placed": true
+          },
+          {
+            "id": "3",
+            "placed": false
+          }
+        ],
+        "remaining": "2 to go",
+        "sound": "true",
+        "collection": "6 of 100 squares complete. A little more room to play.",
+        "grid": [
+          {
+            "id": "1",
+            "x": 3,
+            "y": 0
+          },
+          {
+            "id": "2",
+            "x": 0,
+            "y": 0
+          }
+        ]
+      },
+      "resizeChecks": [
+        {
+          "controlsBottom": 556,
+          "ghostWidth": 0,
+          "page": [
+            1024,
+            600
+          ],
+          "viewport": [
+            1024,
+            600
+          ]
+        },
+        {
+          "controlsBottom": 698,
+          "ghostWidth": 0,
+          "page": [
+            959,
+            720
+          ],
+          "viewport": [
+            959,
+            720
+          ]
+        },
+        {
+          "controlsBottom": 548,
+          "ghostWidth": 0,
+          "page": [
+            320,
+            568
+          ],
+          "viewport": [
+            320,
+            568
+          ]
+        },
+        {
+          "controlsBottom": 390,
+          "ghostWidth": 0,
+          "page": [
+            844,
+            390
+          ],
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "finalResizeChecks": [
+        {
+          "boardWidth": 304,
+          "hintVisible": true,
+          "hintWidth": 152,
+          "page": [
+            1024,
+            600
+          ],
+          "remaining": "1 to go",
+          "viewport": [
+            1024,
+            600
+          ]
+        },
+        {
+          "boardWidth": 197,
+          "hintVisible": true,
+          "hintWidth": 98.5,
+          "page": [
+            320,
+            568
+          ],
+          "remaining": "1 to go",
+          "viewport": [
+            320,
+            568
+          ]
+        }
+      ],
+      "finalSquareDragResults": [
+        {
+          "id": 0,
+          "remaining": "8 to go"
+        },
+        {
+          "id": 1,
+          "remaining": "7 to go"
+        },
+        {
+          "id": 2,
+          "remaining": "6 to go"
+        },
+        {
+          "id": 3,
+          "remaining": "5 to go"
+        },
+        {
+          "id": 4,
+          "remaining": "4 to go"
+        },
+        {
+          "id": 5,
+          "remaining": "3 to go"
+        },
+        {
+          "id": 6,
+          "remaining": "2 to go"
+        },
+        {
+          "id": 7,
+          "remaining": "1 to go"
+        },
+        {
+          "id": 8,
+          "remaining": "A perfect fit"
+        }
+      ]
     },
-    "live_evidence": "qa/live-branding-1.6.0.json",
-    "live_after": {
-      "current_level": 3,
-      "completed": 2,
-      "remaining": 3,
-      "sound": true
-    }
+    "fixtures": "Dedicated local session fixture, excluded from publication"
   },
   "publication": {
-    "status": "live",
-    "url": "https://squared.leolune.fun/",
-    "repository": "https://github.com/leolunelove/squared",
-    "source_commit": "8e05d046adca64de2b98e4b0267dfcb0badaaa68",
-    "workflow_run": "https://github.com/leolunelove/squared/actions/runs/45373111814",
-    "build": "success",
-    "deploy": "success",
-    "https_status": 200,
-    "ssl_verify_result": 0,
-    "live_build_matches_local": true,
-    "live_sha256": "febd9060af28df8fe7a933ca6d7b54b14944344a9a50813ee1e528124b50fe46",
-    "live_bytes": 98852
+    "status": "ready_to_publish",
+    "url": "https://squared.leolune.fun/"
   },
   "not_verified": [
-    "Physical-phone finger feel",
-    "Native OS reduced-motion preference",
-    "Sound quality and haptics"
+    "Physical device touch feel, native OS reduced motion, audio and haptics"
   ]
 }

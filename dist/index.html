@@ -4,8 +4,8 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6f6f1"><meta name="description" content="A little piece of calm. Fit every piece into a perfect square in this tactile, untimed puzzle game.">
   <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="squared-version" content="1.6.0">
-  <meta name="bentoad-version" content="1.6.0">
+  <meta name="squared-version" content="1.7.0">
+  <meta name="bentoad-version" content="1.7.0">
   <meta name="apple-mobile-web-app-title" content="bentoad">
   <meta property="og:title" content="bentoad — a little piece of calm">
   <meta property="og:description" content="One hundred calm little puzzles. Fit every piece into a square.">
@@ -93,6 +93,30 @@ dialog::backdrop{background:#dce2ec9c}
 @media(max-width:350px){.brand{gap:7px}.brand-mark{width:35px;height:30px}.brand-wordmark{width:112px;height:28px}}
 
 .tray-label span:last-child{color:#85909e}.dialog-heading .eyebrow{color:#7d8795}.piece.hinted{filter:drop-shadow(0 0 3px #5872c270)}
+
+/* A roomy tabletop on desktop; retain the original mobile composition below it. */
+.calm-copy{display:flex;align-items:center;gap:7px}.desktop-note{display:none}
+@media(min-width:960px) and (min-height:600px){
+  body{background:var(--paper)}
+  .app{width:min(calc(100% - 64px),1240px);height:100svh;min-height:600px;max-height:1080px;padding:0 40px;border:0;background:transparent;display:grid;grid-template-columns:54% 46%;grid-template-rows:88px 68px minmax(300px,1fr) 64px 44px}
+  .topbar{grid-column:1/-1;grid-row:1;height:auto;border-bottom:1px solid var(--line)}
+  .brand-mark{width:44px;height:38px}.brand-wordmark{width:138px;height:34px}
+  .header-actions{gap:8px}
+  .intro{grid-column:1/-1;grid-row:2;padding:8px 20px 5px}
+  .intro>.level-button>.eyebrow{display:block;font-size:9px}
+  .level-label{font-size:24px;line-height:1.5}
+  .dimension{margin-bottom:9px;font-size:13px;gap:4px}#phase-name{font-size:13px}
+  .stage{grid-column:1/-1;grid-row:3;min-height:300px}
+  .status-area{grid-column:1;grid-row:4;height:auto;padding:0 16px}
+  .status-area p{font-size:15px;max-width:480px}
+  .tools{grid-column:2;grid-row:4;height:auto;gap:12px;padding-left:32px}
+  .tool{height:48px;min-width:94px;font-size:14px}
+  .footnote{grid-column:1/-1;grid-row:5;height:auto;justify-content:space-between;font-size:12px;border-top:1px solid var(--line)}
+  .desktop-note{display:inline;color:#7d8795}
+  .tray-label{font-size:12px;letter-spacing:1.2px}.tray-label span:last-child{font-size:12px}
+  #levels-dialog{width:600px}#levels-dialog .level-grid{grid-template-columns:repeat(5,1fr)}
+  .success-card{width:400px;padding:40px 32px 26px}
+}
 </style>
 </head>
 <body>
@@ -125,7 +149,7 @@ dialog::backdrop{background:#dce2ec9c}
   <nav class="tools" aria-label="Puzzle controls">
     <button id="undo" class="tool" disabled></button><button id="hint" class="tool"></button><button id="restart" class="tool"></button>
   </nav>
-  <footer class="footnote"><span class="calm-dot"></span>No timer. Just a little space to think.</footer>
+  <footer class="footnote"><span class="calm-copy"><span class="calm-dot"></span>No timer. Just a little space to think.</span><span class="desktop-note">Select a piece · Arrow keys to position · Enter to place</span></footer>
 </main>
 <section id="success" class="success" aria-label="Puzzle complete" aria-hidden="true"><div class="success-card"><span class="success-icon" aria-hidden="true"></span><span id="success-kicker" class="eyebrow">EVERY PIECE BELONGS</span><h1 id="success-title">All squared away.</h1><p id="success-text">A little mess. A perfect fit.</p><button id="next" class="primary-button">Next square <span aria-hidden="true">→</span></button><button id="replay" class="text-button">Stay a moment</button></div></section>
 <dialog id="levels-dialog"><div class="dialog-heading"><div><span class="eyebrow">ONE SQUARE AT A TIME</span><h2>Your little collection.</h2></div><button class="close-dialog icon-button" aria-label="Close levels"></button></div><p class="dialog-copy" id="collection-progress">100 small moments of calm.</p><div id="level-grid" class="level-grid"></div><p class="dialog-footer">Your progress is saved on this device.</p></dialog>
@@ -307,6 +331,24 @@ function travelDuration(from,to,kind='return'){
 }
 function samePose(a,b){return Math.abs(a.x-b.x)<.25&&Math.abs(a.y-b.y)<.25&&Math.abs(a.scale-b.scale)<.001;}
 
+// Presentation geometry only. Mobile keeps its established board and tray sizing.
+const DESKTOP_QUERY='(min-width: 960px) and (min-height: 600px)';
+function stageLayout(width,height,pieceCount,desktop=false){
+  const rows=pieceCount>3?2:1,wide=desktop||(width>480&&height<320);
+  const boardColumn=width*.54;
+  const boardSize=Math.floor(desktop?Math.min(520,boardColumn-32,height-32):wide?Math.min(height-22,300,width*.43):Math.min(width-42,320,height*(rows===2?.55:.62)));
+  const bx=desktop?(boardColumn-boardSize)/2:wide?(width*.45-boardSize)/2:(width-boardSize)/2;
+  const by=desktop?(height-boardSize)/2:wide?8:12;
+  const trayX=desktop?boardColumn+32:wide?width*.46+12:0;
+  const trayWidth=wide?width-trayX-8:width;
+  const labelTop=desktop?16:wide?12:by+boardSize+18;
+  const trayTop=desktop?64:wide?44:by+boardSize+48;
+  const trayHeight=Math.max(50,height-trayTop-(desktop?16:8));
+  const cols=desktop?(pieceCount<=3?1:pieceCount<=6?2:3):pieceCount>8?5:pieceCount>6?4:pieceCount>4?3:pieceCount===4?2:Math.max(1,pieceCount);
+  const actualRows=Math.ceil(pieceCount/cols)||1;
+  return {wide,boardSize,bx,by,trayX,trayWidth,trayTop,trayHeight,cols,actualRows,slotW:trayWidth/cols,slotH:trayHeight/actualRows,labelTop,labelLeft:wide?trayX:8};
+}
+
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const icons={
   sound:'<path d="M11 4 6 8H3v8h3l5 4V4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>',
@@ -393,21 +435,15 @@ function boardMotion(){return nodes.map((_,id)=>freezePiece(id));}
 function finishBoardMotion(poses){layout();poses.forEach((pose,id)=>movePiece(id,pose));}
 function clearCompletion(){board.classList.remove('complete','celebrating');stage.classList.remove('solved');}
 function layout(){
-  if(!level)return;const {width,height}=stage.getBoundingClientRect(),rows=level.pieces.length>3?2:1;
-  const wide=width>480&&height<320;
-  const boardSize=Math.floor(wide?Math.min(height-22,300,width*.43):Math.min(width-42,320,height*(rows===2?.55:.62)));
-  const cell=boardSize/level.n,bx=wide?(width*.45-boardSize)/2:(width-boardSize)/2,by=wide?8:12;
-  const trayX=wide?width*.46+12:0,trayWidth=wide?width-trayX-8:width;
-  const trayTop=wide?44:by+boardSize+48,trayHeight=Math.max(50,height-trayTop-8);
-  const ids=trayIds;
-  const cols=ids.length>8?5:ids.length>6?4:ids.length>4?3:ids.length===4?2:Math.max(1,ids.length),actualRows=Math.ceil(ids.length/cols)||1;
-  const slotW=trayWidth/cols,slotH=trayHeight/actualRows;
+  if(!level)return;const {width,height}=stage.getBoundingClientRect(),ids=trayIds;
+  const {boardSize,bx,by,trayX,trayWidth,trayTop,cols,slotW,slotH,labelTop,labelLeft}=stageLayout(width,height,ids.length,matchMedia(DESKTOP_QUERY).matches);
+  const cell=boardSize/level.n;
   geometry={width,height,boardSize,cell,bx,by,trayTop,homes:[]};
   Object.assign(board.style,{left:bx+'px',top:by+'px',width:boardSize+'px',height:boardSize+'px'});
   const gridKey=`${level.n}:${boardSize}`;
   if(board.dataset.grid!==gridKey){board.innerHTML=Array.from({length:level.n**2},(_,i)=>`<span class="board-cell" style="left:${(i%level.n)*cell+3}px;top:${Math.floor(i/level.n)*cell+3}px;width:${cell-6}px;height:${cell-6}px"></span>`).join('');board.dataset.grid=gridKey;}
   board.setAttribute('aria-label',`${level.n} by ${level.n} square board`);
-  Object.assign($('#tray-label').style,{top:(wide?12:by+boardSize+18)+'px',left:(wide?trayX:8)+'px'});
+  Object.assign($('#tray-label').style,{top:labelTop+'px',left:labelLeft+'px'});
   ids.forEach((id,i)=>{
     const {w,h}=size(pieceCells(id)),maxdim=Math.max(w,h);
     const scale=Math.min(.82,(slotW-18)/(maxdim*cell),(slotH-12)/(maxdim*cell));
@@ -420,7 +456,13 @@ function layout(){
     if(placements[id])position(id,bx+placements[id].x*cell,by+placements[id].y*cell);
     else {const p=geometry.homes[id];position(id,p.x,p.y,p.scale);}
   });
+  // A hidden desktop-sized marker must not extend a smaller viewport after resize.
+  if(!drag?.active){
+    if(keyboardTarget&&selected!==null)showGhost(preview,selected,keyboardTarget,!canPlace(level,placements,selected,keyboardTarget));
+    else {preview.classList.remove('visible');preview.replaceChildren();preview.removeAttribute('style');}
+  }
   if(hintTarget)showGhost(hintGhost,hintTarget.id,hintTarget.p);
+  else {hintGhost.replaceChildren();hintGhost.removeAttribute('style');}
   updateControls();
 }
 function setHintBusy(busy){$('#hint').disabled=busy;$('#hint').setAttribute('aria-busy',String(busy));}
